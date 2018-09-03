@@ -1,0 +1,102 @@
+/**
+ * A Gradle build script for DDP2 online course programming exercises.
+ * Author: dayaadianto@cs.ui.ac.id
+ */
+
+description = """
+Experiment on setting up Gradle-based project automation. It will cover
+automating testing, build process, and running the programs.
+"""
+
+// Project-wide constants
+ext.checkstyle_version = '8.7'
+ext.jacoco_version = '0.8.0'
+ext.java_version = '1.8'
+ext.junit_jupiter_version = '5.0.3'
+ext.junit_platform_version = '1.0.3'
+ext.junit_vintage_version = '4.12.3'
+ext.pmd_version = '6.0.0'
+ext.project_group = 'id.ac.ui.cs.ddp2'
+ext.project_rootdir = project.rootDir.toString()
+ext.project_version = '0.0.2'
+
+// For all projects:
+allprojects {
+    // Set basic information
+    group "${project_group}"
+    version "${project_version}"
+}
+
+// For all sub projects: (excluding this)
+subprojects {
+    // Use Java plugin
+    apply plugin: 'java'
+    sourceCompatibility = java_version
+
+    // Use Checkstyle plugin to check code writing quality in terms of writing style
+    // Also known as 'lint' or 'linting' test
+    apply plugin: 'checkstyle'
+
+    // Configure Checkstyle plugin
+    checkstyle {
+        // Workaround: We cannot refer to the existing configuration files (Google's,
+        // Sun's) that are present in the Checkstyle's JAR file.
+        // Relevant issue on GitHub: https://github.com/gradle/gradle/issues/2765
+        configFile = file(new File("${project_rootdir}/config/google_csui_checks.xml"))
+        toolVersion = checkstyle_version
+        ignoreFailures = false
+    }
+
+    // Use & configure PMD plugin
+    apply plugin: 'pmd'
+
+    pmd {
+        ignoreFailures = true
+        toolVersion = pmd_version
+
+        // Check here for valid rulesets: https://github.com/pmd/pmd/tree/master/pmd-java/src/main/resources/rulesets/java
+        ruleSets = ['java-basic', 'java-design', 'java-metrics',
+                    'java-coupling', 'java-logging-java', 'java-naming',
+                    'java-strings', 'java-unnecessary', 'java-unusedcode']
+    }
+
+    // Use & configure JaCoCo plugin
+    // Hack-ish configuration. Source: https://github.com/junit-team/junit5/issues/1024#issuecomment-354384992
+    apply plugin: 'jacoco'
+
+    afterEvaluate {
+        def junitPlatformTestTask = (JavaExec) project.tasks.getByName('junitPlatformTest')
+
+        jacoco {
+            applyTo(junitPlatformTestTask)
+            toolVersion = jacoco_version
+        }
+
+        project.task(type: JacocoReport, "jacocoJupTestReport") {
+            executionData(junitPlatformTest)
+            sourceSets(sourceSets.main)
+            sourceDirectories = files(sourceSets.main.allSource.srcDirs)
+            classDirectories = files(sourceSets.main.output)
+
+            reports {
+                xml.enabled true
+                xml.destination file("${buildDir}/reports/jacoco/report.xml")
+                html.enabled true
+                html.destination file("${buildDir}/reports/jacoco/html")
+            }
+        }
+
+        check.dependsOn jacocoJupTestReport
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testCompile("org.junit.jupiter:junit-jupiter-api:${junit_jupiter_version}")
+        testRuntime("org.junit.platform:junit-platform-launcher:${junit_platform_version}")
+        testRuntime("org.junit.jupiter:junit-jupiter-engine:${junit_jupiter_version}")
+        testRuntime("org.junit.vintage:junit-vintage-engine:${junit_vintage_version}")
+    }
+}
