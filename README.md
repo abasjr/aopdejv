@@ -8,7 +8,8 @@ Dasar-dasar Pemrograman 2 - CSGE601021 | Fakultas Ilmu Komputer, Universitas Ind
 Repository ini akan berisi materi-materi Tutorial & Lab DDP 2.
 
 1. Lab
-
+    1. [`Lab 1 : Pengenalan Java dan Git`][Lab_1] 
+    
 _Tools_ yang akan digunakan dalam mata kuliah ini antara lain :
 
 - Java Development Kit (JDK) 8
@@ -20,3 +21,5 @@ _Tools_ yang akan digunakan dalam mata kuliah ini antara lain :
 
 Pastikan kalian telah menginstall / memiliki _tools_ diatas, jika belum bisa melihat petunjuk penginstallan dan
 konfigurasinya [disini](https://drive.google.com/file/d/1c1AA-9ju1S82-NYyV7EMyPNwScPpMQsr/view?usp=sharing)
+
+[Lab_1]: lab_instructions/lab_1/README.md
