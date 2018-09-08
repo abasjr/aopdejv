@@ -563,3 +563,33 @@ Pastikan file `.class` tidak ikut di push.
 ### Komponen Bonus | 10 Poin
 
 _Belum ada bonus yaa hehe :)_
+
+---
+
+### **Woah, apa ini !?**
+
+Ketika kalian meng-push hasil kerja kalian, kalian akan sadar bahwa ada logo cross merah atau centang hijau di samping hasil kerja kalian.
+
+![alt text](https://i.imgur.com/ZNfetmP.png "Ilustrasi git 1")
+
+Kalian mungkin memperhatikan bahwa kita memakai sistem git semester ini. Salah satu guna dari menggunakan git adalah kita bisa menggunakan fitur Continuos Integration?
+
+Apa itu Continuous Integration? Continuos Integration adalah konsep di mana ketika kalian push, hasil push kalian langsung di build (compile) dan di test (uji langsung). Jika gagal, kalian akan diberitahu.
+
+Bagian Build baru akan dijelaskan di mata kuliah Advanced Programming. Kalian hanya perlu mengetahui bagian test.
+
+Sistem yang digunakan untuk mengetest di Java bernama JUnit. Kita bisa menggunakan framework JUnit untuk mengetes secara langsung (tanpa harus print di command line). Untuk sekarang, kalian tidak perlu tahu cara kerja JUnit.
+
+Kamu dapat memeriksa hasil kerja Junit di tab Commit. Tekan logo centang hijau atau cross merah untuk memeriksa detail lebih lanjut.
+
+![alt text](https://i.imgur.com/E23AOfl.png "Ilustrasi commit")
+
+Ketika kamu menekan logo tersebut, kamu akan memeriksa rangkuman dari tes tersebut yang memiliki dua lingkaran.
+
+Jika lingkaran pertama cross, maka program kamu gagal karena compile error.
+Jika lingkaran pertama centang hijau tetapi lingkaran kedua cross, maka program kamu tidak akurat.
+Jika kedua lingkaran centang, berati program kamu sudah baik.
+
+![alt text](https://i.imgur.com/1ElduFi.png "Ilustrasi status")
+
+Kamu dapat menekan tombol cross merah atau centang hijau untuk melihat hasil lebih lanjut. Sebagai contoh, jika kalain mendapat cross merah di lingkaran kedua, kamu dapat menemkan cross merah kedua untuk melihat test case mana program kalian tidak akurat.
