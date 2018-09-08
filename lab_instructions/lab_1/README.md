@@ -538,7 +538,7 @@ Setelah kalian selesai membuatkan kelas tersebut, coba compile kelasnya dan buat
 pada kelas Anda untuk mengecek kebenaran kelas yang telah dibuat. Pastikan program kalian berjalan dengan baik, 
 output sesuai yang diharapkan tanpa ada error. Kalian juga bisa mengecek kebenaran code dengan menjalankan `gradle check` di cmd pada directory repo anda.
 
-Untuk submisi tugas, didalam folder repo kalian terdapat folder lab_1\src\main\java, lalu masukkan file `.java` 
+Untuk submisi tugas, didalam folder repo kalian terdapat folder `lab_1\src\main\java`, lalu masukkan file `.java` 
 dari tugas diatas kedalam folder itu. Lalu add, commit, dan push semua file tersebut ke _online repo_ kalian.
 
 Pastikan file `.class` tidak ikut di push.
