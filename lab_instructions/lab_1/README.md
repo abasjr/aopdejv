@@ -427,7 +427,7 @@ Untuk melakukan hal tersebut, harap ikuti langkah-langkah berikut ini:
 5.  Jalankan perintah `git status` untuk memastikan bahwa inisiasi repository Git sudah berhasil dilakukan.
 
 6.  Atur username dan email yang akan diasosiasikan dengan pekerjaanmu di repository Git dengan perintah berikut:
-           `git config --global user.name “<nama-lengkapmu”`
+           `git config --global user.name “<nama-lengkapmu”`  
            `git config --global user.email “<masukkan-emailmu>”`
     > ini untuk memberi informasi tentang pengguna repo, masukan email dan nama kalian.
            
@@ -484,8 +484,10 @@ Untuk melakukan hal tersebut, harap ikuti langkah-langkah berikut ini:
                                                
 17.  Jalankan perintah `git remote -v`, maka akan muncul alamat repository kalian di bagian origin dan alamat 
      repository resmi DDP 2 di bagian upstream.
-     
-18. Untuk meng-_"upload"_ hasil pekerjaan kalian, setelah kalian lakukan perintah `add` dan `commit` seperti petunjuk 
+
+18. Lakukan perintah `git pull upstream master` untuk menyalin isi dari repo `DDP2-Ekstensi-CSUI/lab-1`
+
+19. Untuk meng-_"upload"_ hasil pekerjaan kalian, setelah kalian lakukan perintah `add` dan `commit` seperti petunjuk 
     diatas. ketik perintah `git push origin master` untuk menyimpan file yang kalian telah `commit` sebelumnya ke repo 
     dengan nama `origin` (yaitu repo kalian)
     
