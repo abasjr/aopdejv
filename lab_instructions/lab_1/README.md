@@ -571,7 +571,7 @@ dengan repository `DDP2-Ekstensi-CSUI`. Perhatikan langkah-langkah berikut:
    >Hal ini dilakukan untuk menyalin semua file yang terdapat pada repository `DDP2-Ekstensi-CSUI`
    >agar repository kalian `up-to-date` dengan repository `DDP2-Ekstensi-CSUI`
 
-5. Buka online repository kalian di web browser, misal: https://gitlab.com/<UsernameKalian>/<NamaRepoKalian> ,
+5. Buka online repository kalian di web browser, misal: `https://gitlab.com/<UsernameKalian>/<NamaRepoKalian>` ,
    pastikan apakah terdapat atau tidak suatu file apapun di online repository kalian.
    
 6. **Jika online repository kalian terdapat suatu file didalamnya, jalankan perintah nomor 6 ini**  
