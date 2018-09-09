@@ -581,16 +581,18 @@ dengan repository `DDP2-Ekstensi-CSUI`. Perhatikan langkah-langkah berikut:
 
 7. Pindahkan file `Kucing.java` ke directory `lab_1\src\main\java` pada folder repository Anda
 
-8. Sekarang kalian bisa menambahkan file Kucing.java seperti yang kalian lakukan pada tutorial bagian `Git`
+8. Pindahkan directory cmd ke directory dimana `Kucing.java` berada
+
+9. Sekarang kalian bisa menambahkan file Kucing.java seperti yang kalian lakukan pada tutorial bagian `Git`
    >Jalankan perintah `git add Kucing.java`
 
-9. Kemudian tandai perubahan yang terjadi seperti yang kalian lakukan pada tutorial bagian `Git`
+10. Kemudian tandai perubahan yang terjadi seperti yang kalian lakukan pada tutorial bagian `Git`
    >Jalankan perintah `git commit -m "<isi-pesan>"`
    
-10. Terakhir, upload hasil pekerjaan kalian seperti yang kalian lakukan pada tutorial bagian `Git`
+11. Terakhir, upload hasil pekerjaan kalian seperti yang kalian lakukan pada tutorial bagian `Git`
    >Jalankan perintah `git push origin master`
    
-11. **Jika terdapat masalah tanyakan pada asdos Anda**
+12. **Jika terdapat masalah tanyakan pada asdos Anda**
 
 ## Checklist
 
