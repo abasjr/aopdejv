@@ -545,6 +545,52 @@ Pastikan file `.class` tidak ikut di push.
 
 ---
 
+### Cara Pengumpulan file Kucing.java
+
+**Sebelum membaca bagian ini, kalian sudah harus membaca tutorial bagian `Git`**
+
+Jika kalian sudah membaca tutorial bagian `Git` kalian pasti akan sadar terdapat perintah `git add <nama-file>`
+untuk menambahkan file baru dan perintah `git commit -m "<nama-pesan>` untuk menandai perubahan yang terjadi pada
+repository. Namun, sebelum kalian menambahkan file Kucing.java, kalian harus membuat repository kalian `up-to-date`
+dengan repository `DDP2-Ekstensi-CSUI`. Perhatikan langkah-langkah berikut:
+
+1. Buka command prompt/shell.
+
+2. Ubah directory sekarang menjadi directory dari folder repository Anda.
+   >Jalankan perintah `dir` pada windows atau `ls` pada mac untuk melihat file pada directory Anda sekarang  
+   >Jalankan perintah `cd <nama-folder>` untuk masuk ke folder yang ada di directory Anda sekarang  
+   >Jalankan perintah `cd ..` untuk keluar dari directory Anda sekarang, dan kembali satu level diatasnya,
+   >misal Anda berada pada directory `D:\DDP2\Lab-1` setelah melakukan perintah `cd ..` Anda akan berpindah
+   >directory `D:\DDP2`
+
+3. Jalankan perintah `git log` lihat apakah terdapat commit di local repository Anda.  
+   Kemudian, ketik 	`q` dan enter untuk keluar dari log.
+   
+4. Jalankah perintah `git pull upstream master` bila **tidak terdapat** commit di local repository Anda.  
+   Jalankan perintah `git pull upstream master --allow-unrelated-histories` bila **terdapat** commit di local repository Anda.
+   >Hal ini dilakukan untuk menyalin semua file yang terdapat pada repository `DDP2-Ekstensi-CSUI`
+   >agar repository kalian `up-to-date` dengan repository `DDP2-Ekstensi-CSUI`
+
+5. Buka online repository kalian di web browser, misal: https://gitlab.com/<UsernameKalian>/<NamaRepoKalian> ,
+   pastikan apakah terdapat atau tidak suatu file apapun di online repository kalian.
+   
+6. **Jika online repository kalian terdapat suatu file didalamnya, jalankan perintah nomor 6 ini**  
+   Jalankan perintah `git pull origin master --allow-unrelated-histories`
+   >Hal ini dilakukan untuk menggabungkan commit yang telah kalian push ke repository kalian dengan commit yang kalian salin
+   >dari repository `DDP2-Ekstensi-CSUI`
+
+7. Pindahkan file `Kucing.java` ke directory `lab_1\src\main\java` pada folder repository Anda
+
+8. Sekarang kalian bisa menambahkan file Kucing.java seperti yang kalian lakukan pada tutorial bagian `Git`
+   >Jalankan perintah `git add Kucing.java`
+
+9. Kemudian tandai perubahan yang terjadi seperti yang kalian lakukan pada tutorial bagian `Git`
+   >Jalankan perintah `git commit -m "<isi-pesan>"`
+   
+10. Terakhir, upload hasil pekerjaan kalian seperti yang kalian lakukan pada tutorial bagian `Git`
+   >Jalankan perintah `git push origin master`
+   
+11. **Jika terdapat masalah tanyakan pada asdos Anda**
 
 ## Checklist
 
