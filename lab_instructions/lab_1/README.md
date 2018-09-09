@@ -242,7 +242,7 @@ kelas. Perhatikan contoh berikut :
 public class Kucing {
     String nama; //properties
     
-    public String mengeong() {
+    public void mengeong() {
         System.out.println("Meeeooooong");
     } //behaviors
     
@@ -274,7 +274,7 @@ dapat dimanipulasi dengan menggunakan method yang telah didefiniskan pada classn
 ```java
 public class Kucing {
     
-    public String mengeong() {
+    public void mengeong() {
         System.out.println("Meeeooooong");
     } 
     
@@ -302,7 +302,7 @@ selesai dieksekusi, local variable akan langsung dimusnahkan.
 public class Kucing {
     String nama; //instance variable
     
-    public String mengeong() {
+    public void mengeong() {
         String suara = "Meeeooooong"; //local variable 
         System.out.println(suara);
     } 
@@ -348,7 +348,7 @@ Parameter merupakan input untuk suatu method, terdapat dua jenis parameter, yait
 
 ```java
 public class Kucing {
-    public String mengeong(String suara) {
+    public void mengeong(String suara) {
         System.out.println(suara);
     } 
     
@@ -485,8 +485,6 @@ Untuk melakukan hal tersebut, harap ikuti langkah-langkah berikut ini:
 17.  Jalankan perintah `git remote -v`, maka akan muncul alamat repository kalian di bagian origin dan alamat 
      repository resmi DDP 2 di bagian upstream.
 
-18. Lakukan perintah `git pull upstream master` untuk menyalin isi dari repo `DDP2-Ekstensi-CSUI/lab-1`
-
 19. Untuk meng-_"upload"_ hasil pekerjaan kalian, setelah kalian lakukan perintah `add` dan `commit` seperti petunjuk 
     diatas. ketik perintah `git push origin master` untuk menyimpan file yang kalian telah `commit` sebelumnya ke repo 
     dengan nama `origin` (yaitu repo kalian)
@@ -544,6 +542,8 @@ Untuk submisi tugas, didalam folder repo kalian terdapat folder `lab_1\src\main\
 dari tugas diatas kedalam folder itu. Lalu add, commit, dan push semua file tersebut ke _online repo_ kalian.
 
 Pastikan file `.class` tidak ikut di push.
+
+---
 
 
 ## Checklist
