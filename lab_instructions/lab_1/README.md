@@ -578,6 +578,47 @@ dengan repository `DDP2-Ekstensi-CSUI`. Perhatikan langkah-langkah berikut:
    Jalankan perintah `git pull origin master --allow-unrelated-histories`
    >Hal ini dilakukan untuk menggabungkan commit yang telah kalian push ke repository kalian dengan commit yang kalian salin
    >dari repository `DDP2-Ekstensi-CSUI`
+   
+   Kemudian, jika terdapat informasi `Automatic merge failed` seperti pada gambar berikut :  
+   
+   ![alt text](https://i.imgur.com/YfKs1zW.jpg "Ilustrasi error")  
+   
+   berarti terdapat file dengan nama yang sama di local dan online repository anda namun memiliki
+   isi yang berbeda yang menyebabkan `Automatic merge failed`. Kalian harus menyelesaikan conflict
+   tersebut secara manual.  
+   
+   **Jika tidak terdapat informasi `Automatic merge failed`, Anda bisa langsung melanjutkan ke langkah nomor 7.**
+   
+   Untuk menyelesaikan masalah `Automatic merge failed`, pertama tama coba perhatikan gambar tersebut.
+   Di gambar tersebut terdapat keterangan `Merge conflict in README.md`. Hal tersebut berarti file
+   yang mengalami conflict adalah file `README.md`, selanjutnya perhatikan langkah berikut:  
+   - Buka folder tempat local repository Anda  
+   - Cari dan buka file yang mengalami conflict, dalam hal ini adalah file `README.md`  
+   - Cari tanda `<<<<<<< HEAD`, hapus satu `baris` tersebut  
+   - Cari tanda `=======` dan tanda `>>>>>>>`   
+	  Hapus `baris pada kedua tanda tersebut` dan `semua bagian` yang berada di antara kedua tanda tersebut.  
+	  Misal isi file `README.md` adalah sebagai berikut:  
+	  ```
+	  <<<<<<< HEAD
+	  Ini isi file dari local repository Anda
+	  =======
+	  Ini isi file dari online repository Anda
+	  >>>>>>> 976f7b2051688888a2f92d6fc4129d7b4016c807
+	  ```
+	  
+	  Setelah kalian hapus isi filenya akan menjadi:     
+	  ```
+	  Ini isi file dari local repository Anda
+	  ```
+	  >Hal ini berarti Anda mengabaikan isi file dari online repository Anda, dan menetapkan bahwa isi file
+	  >dari local repository Anda yang akan digunakan
+	  
+	- Jalankan perintah `git add <nama-file-yang-diubah>`  
+	  >Dalam hal ini nama filenya adalah README.md sehingga perintah menjadi `git add README.md`
+	  
+	- Jalankan perintah git commit -m "<nama-pesan>"
+	  >Dengan melakukan commit, kalian sudah menandai perubahan yang terjadi pada file `README.md`
+      >yang tadinya mengalami conflict, sekarang masalah conflict telah terselesaikan.	  
 
 7. Pindahkan file `Kucing.java` ke directory `lab_1\src\main\java` pada folder repository Anda
 
@@ -589,7 +630,7 @@ dengan repository `DDP2-Ekstensi-CSUI`. Perhatikan langkah-langkah berikut:
 10. Kemudian tandai perubahan yang terjadi seperti yang kalian lakukan pada tutorial bagian `Git`
    >Jalankan perintah `git commit -m "<isi-pesan>"`
    
-11. Terakhir, upload hasil pekerjaan kalian seperti yang kalian lakukan pada tutorial bagian `Git`
+11. Upload hasil pekerjaan kalian seperti yang kalian lakukan pada tutorial bagian `Git`
    >Jalankan perintah `git push origin master`
    
 12. **Jika terdapat masalah tanyakan pada asdos Anda**
