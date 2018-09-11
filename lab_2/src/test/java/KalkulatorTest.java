@@ -39,49 +39,49 @@ public class KalkulatorTest {
 
 	@Test
 	@DisplayName("Test Hitung Pengurangan")
-	void testHitungJumlah() {
+	void testHitungKurang() {
 		hitung(9,"-",8);
 		assertEquals(1);
 	}
 
 	@Test
 	@DisplayName("Test Hitung Perkalian")
-	void testHitungJumlah() {
+	void testHitungKali() {
 		hitung(9,"*",8);
 		assertEquals(72);
 	}
 
 	@Test
 	@DisplayName("Test Hitung Pembagian")
-	void testHitungJumlah() {
+	void testHitung(Bagi) {
 		hitung(9,"/",8);
 		assertEquals(1);
 	}
 
 	@Test
 	@DisplayName("Test Hitung Modulus")
-	void testHitungJumlah() {
+	void testHitungMod() {
 		hitung(9,"%",8);
 		assertEquals(1);
 	}
 
 	@Test
 	@DisplayName("Test Hitung Pemangkatan")
-	void testHitungJumlah() {
+	void testHitungPangkat() {
 		hitung(3,"^",3);
 		assertEquals(27);
 	}
 
 	@Test
 	@DisplayName("Test Hitung Pengakaran 2")
-	void testHitungJumlah() {
+	void testHitungAkar2() {
 		hitung(9,"v",2);
 		assertEquals(3);
 	}
 
 	@Test
 	@DisplayName("Test Hitung Pengakaran 3")
-	void testHitungJumlah() {
+	void testHitungAkar3() {
 		hitung(8,"v",3);
 		assertEquals(2);
 	}
