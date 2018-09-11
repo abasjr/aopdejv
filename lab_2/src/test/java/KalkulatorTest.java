@@ -33,56 +33,56 @@ public class KalkulatorTest {
 	@Test
 	@DisplayName("Test Hitung Penjumlahan")
 	void testHitungJumlah() {
-		hitung(9,"+",8);
+		Kalkulator.hitung(9,"+",8);
 		assertEquals(17);
 	}
 
 	@Test
 	@DisplayName("Test Hitung Pengurangan")
 	void testHitungKurang() {
-		hitung(9,"-",8);
+		Kalkulator.hitung(9,"-",8);
 		assertEquals(1);
 	}
 
 	@Test
 	@DisplayName("Test Hitung Perkalian")
 	void testHitungKali() {
-		hitung(9,"*",8);
+		Kalkulator.hitung(9,"*",8);
 		assertEquals(72);
 	}
 
 	@Test
 	@DisplayName("Test Hitung Pembagian")
 	void testHitungBagi() {
-		hitung(9,"/",8);
+		Kalkulator.hitung(9,"/",8);
 		assertEquals(1);
 	}
 
 	@Test
 	@DisplayName("Test Hitung Modulus")
 	void testHitungMod() {
-		hitung(9,"%",8);
+		Kalkulator.hitung(9,"%",8);
 		assertEquals(1);
 	}
 
 	@Test
 	@DisplayName("Test Hitung Pemangkatan")
 	void testHitungPangkat() {
-		hitung(3,"^",3);
+		Kalkulator.hitung(3,"^",3);
 		assertEquals(27);
 	}
 
 	@Test
 	@DisplayName("Test Hitung Pengakaran 2")
 	void testHitungAkar2() {
-		hitung(9,"v",2);
+		Kalkulator.hitung(9,"v",2);
 		assertEquals(3);
 	}
 
 	@Test
 	@DisplayName("Test Hitung Pengakaran 3")
 	void testHitungAkar3() {
-		hitung(8,"v",3);
+		Kalkulator.hitung(8,"v",3);
 		assertEquals(2);
 	}
 }
