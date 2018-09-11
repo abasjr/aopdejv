@@ -9,8 +9,7 @@ Repository ini akan berisi materi-materi Tutorial & Lab DDP 2.
 
 1. Lab
     1. [`Lab 1 : Pengenalan Java dan Git`][Lab_1] 
-    2. [`Lab 2 : Expression, Operators, dan Decision`][Lab_2]
-    3. [`Lab 1 : Pengenalan Java dan Git`][Lab_1]
+    2. [`Lab 2 : Expression, Operators, dan Decision`](https://gitlab.com/DDP2-Ekstensi-CSUI/ddp-lab/blob/lab2/lab_instructions/lab_2/README.md)
     
 _Tools_ yang akan digunakan dalam mata kuliah ini antara lain :
 
