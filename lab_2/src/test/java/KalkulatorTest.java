@@ -33,56 +33,48 @@ public class KalkulatorTest {
 	@Test
 	@DisplayName("Test Hitung Penjumlahan")
 	void testHitungJumlah() {
-		Kalkulator.hitung(9,"+",8);
-		assertEquals(17);
+		assertEquals(17,Kalkulator.hitung(9,"+",8));
 	}
 
 	@Test
 	@DisplayName("Test Hitung Pengurangan")
 	void testHitungKurang() {
-		Kalkulator.hitung(9,"-",8);
-		assertEquals(1);
+		assertEquals(1,Kalkulator.hitung(9,"-",8));
 	}
 
 	@Test
 	@DisplayName("Test Hitung Perkalian")
 	void testHitungKali() {
-		Kalkulator.hitung(9,"*",8);
-		assertEquals(72);
+		assertEquals(72,Kalkulator.hitung(9,"*",8));
 	}
 
 	@Test
 	@DisplayName("Test Hitung Pembagian")
 	void testHitungBagi() {
-		Kalkulator.hitung(9,"/",8);
-		assertEquals(1);
+		assertEquals(1,Kalkulator.hitung(9,"/",8));
 	}
 
 	@Test
 	@DisplayName("Test Hitung Modulus")
 	void testHitungMod() {
-		Kalkulator.hitung(9,"%",8);
-		assertEquals(1);
+		assertEquals(1,Kalkulator.hitung(9,"%",8));
 	}
 
 	@Test
 	@DisplayName("Test Hitung Pemangkatan")
 	void testHitungPangkat() {
-		Kalkulator.hitung(3,"^",3);
-		assertEquals(27);
+		assertEquals(27,Kalkulator.hitung(3,"^",3));
 	}
 
 	@Test
 	@DisplayName("Test Hitung Pengakaran 2")
 	void testHitungAkar2() {
-		Kalkulator.hitung(9,"v",2);
-		assertEquals(3);
+		assertEquals(3,Kalkulator.hitung(9,"v",2));
 	}
 
 	@Test
 	@DisplayName("Test Hitung Pengakaran 3")
 	void testHitungAkar3() {
-		Kalkulator.hitung(8,"v",3);
-		assertEquals(2);
+		assertEquals(2,Kalkulator.hitung(8,"v",3));
 	}
 }
