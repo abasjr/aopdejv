@@ -75,6 +75,6 @@ public class KalkulatorTest {
 	@Test
 	@DisplayName("Test Hitung Pengakaran 3")
 	void testHitungAkar3() {
-		assertEquals(2,Kalkulator.hitung(8,"v",3));
+		assertEquals(3,Kalkulator.hitung(8,"v",3));
 	}
 }
