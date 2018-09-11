@@ -50,6 +50,6 @@ public class Kalkulator {
         System.out.print("Masukkan simbol operasi : ");
         String op = in.next();
 
-        System.out.println(hitungInt(a,op,b));
+        System.out.println(hitung(a,op,b));
     }
 }
