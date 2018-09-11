@@ -1,7 +1,7 @@
 # Lab 2 : Expression, Operators, dan Decision
 Dasar-dasar Pemrograman 2 - CSGE601021 | Fakultas Ilmu Komputer, Universitas Indonesia, Semester Gasal 2018/2019
 
-**Dibuat oleh: ANGA, dimodifikasi dari Tutorial DDP2 2017**
+**Dibuat oleh: AR, dimodifikasi dari Tutorial DDP2 2017**
 
 * * *
 
@@ -15,7 +15,7 @@ Pada tutorial sebelumnya, Anda telah mempelajari mengenai beberapa perbedaan syn
 
 ### **Before You Start...**
 1. Lakukan `git pull upstream master` dengan menggunakan Command Prompt pada folder repository lokal Anda.
-2. Anda dapat mengimplementasikan source code java tutorial 2 pada folder `ddp-lab/tutorial-2/main/java`.
+2. Anda dapat mengimplementasikan source code java tutorial 2 pada folder `ddp-lab/lab_2/src/main/java`.
 3. Implementasikan kode Anda sesuai apa yang diminta soal tutorial dan lab nanti.
 4. Setelah selesai mengimplementasikan kode tersebut, lakukan add, commit, dan push code kalian tersebut.
 5. Selamat Anda berhasil!
@@ -111,131 +111,10 @@ if (nilai >= 80){
 ```
 
 #### 2. **Looping**
-Konsep looping pun juga ada dalam bahasa pemrograman Java. Looping pada java diantaranya for loop, for each loop, do while loop, dan while loop.
-
-- **While**
-
-	Python:
-	```pyton
-	i = 20;
-	while (i>0):
-	print(i)
-	i = i-1
-	```
-
-	Java:
-	```java
-	int i = 20;
-	while (i>0) {
-		System.out.print(i);
-		i--;
-	}
-	```
-
-- **For**
-
-	Python:
-	```python
-	for x in range(20):
-		print(i);
-	```
-
-	Java:
-	```java
-	for (int i=0; i<20; i++) {
-		System.out.print(i);
-	}
-	```
-
-- **Do While**
-
-	Looping Do While tidak ada di Python. Berikut ini adalah contoh kode Java-nya:
-	```java
-	do {
-		System.out.println("Halo");
-	} while (true);
-	```
+Looping akan dibahas pada Lab 3.
 
 #### 3. **Branching Statement**
-Terdapat beberapa statement yang sangat berguna untuk branching pada loop yaitu statement break, continue, dan return.
-- **break** - digunakan untuk menghentikan loop
-
-	**Contoh Output:**
-	```
-	0
-	1
-	2
-	```
-
-	**Contoh Kode Python:**
-	```python
-	for i in range(4):
-		if i == 3:
-			break
-	print(i)
-	```
-
-	**Contoh Kode Java:**
-	```java
-	int[] arr = {0,1,2,3};
-	for(int i:arr) {
-		if(i == 3) {
-			break;
-		}
-		System.out.println(i);
-	}
-	```
-
-- **continue** - digunakan untuk melompati suatu iterasi
-
-	**Contoh Output:**
-	```
-	0
-	2
-	3
-	```
-
-	**Contoh Kode Python:**
-	```python
-	for i in range(3):
-		if i == 1:
-			continue
-	print(i)
-	```
-
-	**Contoh Kode Java:**
-	```java
-	int[] arr = {0,1,2,3};
-	for(int i:arr) {
-		if(i == 1) {
-			continue;
-		}
-		System.out.println(i);
-	}
-	```
-
-- **return** - digunakan untuk mengembalikan nilai
-	**Contoh Output:**
-	```
-	2
-	```
-
-	**Contoh Kode Python:**
-	```python
-	def returnAngka(angka):
-			return angka
-	print(returnAngka(2))
-	```
-
-	**Contoh Kode Java:**
-	```java
-	public static int returnAngka(int angka) {
-		return angka;
-	}
-	public static void main(String[] args) {
-	System.out.println(returnAngka(2));
-	}
-	```
+Branching Statement akan dibahas pada Lab 3.
 
 ### **String**
 Seperti Python, kalimat-kalimat yang bukan berupa angka merupakan tipe data String. String merupakan tipe data **reference** dan bersifat **immutable** (tidak bisa mengganti isi objek yang sama, harus membuat objek baru). Berikut ini adalah contoh perbandingan penggunaan String:
@@ -373,15 +252,28 @@ String nomor2 = String.valueOf(nomorFloat);
 > - `nomorFloat`  →  `553.0`
 > - `nomor2`  →  `“553.0”`
 
-## **Soal Tutorial: "Sensus Daerah Kumuh (Slum)"**
+## **Chapter 2: "Kalkulator Syantik"**
 ### **What's the story?**
-Kak Pewe adalah seorang petugas bidang survei lapangan dari Dinas Kependudukan Provinsi Tamfir. Saat ini, Dinas Kependudukan Provinsi Tamfir akan melaksanakan pendataan (yang seringkali orang sebut dengan sensus) khusus penduduk di daerah-daerah kumuh di provinsi Tamfir. Sensus ini perlu dilakukan untuk mengatasi masalah kebersihan dan kesehatan lingkungan yang seringkali dikeluhkan oleh lingkungan megapolitan seperti provinsi Tamfir.
+Pak Iqbal memiliki seorang istri bernama Bu Nurrani yang merupakan seorang pedagang sembako di Pasar TokTik. Setiap harinya lapak Bu Nurrani dipenuhi oleh pembeli, mulai dari pembeli dalam negeri sampai mancanegara. Dalam melayani pembeli, Bu Nurrani dibekali oleh suaminya sebuah alat canggih bernama Kalkulator Syantik. Alat ini dibuat sendiri oleh Pak Iqbal.
 
-Tentu saja Kak Pewe sangat khawatir terhadap beratnya pekerjaan ini, yang harus ia selesaikan dalam waktu tiga hari, sebelum Pemerintah Pusat mengirimkan bantuan untuk merapikan daerah kumuh yang ada dan mempersiapkan relokasi untuk penduduk. Nah… Kak Pewe tahu kalau adiknya, Dek Depe punya banyak teman yang kini kuliah di Fasilkom UI.
+Suatu hari, Kalkulator Syantik milik Bu Nurrani rusak. Hal ini mengakibatkan Bu Nurrani kesulitan dalam berjualan sembako. Kemudian, Bu Nurrani meminta kepada Pak Iqbal untuk membuatkan lagi Kalkulator Syantik. Namun karena Pak Iqbal sedang sibuk konser keliling Wakanda, dia tidak dapat membuatkan Kalkulator Syantik untuk Bu Nurrani. Lalu Pak Iqbal meminta bantuan anda sebagai seorang Java Programmer untuk membuatkan Kalkulator Syantik untuk Bu Nurrani.
 
-Oleh karena itu, Kak Pewe meminta bantuan adiknya, Dek Depe, untuk mencari teman dalam mengerjakan tugas ini, dan kamu adalah orang yang tepat. Pada suatu hari, Dek Depe berkunjung ke Fasilkom UI, dan memberikanmu sebuah surat sederhana beserta lampirannya:
-
-> “Wahai temanku, aku ingin meminta bantuan kamu untuk membuatkan program yang mampu mencetak data penduduk setelah dimasukkan. Tolong bantu aku, kakakku sangat membutuhkannya untuk memperbaiki lingkungan provinsi Tamfir. Semua ketentuan program yang harus dibuat sudah terlampir ya… Terima kasih :)”
+Pak Iqbal lalu menuliskan spesifikasi dari Kalkulator Syantik supaya anda tidak tersesat dan tak tau arah jalan pulang dalam pengerjaan alat ini. Spesifikasi Kalkulator Syantik sebagai berikut :
+> - Nama _class_ : `Kalkulator`.
+> - Kalkulator Syantik membutuhkan input 3 buah data **(2 buah angka dan 1 buah simbol operator)**.
+> - 3 buah data tersebut diinput dalam 1 baris dengan format `angka1 <spasi> operator <spasi> angka2`.
+> - Buat method `hitung(int angka1, String operator, int angka2)` yang digunakan untuk menghitung hasil dari operasi yang diiput.
+> - Method `hitung(int angka1, String operator, int angka2)` merupakan `static` method.
+> - Ketika dipanggil, method `hitung(int angka1, String operator, int angka2)` akan mengembalikan sebuah nilai bertipe data `int` yang merupakan hasil dari perhitungan.
+> - Operasi yang harus ada :
+> 	- Penjumlahan dengan simbol `+`.
+> 	- Pengurangan dengan simbol `-`.
+> 	- Perkalian dengan simbol `*`.
+> 	- Pembagian dengan simbol `/`.
+> 	- Modulo dengan simbol `%`.
+> 	- Pemangkatan dengan simbol `^`.
+> 	- Pengakaran dengan simbol `v`.
+> - Khusus untuk operasi Pengakaran (`v`), `angka2` hanya memiliki nilai `2` atau `3`.
 
 ### **A little trigger?**
 Sebelum kamu mengerjakan soal tutorial ini, ada baiknya kamu membaca penjelasan materi yang diberikan sebelumnya, lalu jawab pertanyaan berikut ini sebagai "pemanasan" sebelum mengerjakan tutorial :D
@@ -389,257 +281,64 @@ Sebelum kamu mengerjakan soal tutorial ini, ada baiknya kamu membaca penjelasan 
 > **Ingat kembali!**
 > - Bagaimana kita membuat program yang dapat menerima input dari user?
 > - Bagaimana mengubah input masukan yang berupa String menjadi tipe data tertentu?
+> - Method apa saja yang dapat digunakan untuk memanipulasi data dengan tipe data String ?
 > - Sebutkan tipe-tipe data yang kamu ketahui! Jelaskan penggunaan tipe data tersebut!
 > - Apa itu keyword ‘static’? Jelaskan apa yang dimaksud dengan ‘static method’!
-> - Sebutkan dan jelaskan jenis-jenis loop pada bahasa pemrograman java!
 > - Bagaimana cara membuat program agar dapat mencetak output?
 
 ### **What you need to do**
-- [ ] **Meminta masukan dari user**
-	- [ ] Nama Kepala Keluarga (kalimat, dapat lebih dari 1 kata).
-	- [ ] Alamat Rumah (kalimat, dapat lebih dari 1 kata).
-	- [ ] Panjang, Lebar, Tinggi Badan (bilangan bulat, satuan cm, dijamin ≤ 250 cm).
-	- [ ] Berat Badan (bilangan riil, satuan kg, dijamin ≤ 150 kg).
-	- [ ] Jumlah Anggota Keluarga (bilangan bulat, dijamin ≤ 20).
-	- [ ] Tanggal Lahir (format DD-MM-YYYY, 1000 < tahun < 2018, dijamin benar).
-	- [ ] Catatan Tambahan (kalimat, dapat lebih dari 1 kata).
-	- [ ] Jumlah Cetakan Data (bilangan bulat, dijamin ≤ 99).
-	- [ ] Pastikan tipe data yang digunakan setiap variabel masukan adalah yang paling efisien (tipe data terkecil yang pas dengan kebutuhan).
-	- [ ] Buat user interface permintaan masukan yang baik (sebaiknya gunakan format contoh, namun dapat menyesuaikan dengan kreativitas kalian).
-
-- [ ] **Hitung rasio berat per volume**
-	- [ ] Gunakan rumus: (Berat (kg)) / (Panjang (m) * Lebar (m) * Tinggi (m)).
-	- [ ] Pastikan kamu telah menyesuaikan satuan input dari cm ke m saat menghitung.
-	- [ ] Pastikan kamu menggunakan tipe data yang tepat saat menghitung.
-	- [ ] Tipe data akhir hasil perhitungan adalah bilangan bulat (perhatikan bahwa tipe data harus seefisien mungkin → tipe data terkecil yang pas dengan kebutuhan).
-
-- [ ] **Cetak data sesuai dengan format yang ditentukan**
-	- [ ] Lakukan looping sebanyak jumlah cetakan.
-	- [ ] Pada setiap iterasi, terdapat masukan untuk meminta nama penerima data, lalu cetak data keluarga. Gunakan format berikut: (masukan dicetak tebal)
-		<pre>Pencetakan [Nomor] dari [Jumlah Cetakan] untuk: <b>[Penerima Data]</b>
-		DATA SIAP DICETAK UNTUK [PENERIMA DATA (UPPERCASE)]
-		-----------------
-		[Nama Kepala Keluarga] - [Alamat Rumah]
-		Lahir pada tanggal [Tanggal Lahir]
-		Rasio Berat Per Volume     = [Rasio] kg/m^3
-		Catatan: [Catatan]
-		</pre>
-	- [ ] Jika tidak ada catatan, ganti baris `Catatan: [Catatan]` menjadi:
-		<pre>Tidak ada catatan tambahan</pre>
+- [ ] Masukkan 3 buah data **(2 buah angka dan 1 buah simbol operator)** pada 1 baris dengan urutan `angka1, operator, angka2`.
+- [ ] Pisahkan 3 data yang telah diinput.
+- [ ] Panggil method `hitung(int angka1, String operator, int angka2)`.
+- [ ] Tampilkan hasil perhitungan.
 
 ### **Contoh Input dan Output**
 Berikut ini adalah contoh interaksi program (yang dicetak tebal adalah masukan):
-<pre>PROGRAM PENCETAK DATA SENSUS
+<pre>KALKULATOR SYANTIK
 --------------------
-Nama Kepala Keluarga           : <b>Butterfield</b>
-Alamat Rumah                   : <b>RSE</b>
-Panjang Tubuh (cm)             : <b>30</b>
-Lebar Tubuh (cm)               : <b>60</b>
-Tinggi Tubuh (cm)              : <b>170</b>
-Berat Tubuh (kg)               : <b>75</b>
-Jumlah Anggota Keluarga        : <b>1</b>
-Tanggal Lahir                  : <b>22-01-2000</b>
-Catatan Tambahan               : <b>Belum berkeluarga, orang kaya</b>
-Jumlah Cetakan Data            : <b>3</b>
+Masukkan Input           : <b>2 + 4</b>
+Hasil Perhitungan	 : 6
 
-Pencetakan 1 dari 3 untuk: <b>Arsip pemerintah provinsi Tamfir</b>
-DATA SIAP DICETAK UNTUK ARSIP PEMERINTAH PROVINSI TAMFIR
---------------------
-Butterfield - RSE
-Lahir pada tanggal 22-01-2000
-Rasio Berat Per Volume     = 245 kg/m^3
-Catatan: Belum berkeluarga, orang kaya
-
-Pencetakan 2 dari 3 untuk: <b>Badan Kesehatan Lingkungan Nasional</b>
-DATA SIAP DICETAK UNTUK BADAN KESEHATAN LINGKUNGAN NASIONAL
---------------------
-Butterfield - RSE
-Lahir pada tanggal 22-01-2000
-Rasio Berat Per Volume     = 245 kg/m^3
-Catatan: Belum berkeluarga, orang kaya
-
-Pencetakan 3 dari 3 untuk: <b>gubernur provinsi Tamfir</b>
-DATA SIAP DICETAK UNTUK GUBERNUR PROVINSI TAMFIR
---------------------
-Butterfield - RSE
-Lahir pada tanggal 22-01-2000
-Rasio Berat Per Volume     = 245 kg/m^3
-Catatan: Belum berkeluarga, orang kaya
 </pre>
 
 Berikut ini adalah contoh lain interaksi program yang mungkin terjadi  (yang dicetak tebal adalah masukan):
-<pre>PROGRAM PENCETAK DATA SENSUS
+<pre>KALKULATOR SYANTIK
 --------------------
-Nama Kepala Keluarga           : <b>master Shifu</b>
-Alamat Rumah                   : <b>Ninja</b>
-Panjang Tubuh (cm)             : <b>36</b>
-Lebar Tubuh (cm)               : <b>71</b>
-Tinggi Tubuh (cm)              : <b>189</b>
-Berat Tubuh (kg)               : <b>68.5</b>
-Jumlah Anggota Keluarga        : <b>7</b>
-Tanggal Lahir                  : <b>12-03-1971</b>
-Catatan Tambahan               : <b></b>
-Jumlah Cetakan Data            : <b>2</b>
+Masukkan Input           : <b>7 - 4</b>
+Hasil Perhitungan	 : 3
 
-Pencetakan 1 dari 2 untuk: <b>komunitas lingkungan hidup Fasilkom</b>
-DATA SIAP DICETAK UNTUK KOMUNITAS LINGKUNGAN HIDUP FASILKOM
---------------------
-master Shifu - Ninja
-Lahir pada tanggal 12-03-1971
-Rasio Berat Per Volume     = 141 kg/m^3
-Tidak ada catatan tambahan
-
-Pencetakan 2 dari 2 untuk: <b>Arsip pemerintah kabupaten Fasilkom</b>
-DATA SIAP DICETAK UNTUK ARSIP PEMERINTAH KABUPATEN FASILKOM
---------------------
-master Shifu - Ninja
-Lahir pada tanggal 12-03-1971
-Rasio Berat Per Volume     = 141 kg/m^3
-Tidak ada catatan tambahan
 </pre>
 
-### **Any templates?**
-Jadi... ternyata Dek Depe punya teman yang bersedia untuk mempermudah kamu dalam menyelesaikan pekerjaan ini, namun karena ia sibuk, ia hanya mampu membuat **template**nya saja. **Template** terdapat pada `/lab_2/src/main/java/SistemSensus.java`.
-
-Bagaimana cara menggunakannya? Langsung modifikasi template tersebut, isi dengan kode-kode jawaban kalian :) Panduan lebih lanjutnya sudah ada di dalam kode templatenya ya!
-
-## **Soal Bonus: "Rekomendasi Apartemen"**
-### **What's the story?**
-Berkat bantuanmu, Kak Pewe berhasil melaksanakan sensus terhadap slums di Provinsi Tamfir tepat waktu. Setelah dilakukan penataan lingkungan selama satu bulan, ternyata tidak semua orang bisa menempati daerah tersebut, sehingga ada yang perlu direlokasi. Mak Dis selaku kepala Dinas Perumahan Rakyat Provinsi Tamfir telah memberikan rekomendasi tiga apartemen yang akan dijadikan tempat relokasi, beserta ketentuan dalam menentukan tempat relokasi. Kak Pewe diminta untuk mendata ulang terhadap orang-orang yang memenuhi prasyarat untuk dapat direlokasi. Dan ia tentu meminta bantuan adiknya, Dek Depe, sekali lagi.
-
-Oleh karena itu, Dek Depe juga meminta bantuanmu sekali lagi untuk melanjutkan program yang telah dibuat sebelumnya, lalu menambahkan fitur baru sesuai checklist berikut:
-
-### **What you need to do**
-- [ ] **Validasi masukan**
-
-	Validasi dilakukan setelah pengguna selesai memasukkan semua masukan yang dibutuhkan. Jika masukan tidak sesuai dengan ketentuan di bawah maka:
-	- [ ] Tampilkan pesan **langsung** saat user memasukkan input yang tidak valid (di luar batasan yang ditentukan):
-		<pre>WARNING: Keluarga ini tidak perlu direlokasi!</pre>
-	- [ ] Keluar dari program (hint: gunakan branching statement yang sesuai)
-	Berikut ini adalah ketentuan masukan yang harus divalidasi:
-		- [ ] 0 < **panjang tubuh** ≤ 250 cm, merupakan bilangan **bulat**.
-		- [ ] 0 < **lebar tubuh** ≤ 250 cm, merupakan bilangan **bulat**.
-		- [ ] 0 < **tinggi tubuh** ≤ 250 cm, merupakan bilangan **bulat**.
-		- [ ] 0 < **berat tubuh** ≤ 150 kg, merupakan bilangan **riil**.
-		- [ ] 0 < **jumlah anggota keluarga** ≤ 20, merupakan bilangan **bulat**.
-
-- [ ] ***Generate* nomor pengenal keluarga**
-	- [ ] Gunakan format: `[Huruf pertama nama kepala keluarga][Hasil kalkulasi]`.
-	- [ ] Untuk kalkulasi, gunakan rumus:
-		```
-		((Panjang * Tinggi * Lebar) + Jumlah ASCII tiap huruf nama) mod 10000.
-		```
-
-		**Contoh Kasus:**
-		```java
-		nama = “are NG”
-		panjang = 71
-		lebar = 26
-		tinggi = 37
-		```
-		Maka **nomor keluarga** adalah: `a8795`.
-
-- [ ] **Hitung anggaran makanan per tahun**
-	- [ ] Gunakan rumus: `Rp 50000 * 365 * (jumlah anggota keluarga)`.
-	- [ ] Pastikan kamu menggunakan tipe data yang tepat **saat menghitung**.
-	- [ ] Tipe data akhir hasil perhitungan adalah **bilangan bulat** (perhatikan bahwa tipe data harus seefisien mungkin → tipe data terkecil yang pas dengan kebutuhan).
-
-- [ ] **Hitung umur kepala keluarga**
-	- [ ] Ambil tahun lahir dari tanggal lahir.
-	- [ ] Gunakan rumus: **2018 - (tahun lahir)**.
-	- [ ] Tipe data akhir hasil perhitungan adalah **bilangan bulat** (perhatikan bahwa tipe data harus seefisien mungkin → tipe data terkecil yang pas dengan kebutuhan).
-
-- [ ] **Mengelompokkan keluarga ke apartemen**
-	- [ ] Berikut ini adalah daftar apartemen beserta kriterianya:
-		- > Nama: **PPMT**<br>
-			> Kabupaten: **Rotunda**<br>
-			> RANGE Anggaran Makanan/Tahun: **BEBAS**<br>
-			> RANGE Umur Kepala Keluarga: **0** tahun s.d. **18** tahun
-		- > Nama: **Teksas**<br>
-			> Kabupaten: **Sastra**<br>
-			> RANGE Anggaran Makanan/Tahun: Rp **0** s.d. Rp **100.000.000**<br>
-			> RANGE Umur Kepala Keluarga: **19** tahun s.d. **1018** tahun
-		- > Nama: **Mares**<br>
-			> Kabupaten: **Margonda**<br>
-			> RANGE Anggaran Makanan/Tahun: Rp **100.000.000** s.d. **TAK HINGGA**<br>
-			> RANGE Umur Kepala Keluarga: **19** tahun s.d. **1018** tahun
-- [ ] **Cetak rekomendasi sesuai dengan format yang ditentukan**
-	<pre>
-		REKOMENDASI APARTEMEN
-		--------------------
-		MENGETAHUI: Identitas keluarga: < Nama Kepala Keluarga > - < Nomor >
-		MENIMBANG:  Anggaran makanan tahunan: Rp < Anggaran >
-					Umur kepala keluarga: < Umur > tahun
-		MEMUTUSKAN: keluarga < Nama Kepala Keluarga > akan ditempatkan di:
-		< Nama Tempat >, kabupaten < Nama Kabupaten >
-	</pre>
-
-> **Hint**
-> - Gunakan fungsi .split() untuk memisahkan tanggal, bulan, dan tahun lahir.
-> - Gunakan casting untuk memasukkan ASCII huruf dalam rumus.
-
-### **Contoh Input dan Output**
-Berikut ini adalah contoh interaksi program yang mungkin terjadi (yang dicetak tebal adalah masukan):
-<pre>PROGRAM PENCETAK DATA SENSUS
+Berikut ini adalah contoh lain interaksi program yang mungkin terjadi  (yang dicetak tebal adalah masukan):
+<pre>KALKULATOR SYANTIK
 --------------------
-Nama Kepala Keluarga           : <b>master Shifu</b>
-Alamat Rumah                   : <b>Ninja</b>
-Panjang Tubuh (cm)             : <b>36</b>
-Lebar Tubuh (cm)               : <b>71</b>
-Tinggi Tubuh (cm)              : <b>189</b>
-Berat Tubuh (kg)               : <b>68.5</b>
-Jumlah Anggota Keluarga        : <b>7</b>
-Tanggal Lahir                  : <b>12-03-1971</b>
-Catatan Tambahan               : <b></b>
-Jumlah Cetakan Data            : <b>2</b>
+Masukkan Input           : <b>7 ^ 2</b>
+Hasil Perhitungan	 : 49
 
-Pencetakan 1 dari 2 untuk: <b>komunitas lingkungan hidup Fasilkom</b>
-DATA SIAP DICETAK UNTUK KOMUNITAS LINGKUNGAN HIDUP FASILKOM
---------------------
-master Shifu - Ninja
-Lahir pada tanggal 12-03-1971
-Rasio Berat Per Volume     = 141 kg/m^3
-Tidak ada catatan tambahan
-
-Pencetakan 2 dari 2 untuk: <b>Arsip pemerintah kabupaten Fasilkom</b>
-DATA SIAP DICETAK UNTUK ARSIP PEMERINTAH KABUPATEN FASILKOM
---------------------
-master Shifu - Ninja
-Lahir pada tanggal 12-03-1971
-Rasio Berat Per Volume     = 141 kg/m^3
-Tidak ada catatan tambahan
-
-REKOMENDASI APARTEMEN
---------------------
-MENGETAHUI: Identitas keluarga: master Shifu - m4279
-MENIMBANG:  Anggaran makanan tahunan: Rp 127750000
-			Umur kepala keluarga: 47 tahun
-MEMUTUSKAN: keluarga master Shifu akan ditempatkan di:
-Mares, kabupaten Margonda
 </pre>
 
-Berikut ini adalah contoh jika masukan tidak memenuhi validasi (yang dicetak tebal adalah masukan):
-<pre>PROGRAM PENCETAK DATA SENSUS
+Berikut ini adalah contoh lain interaksi program yang mungkin terjadi  (yang dicetak tebal adalah masukan):
+<pre>KALKULATOR SYANTIK
 --------------------
-Nama Kepala Keluarga           : <b>Esta</b>
-Alamat Rumah                   : <b>Parbel</b>
-Panjang Tubuh (cm)             : <b>45</b>
-Lebar Tubuh (cm)               : <b>64</b>
-Tinggi Tubuh (cm)              : <b>288</b>
-WARNING: Keluarga ini tidak perlu direlokasi!
+Masukkan Input           : <b>7 / 2</b>
+Hasil Perhitungan	 : 3
+
+</pre>
+
+Berikut ini adalah contoh lain interaksi program yang mungkin terjadi  (yang dicetak tebal adalah masukan):
+<pre>KALKULATOR SYANTIK
+--------------------
+Masukkan Input           : <b>8 v 3</b>
+Hasil Perhitungan	 : 2
+
 </pre>
 
 ## Checklist
-Isi kurung siku komponen dengan x untuk menceklis komponen.
 ### Komponen Wajib | 100 Poin
-- [ ] **Meminta masukan dari user**
-- [ ] **Hitung rasio berat per volume**
-- [ ] **Cetak data sesuai dengan format yang ditentukan**
+- [ ] **Meminta input dari user**
+- [ ] **Hanya membuat 1 buah method `hitung(int angka1, String operator, int angka2)`**
+- [ ] **Sediakan semua operasi yang diminta Pak Iqbal**
+- [ ] **Tampilkan hasil perhitungan dengan benar**
 
-### Komponen Bonus | 10 Poin
-- [ ] **Validasi masukan**
-- [ ] ***Generate* nomor pengenal keluarga**
-- [ ] **Hitung anggaran makanan per tahun**
-- [ ] **Hitung umur kepala keluarga**
-- [ ] **Mengelompokkan keluarga ke apartemen**
-- [ ] **Cetak rekomendasi sesuai dengan format yang ditentukan**
+## **Komponen Bonus | 10 Poin**
+_Belum ada bonus yaa hehe :)_
