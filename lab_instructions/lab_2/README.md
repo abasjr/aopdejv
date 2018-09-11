@@ -1,4 +1,4 @@
-# Lab 1 : Pengenalan Java & Git
+# Lab 2 : Expression, Operators, dan Decision
 Dasar-dasar Pemrograman 2 - CSGE601021 | Fakultas Ilmu Komputer, Universitas Indonesia, Semester Gasal 2018/2019
 
 **Dibuat oleh: ANGA, dimodifikasi dari Tutorial DDP2 2017**
