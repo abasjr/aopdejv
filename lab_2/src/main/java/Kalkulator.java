@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Kalkulator {
-    public static int hitungInt(int a, String operasi, int b){
+    public static int hitung(int a, String operasi, int b){
         int hasil = 0;
 
         if(operasi.equals("+")){
