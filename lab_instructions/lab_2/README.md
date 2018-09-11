@@ -1,686 +1,645 @@
 # Lab 1 : Pengenalan Java & Git
 Dasar-dasar Pemrograman 2 - CSGE601021 | Fakultas Ilmu Komputer, Universitas Indonesia, Semester Gasal 2018/2019
 
-**Dibuat oleh: AFAI, dimodifikasi dari Tutorial DDP2 2017**
+**Dibuat oleh: ANGA, dimodifikasi dari Tutorial DDP2 2017**
 
-## Java
+* * *
 
-Di DDP 1 kalian telah belajar konsep-konsep pemrograman dengan menggunakan bahasa Python, 
-di DDP 2 ini kalian memperdalam pemahaman pemrograman kalian dengan konsep-konsep yang menarik 
-seperti _Object Oriented Programming_ dengan menggunakan bahasa pemrograman Java.
- 
-Pasti timbul pertanyaan di benak kalian, kenapa memakai Java ? kenapa tidak pakai Python saja?. 
+Pada tutorial sebelumnya, Anda telah mempelajari mengenai beberapa perbedaan syntax antara bahasa pemrograman Java dan Python. Anda juga telah mempelajari version control system yaitu Git. Kali ini, Anda akan mempelajari lebih dalam konsep pemrograman dalam bahasa pemrograman Java.
 
-Singkatnya, Java mempunyai kelebihan yaitu kejelasan struktur dalam pemrogramannya, 
-sehingga membuat mudah untuk memahami konsep _Object Oriented_. Selain itu juga masih ada perbedaan lain 
-yang perlu kalian ketahui, simak penjelasan dibawah ini.
+## **Tujuan Pembelajaran**
+1. Memahami konsep **tipe data** dalam Java (tipe data primitif, tipe data reference, dan casting).
+2. Memahami **control flow** dalam Java (conditionals, iteratives, branching statements).
+3. Memahami konsep dasar **String** dan operasi String.
+4. Memahami dasar-dasar **_Input_ dan _Output_** dalam Java (Scanner, System.out, parsing).
 
-**Interpreted / Compiled**
+### **Before You Start...**
+1. Lakukan `git pull upstream master` dengan menggunakan Command Prompt pada folder repository lokal Anda.
+2. Anda dapat mengimplementasikan source code java tutorial 2 pada folder `ddp-lab/tutorial-2/main/java`.
+3. Implementasikan kode Anda sesuai apa yang diminta soal tutorial dan lab nanti.
+4. Setelah selesai mengimplementasikan kode tersebut, lakukan add, commit, dan push code kalian tersebut.
+5. Selamat Anda berhasil!
 
-Python merupakan salah satu _Interpreted Language_, dimana saat program dijalankan, 
-komputer akan mengeksekusi tiap instruksi satu per satu. Oleh karena itu kita bisa langsung 
-menjalankan program Python. Java merupakan salah satu _Compiled Language_, dimana setiap program 
-harus diubah menjadi bahasa lain yang bisa dimengerti komputer, lalu setelah itu baru bisa dijalankan.
+## **Materi Tutorial**
+### **Data Type**
+Tipe data merupakan jenis tipe nilai apa yang dapat dimasukkan ke dalam suatu variabel, serta operasi apa yang dapat dapat diterapkan terhadap variabel tersebut. Operasi yang dapat diterapkan pada suatu variabel dapat berupa operasi matematika, relasi, dan logika.
+Berbeda dengan bahasa Python, pada bahasa Java, kita harus mendeklarasikan secara explicit tipe data variabel yang akan diinisiasi.
 
-**Struktur Kode**
+**Python**
+```python
+iniString = “DDP 2”
+iniInt = 2018
+iniFloat = 4.4
+```
 
-Pada dasarnya, walaupun memiliki perbedaan struktur kode yang mencolok, semua bahasa pemrograman itu memiliki garis 
-besar yang sama, sehingga jika kalian telah memahami sebuah bahasa pemrograman, akan lebih mudah untuk memahami bahasa 
-yang lain. 
-
-Oleh karena itu, yuk simak perbedaan intruksi-intruksi di Python dan Java.
-
-1.  **Declaring & Assigning Variables**
-    
-    Variabel di Python bersifat _dynamic_, contohnya adalah kita bisa memberi nilai dengan tipe data apapun ke sebuah 
-    variabel, dan kita bisa mengubah nilai variabel tersebut dengan tipe data yang berbeda. 
-    
-    Java memiliki variabel yang 
-    bersifat _static_, perbedaanya dengan Python adalah kita harus memberikan informasi mengenai tipe data sebuah variabel 
-    secara **eksplisit**, serta kita hanya bisa mengganti nilai variabel tersebut dengan tipe data yang sama. 
-    
-    Untuk lebih jelasnya lihat perbandingan dibawah ini.
-
-    **Python**
-    
-    ```python
-    var1 = 3
-    var2 = "Hehe"
-    var3 = True
-    var1 = False # bisa
-    ```
-    
-    **Java**
-    
-    ```java
-    int var1 = 3;
-    String var2 = "Hehe";
-    boolean var3 = true;
-    var1 = false; // error, var1 bertipe int
-    ```
-    
-    **_Catatan :_** Tipe tipe data di Java antara lain, **int** (bil. bulat), **double** (bil. pecahan), **boolean** 
-    (true/false), **String** (kalimat), **char** (satu huruf), dan masih banyak lagi yang akan kalian pelajari nanti.
-    
-    >**Perhatian**
-    >
-    >Di Java, kalian harus memberikan semicolon ( **;** ) di tiap akhir instruksi, 
-    ini menandakan akhir sebuah instruksi dan pemisah antar instruksi, 
-    dimana di Python tiap instruksi dipisahkan dengan baris.
-
-2.  **If-Else Conditions**
-
-    Flow Conditions di Java dan Python sama, yang membedakan adalah di Python kita mengenal **elif**, 
-    di Java menggunakan **else if**, simak contoh dibawah ini.
-
-    **Python**
-    
-    ```python
-    nilai = 78
-    huruf = ''
-    
-    if(nilai > 85):
-        huruf = 'A'
-    elif(nilai > 70):
-        huruf = 'B'
-    elif(nilai > 55):
-        huruf = 'C'
-    else:
-        huruf = 'D'
-    
-    print(huruf)
-    ```
-    
-    **Java**
-    
-    ```java
-    int nilai = 78;
-    char huruf;
-    
-    if(nilai > 85){
-        huruf = 'A';
-    }else if(nilai > 70){
-           huruf = 'B';
-    }else if(nilai > 55){
-           huruf = 'C';
-    }else{
-           huruf = 'D';
-    }
-    System.out.println(huruf);
-    ```
-
-    >**Perhatian**
-    >
-    >Di Python, untuk mendefinisikan isi sebuah conditions (if elif else), kita memberi titik dua  ( : ) 
-    pada conditions, lalu isinya berada dibawahnya dengan indentasi. 
-    >
-    >Di Java, isi dari sebuah conditions ada didalam 
-    kurung kurawal ( **{ }** ). penggunaan indentasi hanya sebagai aestetik agar program lebih mudah dibaca, 
-    ini juga berlaku untuk fungsi, class, dan lain-lain.
-
-3.  **Loop**
-    
-    Untuk memahami perbedaan loop di Java dengan Python, simak kode di bawah ini.
-    
-    **Python**
-    
-    ```python
-    for num in range(10):
-        print("Cetakan ke-" + str(num+1))
-    
-    point = 0
-    while (point < 10):
-        print(point)
-        point += 1
-    ```
-    
-    **Java**
-    
-    ```java
-    for(int a = 0; a<10; a++){
-                System.out.println("Cetakan ke-" + Integer.toString(a+1));
-            }
-    
-    int point = 0;
-    while(point<10){
-        System.out.println(point);
-        point++; // tanda ++ untuk menambah dengan nilai 1
-    }
-    ```
-
-    Perbedaan paling mencolok ada pada `for` loop di Java yang memiliki format :
-    
-    ```java
-    for (int variabel; syarat; peubah nilai){
-         // isi
-    }
-    ```
-    
-    Kita harus membuat variabel dulu, lalu tentukan syarat berjalannya loop, yang selama true, maka loop akan berjalan, 
-    dan yang ketiga memberikan peubah nilai agar nilai suatu saat loop nya berhenti. 
-    
-    Memang terlihat rumit namun kita bisa membuat for loop yang bermacam-macam.
-    
-### Membuat Program Java
-
-Kalian sudah mengetahui beberapa perbedaan Java dengan Python, sekarang saatnya kalian belajar membuat program 
-sederhana, berbeda dengan Python dimana kalian bisa langsung menulis instruksi di file python, ada beberapa aturan 
-main saat kalian membuat program di Java, simak petunjuknya dibawah ini.
-
-Pertama, buatlah sebuah file dengan format **.java** (buat sebuah file text, lalu ganti formatnya dengan .java), lalu 
-buka dengan text editor (Notepad++, Sublime, dll.).
-
-Hal yang pertama kita buat adalah sebuah **class**, karena di Java, setiap program yang kita buat harus berada di dalam 
-sebuah class. Pastikan nama class nya sama dengan nama file nya (jika nama filenya **Halo.java**, maka nama class nya 
-**Halo**).
-
-Lalu, kita buat sebuah fungsi _main_, _**Buat apa fungsi main?**_ Fungsi main berguna sebagai entry-point (titik masuk) 
-jalannya sebuah program, saat kalian jalankan program kalian, Java akan mencari letak fungsi main, lalu menjalankan 
-instruksi yang ada didalamnya. 
-
-Setelah itu di dalam fungsi main tersebut bisa diisikan instruksi-instruksi yang ingin dijalankan, contoh 
-programnya :
-
+**Java**
 ```java
-public class Halo{
-    
-    public static void main(String[] args){
-    
-        System.out.println("Hello World!");
-        
-        String nama = "Dek Depe";
-        System.out.println("Namaku " + nama);
-        
-    }
-    
+String iniString = “DDP 2”;
+int iniInt = 2018;
+float iniFloat = 4.4;
+```
+
+Secara umum, pada setiap bahasa pemrograman memiliki tiga kategori tipe data yaitu:
+1. **Primitive Data Types**
+
+	Primitive Data Type merupakan tipe data yang hanya memiliki maksimum satu nilai saja.
+	![Primitive Data Types](https://only4techies.files.wordpress.com/2009/10/3.jpg)
+
+	Dalam bahasa pemrograman Java Anda dapat melakukan type casting, yaitu mengassign nilai tipe data suatu variabel dengan tipe data yang berbeda. Terdapat dua macam type casting, yaitu
+	- **Widening** (sudah dilakukan secara implisit ):
+		```java
+		int anInt = 18;
+		long aLong = anInt;
+		float aFloat = aLong;
+
+		// hasil type casting
+		// anInt = 18
+		// aLong = 18
+		// aFloat = 18.0
+		```
+	- **Narrowing** (harus didefinisikan secara eksplisit):
+		```java
+		double aDouble = 18.1;
+		long aLong = (long) aDouble;
+		int anInt = (int) aLong;
+
+		// hasil type casting
+		// aDouble = 18.1
+		// aLong = 18
+		// anInt = 18
+		```
+
+2. **Derived Data Types**
+
+	Derived Data Types merupakan tipe data yang dapat di-parsing. Dalam bahasa pemrograman Java, terdapat teknik parsing. Teknik parsing merupakan teknik untuk mengubah tipe data non primitive menjadi tipe data primitive, begitu juga sebaliknya. Dimana hasil parsing tersebut di-assign ke variabel lain.
+	```java
+	// mengassign var angka dengan hasil parsing
+	// string to integer var stringAngka
+	String stringAngka = “2018”;
+	int angka = Integer.parseInt(stringAngka);
+	```
+
+3. **User Defined Data Types**
+
+	User Defined Data Type merupakan tipe data yang didefinisikan sendiri.
+
+### **Control Flow**
+Secara umum, komputer akan mengeksekusi code secara berurutan dari baris atas ke bawah. Perintah pada bahasa pemrograman untuk mengubah urutan eksekusi program sesuai kebutuhan dinamakan sebagai Control Flow. Pada umumnya, bahasa pemrograman terdapat tiga jenis perintah control flow yaitu:
+
+#### 1. **Decision Making**
+Anda tentu telah mengerti konsep dan syntax decision making pada bahasa pemrograman Python. Dibandingkan dengan bahasa pemrograman Python, decision making pada bahasa pemrograman Java hanya berbeda dari segi syntax.
+
+**Python**
+```python
+if (nilai >= 80):
+	print("Nilai A")
+elif (nilai >= 60 and nilai < 80):
+	print("Nilai B")
+else:
+	print("Nilai C")
+```
+
+**Java**
+```java
+if (nilai >= 80){
+	System.out.println("Nilai A");
+} else if (nilai >= 60 && nilai < 80) {
+	System.out.println("Nilai B");
+} else {
+	System.out.println("Nilai C");
 }
 ```
 
-> **_System.out.println()_** digunakan untuk mencetak sebuah informasi ke layar, di Python kita mengenal _print()_
+#### 2. **Looping**
+Konsep looping pun juga ada dalam bahasa pemrograman Java. Looping pada java diantaranya for loop, for each loop, do while loop, dan while loop.
 
-Untuk menjalankan program kalian, pertama _save_ dulu file kalian, lalu buka folder dimana file kalian berada, pada 
-address bar nya, ketik `cmd`, lalu tekan _Enter_, Command Prompt akan terbuka dengan directory menunjuk ke lokasi file 
-kalian. 
+- **While**
 
-Kalian juga bisa membuka _Command Prompt_ di _Start Menu_, namun kalian harus mengarahkan direktorinya ke folder
-dimana program kalian berada secara manual 
+	Python:
+	```pyton
+	i = 20;
+	while (i>0):
+	print(i)
+	i = i-1
+	```
 
->gunakan perintah `cd` untuk berpindah direktori, (misal D:\Kuliah), dan `<drive>:` untuk 
-berpindah partisi (misal `D:`).
+	Java:
+	```java
+	int i = 20;
+	while (i>0) {
+		System.out.print(i);
+		i--;
+	}
+	```
 
-Untuk menjalankan program, kalian perlu melakukan 2 perintah di Command Prompt, yaitu :
+- **For**
 
-1.  `javac NamaFile.java`
+	Python:
+	```python
+	for x in range(20):
+		print(i);
+	```
 
-    Ini akan meng-_compile_ file Java kalian dan menghasilkan file bernama sama dengan tipe file `.class`
+	Java:
+	```java
+	for (int i=0; i<20; i++) {
+		System.out.print(i);
+	}
+	```
 
-2.  `java NamaFile`
-    
-    Ini akan mengeksekusi file yang telah kalian compile, semua output akan terlihat di _Command Prompt_
+- **Do While**
 
-Dan program Java pertama kalian berhasil dijalankan ! yay!
+	Looping Do While tidak ada di Python. Berikut ini adalah contoh kode Java-nya:
+	```java
+	do {
+		System.out.println("Halo");
+	} while (true);
+	```
 
-### Membuat Program Java (Lanjutan)
+#### 3. **Branching Statement**
+Terdapat beberapa statement yang sangat berguna untuk branching pada loop yaitu statement break, continue, dan return.
+- **break** - digunakan untuk menghentikan loop
 
-Setelah kalian berhasil membuat program java sederhana, kita akan mencoba program java yang lebih kompleks. Sebelum itu,
-kalian harus memahami mengenai beberapa hal sebagai berikut :
-1. Class & Object
-2. Methods
-3. Instance & Local Variables
-4. Object references
-5. Parameters
- 
-#### Class & Object
+	**Contoh Output:**
+	```
+	0
+	1
+	2
+	```
 
-Class merupakan sebuah *blueprint* atau *template* untuk membuat object. Pada class, kita mendefinisikan *properties* dan 
-*behaviors* yang akan dimiliki oleh object yang terikat dengan class tersebut.
+	**Contoh Kode Python:**
+	```python
+	for i in range(4):
+		if i == 3:
+			break
+	print(i)
+	```
 
-Object adalah sebuah entitas yang dapat dimanipulasi pada program, setiap object merupakan representasi dari sebuah
-kelas. Perhatikan contoh berikut :
+	**Contoh Kode Java:**
+	```java
+	int[] arr = {0,1,2,3};
+	for(int i:arr) {
+		if(i == 3) {
+			break;
+		}
+		System.out.println(i);
+	}
+	```
 
-```java
-public class Kucing {
-    String nama; //properties
-    
-    public void mengeong() {
-        System.out.println("Meeeooooong");
-    } //behaviors
-    
-    public static void main(String[] args) {
-      Kucing kucing1 = new Kucing(); //Object kucing dibuat
-      Kucing kucing2 = new Kucing(); 
-      kucing1.nama = "Blacky"; //Melakukan manipulasi pada object dengan mengisi nama kucing1
-      kucing2.nama = "Garfield";
-      System.out.println("Kucing 1:" + kucing1.nama);
-      System.out.println("Kucing 2:" + kucing2.nama);
-      kucing1.mengeong();
-    }
-}
+- **continue** - digunakan untuk melompati suatu iterasi
+
+	**Contoh Output:**
+	```
+	0
+	2
+	3
+	```
+
+	**Contoh Kode Python:**
+	```python
+	for i in range(3):
+		if i == 1:
+			continue
+	print(i)
+	```
+
+	**Contoh Kode Java:**
+	```java
+	int[] arr = {0,1,2,3};
+	for(int i:arr) {
+		if(i == 1) {
+			continue;
+		}
+		System.out.println(i);
+	}
+	```
+
+- **return** - digunakan untuk mengembalikan nilai
+	**Contoh Output:**
+	```
+	2
+	```
+
+	**Contoh Kode Python:**
+	```python
+	def returnAngka(angka):
+			return angka
+	print(returnAngka(2))
+	```
+
+	**Contoh Kode Java:**
+	```java
+	public static int returnAngka(int angka) {
+		return angka;
+	}
+	public static void main(String[] args) {
+	System.out.println(returnAngka(2));
+	}
+	```
+
+### **String**
+Seperti Python, kalimat-kalimat yang bukan berupa angka merupakan tipe data String. String merupakan tipe data **reference** dan bersifat **immutable** (tidak bisa mengganti isi objek yang sama, harus membuat objek baru). Berikut ini adalah contoh perbandingan penggunaan String:
+
+**Python**
+```python
+pesan = “DDP2”
+pesanKecil = “saya usep”
+
+pesanDipotong = pesan[:3]
+pesanBesar = pesanKecil.upper()
+ukuran = len(pesanKecil)
+huruf = pesanKecil[1]
+
+print(pesanDipotong)
+print(pesanBesar)
+print(ukuran)
+print(huruf)
 ```
 
-Pada contoh program tersebut kita membuat sebuah class bernama `Kucing` kemudian melakukan instansiasi object Kucing
-pada fungsi `main`. `kucing1` dan `kucing2` merupakan sebuah object yang dibuat berdasarkan kelas `Kucing`, sehingga
-`kucing1` dan `kucing2` memiliki karakteristik sesuai dengan yang kita definisikan pada kelas `kucing` ketika mereka
-pertama kali dibuat. Setelah `kucing` dan `kucing2` dibuat, kita dapat melakukan manipulasi pada kedua objek tersebut
-sehingga mereka memiliki karakteristik yang berbeda (Pada contoh diatas mereka memiliki nama yang berbeda). Manipulasi
-yang dapat dilakukan pada object `kucing1` dan `kucing2` terbatas pada properties dan behaviors yang didefinisikan
-pada class kucing.
-
-#### Methods 
-
-Method adalah rangkaian instruksi yang mengakses data dari sebuah object. Method didefinisikan pada class, object yang
-dapat dimanipulasi dengan menggunakan method yang telah didefiniskan pada classnya. Perhatikan contoh berikut :
-
-```java
-public class Kucing {
-    
-    public void mengeong() {
-        System.out.println("Meeeooooong");
-    } 
-    
-    public static void main(String[] args) {
-      Kucing kucing = new Kucing();
-      kucing.mengeong();
-    }
-}
+Output program di atas:
+```python
+DDP
+SAYA USEP
+9
+a
 ```
 
-Pada contoh diatas, terdapat sebuah method `mengeong()` yang berisi instruksi untuk mencetak string `"Meeeooooong"` ketika
-method tersebut dipanggil.
-
-#### Instance & Local variables
-
-Instance variable merupakan variable yang dideklarasikan di dalam suatu class, namun di luar method. Instance variabel
-menyimpan data suatu objek. Instance variable dihidupkan ketika sebuah objek dibuat dan akan tetap terus hidup hingga
-objek yang berkaitan dimusnahkan
-
-Local variable merupakan variable yang didefinisikan di dalam suatu method. Local variable hanya bisa digunakan pada 
-method tersebut. Local variable dihidupkan ketika method yang bersangkutan dijalankan, ketika method yang bersangkutan
-selesai dieksekusi, local variable akan langsung dimusnahkan.
-
+**Java**
 ```java
-public class Kucing {
-    String nama; //instance variable
-    
-    public void mengeong() {
-        String suara = "Meeeooooong"; //local variable 
-        System.out.println(suara);
-    } 
-    
-    public static void main(String[] args) {
-      Kucing kucing1 = new Kucing(); //Instance variable dihidupkan bersamaan dengan pembuatan objek
-      kucing1.mengeong(); //local variable dihidupkan ketika method dijalankan
-    }
-}
+String pesan = “DDP2”;
+String pesanKecil = “saya usep”;
+
+String pesanDipotong = pesan.substring(0,3);
+String pesanBesar = pesanKecil.toUpperCase();
+int ukuran = pesanKecil.length();
+char huruf = pesanKecil.charAt(1);
+
+System.out.println(pesanDipotong);
+System.out.println(pesanBesar);
+System.out.println(ukuran);
+System.out.println(huruf);
+System.out.println(5 + 3 + ““ + 53);
 ```
 
-#### Object References
-
-Pada java, object variable (yaitu variable yang tipenya adalah sebuah class) sebenarnya tidak menyimpan sebuah object, tetapi 
-menyimpan lokasi memori dari sebuah object. Kita menggunakan istilah **object reference** untuk menyatakan lokasi memori dari
-sebuah object. Ketika sebuah variable menyimpan alamat dari sebuah object, dapat dikatakan bahwa variable tersebut mengacu
-ke sebuah object.  
-
+Output program di atas:
 ```java
-Kucing kucing1 = new Kucing();
+DDP
+SAYA USEP
+9
+a
+853
 ```
 
-Pada statement tersebut, operator `new` mengembalikan sebuah referensi ke object baru, kemudian referensi tersebut disimpan 
-pada variable kucing1.
+### **Input dan Output Sederhana**
+Pada umumnya, setiap program membutuhkan masukan dari pengguna, dan mengembalikannya lagi berupa keluaran yang diinginkan oleh pengguna. Dalam bahasa pemrograman Java, terdapat dua variabel sistem yang berfungsi untuk Input/Output, yaitu **System.in** sebagai **input**, dan **System.out** sebagai **output**. Cara menggunakannya adalah sebagai berikut:
 
-Sangat penting untuk mengingat bahwa object variable tidak menyimpan sebuah object, melainkan hanya mengacu ke suatu object. 
-Dua variable yang berbeda dapat mengacu ke objek yang sama. 
-
-```java
-Kucing kucing1 = new Kucing();
-Kucing kucing2 = kucing1;
-```
-
-Pada statement tersebut, kucing2 tidak menyalin object dari kucing1, melainkan hanya menyalin referensi yang disimpan oleh
-kucing1, sehingga kucing1 dan kucing2 mengacu pada object yang sama.
-
-#### Parameter
-
-Parameter merupakan input untuk suatu method, terdapat dua jenis parameter, yaitu explicit paameter dan implicit parameter
-
-- Implicit parameter adalah objek yang memanggil method tersebut.
-- Explicit parameter adalah semua parameter selain implicit parameter.
+#### 1. **Output**
+Output pada command-line Java sebenarnya sangat mudah untuk digunakan, kita dapat menggunakan beberapa method pada System.out, seperti **contoh** di bawah ini:
 
 ```java
-public class Kucing {
-    public void mengeong(String suara) {
-        System.out.println(suara);
-    } 
-    
-    public static void main(String[] args) {
-      Kucing kucing1 = new Kucing();
-      String suara1 = "Meong";
-      String suara2 = "Meeeeeooong";
-      kucing1.mengeong(suara1); //Line 4
-      kucing1.mengeong(suara2); //Line 5
-    }
-}
+String namaSapi = “Cang”;
+float beratSapi = 1532.3;
+
+// println -> cetak dengan diakhiri baris baru
+System.out.println(“Nama: “);
+System.out.println(namaSapi);
+// print -> cetak tanpa diakhiri baris baru
+System.out.print(“Berat: “);
+System.out.print(beratSapi);
 ```
 
-Pada contoh program diatas, line 4 dan line 5 melakukan pemanggilan method `mengeong`. Line 4 dan line 5 memiliki 
-implicit parameter yang sama yaitu kucing1, dan explicit parameter yang berbeda yaitu suara1 dan suara2. Secara singkat,
-dalam pemanggilan sebuah method, implicit dan explicit parameter dituliskan sebagai berikut:
+**Keluaran program**:
+```java
+Nama:
+Cang
+Berat: 1532.3
+```
 
-`[implicitParameter].[methodName]([explicitParameter])`
+#### 2. **Input**
+Input pada Java membutuhkan objek input reader tersendiri untuk membaca System.in. Pada DDP2, kalian akan menggunakan objek Scanner. Berikut ini adalah **contoh** penggunaannya:
 
-#### Latihan :
+```java
+// Inisialisasi objek Scanner dan simpan di suatu variabel
+Scanner input = new Scanner(System.in);
 
-1.  Akhir tiap instruksi di Java harus diakhiri dengan . . . .
+String nama = input.nextLine();
+String panggilan1 = input.next();
+String panggilan2 = input.next();
 
-2.  Isi dari sebuah conditional, fungsi, dll harus berada di dalam tanda  . . . .
+// Tutup objek Scanner setelah selesai digunakan (best practice)
+input.close();
+```
 
-3.  Object merupakan . . . . dari class
+Apabila pengguna mengetik seperti ini di console:
+```java
+Muhammad Abdurrahman
+Abd Aab
+```
 
-4.  Ketika sebuah method dipanggil, object yang memanggilnya disebut sebagai . . . . parameter
+Maka **isi variabel** setelah program dijalankan adalah:
+> - `nama`  →  `“Muhammad Abdurrahman”`
+> - `panggilan1`  →  `“Abd”`
+> - `panggilan2`  →  `“Aab”`
 
-***
+#### 3. **Mengubah String ke bilangan (tipe primitif) dan bilangan ke String**
+Layaknya Python, dalam bahasa pemrograman Java kita juga dapat melakukan konversi dari **String** ke format bilangan yang berupa **tipe primitif** seperti int, float, dsb.
+- **Integer.parseInt()**, untuk mengubah **String → int**
+- **Byte.parseByte()**, untuk mengubah **String → byte**
+- **Short.parseShort()**, untuk mengubah **String → short**
+- **Long.parseLong()**, untuk mengubah **String → long**
+- **Float.parseFloat()**, untuk mengubah **String → float**
+- **Double.parseDouble()**, untuk mengubah **String → double**
+- **Boolean.parseBoolean()**, untuk mengubah **String → boolean**
+- **String.valueOf()**, untuk mengubah **tipe primitif → String**
 
-## Git
+**Python**
+```python
+nomor = “553”
+nomorInt = int(nomor)
+nomorFloat = float(nomor)
+nomor2 = str(nomorFloat
+```
 
-Selain beralih dari bahasa pemrograman Python ke bahasa pemrograman Java, di mata kuliah DDP2 kali ini, kalian akan 
-diberikan sebuah pengalaman baru dengan menggunakan Git.
+**Java**
+```java
+String nomor = “553”
+int nomorInt = Integer.parseInt(nomor);
+float nomorFloat = Float.parseFloat(nomor);
+String nomor2 = String.valueOf(nomorFloat);
+```
 
-**Version Control System (VCS)**
+**Isi variabel** setelah program dijalankan:
+> - `nomorInt`  →  `553`
+> - `nomorFloat`  →  `553.0`
+> - `nomor2`  →  `“553.0”`
 
-VCS merupakan sebuah software yang membantu para developer untuk saling bekerja sama dan tetap mempertahankan 
-riwayat kerja mereka secara utuh. 
+## **Soal Tutorial: "Sensus Daerah Kumuh (Slum)"**
+### **What's the story?**
+Kak Pewe adalah seorang petugas bidang survei lapangan dari Dinas Kependudukan Provinsi Tamfir. Saat ini, Dinas Kependudukan Provinsi Tamfir akan melaksanakan pendataan (yang seringkali orang sebut dengan sensus) khusus penduduk di daerah-daerah kumuh di provinsi Tamfir. Sensus ini perlu dilakukan untuk mengatasi masalah kebersihan dan kesehatan lingkungan yang seringkali dikeluhkan oleh lingkungan megapolitan seperti provinsi Tamfir.
 
-VCS memiliki beberapa fungsi, di antaranya mengizinkan para developer untuk  bekerja secara bersamaan, tidak 
-mengizinkan saling tumpang-tindih perubahaan yang ada, dan mempertahankan riwayat dari setiap versi. 
+Tentu saja Kak Pewe sangat khawatir terhadap beratnya pekerjaan ini, yang harus ia selesaikan dalam waktu tiga hari, sebelum Pemerintah Pusat mengirimkan bantuan untuk merapikan daerah kumuh yang ada dan mempersiapkan relokasi untuk penduduk. Nah… Kak Pewe tahu kalau adiknya, Dek Depe punya banyak teman yang kini kuliah di Fasilkom UI.
 
-VCS sendiri terbagi menjadi dua tipe, yaitu Centralized VCS (CVCS) dan Distributed/Decentralized VCS (DVCS). 
+Oleh karena itu, Kak Pewe meminta bantuan adiknya, Dek Depe, untuk mencari teman dalam mengerjakan tugas ini, dan kamu adalah orang yang tepat. Pada suatu hari, Dek Depe berkunjung ke Fasilkom UI, dan memberikanmu sebuah surat sederhana beserta lampirannya:
 
-Git merupakan VCS yang sering digunakan sekarang ini. Git merupakan salah satu Distributed Version Control System 
-(DVCS), yang berarti salinan kode yang tersimpan di local repository adalah sebuah version control repository yang 
-lengkap. 
+> “Wahai temanku, aku ingin meminta bantuan kamu untuk membuatkan program yang mampu mencetak data penduduk setelah dimasukkan. Tolong bantu aku, kakakku sangat membutuhkannya untuk memperbaiki lingkungan provinsi Tamfir. Semua ketentuan program yang harus dibuat sudah terlampir ya… Terima kasih :)”
 
-Jadi, antara local repository dan remote repository sama-sama berisi versi terakhir (terupdate).
+### **A little trigger?**
+Sebelum kamu mengerjakan soal tutorial ini, ada baiknya kamu membaca penjelasan materi yang diberikan sebelumnya, lalu jawab pertanyaan berikut ini sebagai "pemanasan" sebelum mengerjakan tutorial :D
 
-**Perintah di Git**
+> **Ingat kembali!**
+> - Bagaimana kita membuat program yang dapat menerima input dari user?
+> - Bagaimana mengubah input masukan yang berupa String menjadi tipe data tertentu?
+> - Sebutkan tipe-tipe data yang kamu ketahui! Jelaskan penggunaan tipe data tersebut!
+> - Apa itu keyword ‘static’? Jelaskan apa yang dimaksud dengan ‘static method’!
+> - Sebutkan dan jelaskan jenis-jenis loop pada bahasa pemrograman java!
+> - Bagaimana cara membuat program agar dapat mencetak output?
 
-Untuk melihat berbagai perintah (command) yang ada di Git, kamu bisa melihatnya di [sini](https://gitlab.com/gitlab-com/marketing/raw/master/design/print/git-cheatsheet/print-pdf/git-cheatsheet.pdf).
+### **What you need to do**
+- [ ] **Meminta masukan dari user**
+	- [ ] Nama Kepala Keluarga (kalimat, dapat lebih dari 1 kata).
+	- [ ] Alamat Rumah (kalimat, dapat lebih dari 1 kata).
+	- [ ] Panjang, Lebar, Tinggi Badan (bilangan bulat, satuan cm, dijamin ≤ 250 cm).
+	- [ ] Berat Badan (bilangan riil, satuan kg, dijamin ≤ 150 kg).
+	- [ ] Jumlah Anggota Keluarga (bilangan bulat, dijamin ≤ 20).
+	- [ ] Tanggal Lahir (format DD-MM-YYYY, 1000 < tahun < 2018, dijamin benar).
+	- [ ] Catatan Tambahan (kalimat, dapat lebih dari 1 kata).
+	- [ ] Jumlah Cetakan Data (bilangan bulat, dijamin ≤ 99).
+	- [ ] Pastikan tipe data yang digunakan setiap variabel masukan adalah yang paling efisien (tipe data terkecil yang pas dengan kebutuhan).
+	- [ ] Buat user interface permintaan masukan yang baik (sebaiknya gunakan format contoh, namun dapat menyesuaikan dengan kreativitas kalian).
 
-**Tutorial Git**
+- [ ] **Hitung rasio berat per volume**
+	- [ ] Gunakan rumus: (Berat (kg)) / (Panjang (m) * Lebar (m) * Tinggi (m)).
+	- [ ] Pastikan kamu telah menyesuaikan satuan input dari cm ke m saat menghitung.
+	- [ ] Pastikan kamu menggunakan tipe data yang tepat saat menghitung.
+	- [ ] Tipe data akhir hasil perhitungan adalah bilangan bulat (perhatikan bahwa tipe data harus seefisien mungkin → tipe data terkecil yang pas dengan kebutuhan).
 
-Pada bagian pertama, kamu sudah diberikan soal tutorial mengenai bahasa pemrograman Java. Pada bagian ini, kamu 
-akan menyimpan file yang telah kamu buat secara remote di GitLab. 
+- [ ] **Cetak data sesuai dengan format yang ditentukan**
+	- [ ] Lakukan looping sebanyak jumlah cetakan.
+	- [ ] Pada setiap iterasi, terdapat masukan untuk meminta nama penerima data, lalu cetak data keluarga. Gunakan format berikut: (masukan dicetak tebal)
+		<pre>Pencetakan [Nomor] dari [Jumlah Cetakan] untuk: <b>[Penerima Data]</b>
+		DATA SIAP DICETAK UNTUK [PENERIMA DATA (UPPERCASE)]
+		-----------------
+		[Nama Kepala Keluarga] - [Alamat Rumah]
+		Lahir pada tanggal [Tanggal Lahir]
+		Rasio Berat Per Volume     = [Rasio] kg/m^3
+		Catatan: [Catatan]
+		</pre>
+	- [ ] Jika tidak ada catatan, ganti baris `Catatan: [Catatan]` menjadi:
+		<pre>Tidak ada catatan tambahan</pre>
 
-Untuk melakukan hal tersebut, harap ikuti langkah-langkah berikut ini:
+### **Contoh Input dan Output**
+Berikut ini adalah contoh interaksi program (yang dicetak tebal adalah masukan):
+<pre>PROGRAM PENCETAK DATA SENSUS
+--------------------
+Nama Kepala Keluarga           : <b>Butterfield</b>
+Alamat Rumah                   : <b>RSE</b>
+Panjang Tubuh (cm)             : <b>30</b>
+Lebar Tubuh (cm)               : <b>60</b>
+Tinggi Tubuh (cm)              : <b>170</b>
+Berat Tubuh (kg)               : <b>75</b>
+Jumlah Anggota Keluarga        : <b>1</b>
+Tanggal Lahir                  : <b>22-01-2000</b>
+Catatan Tambahan               : <b>Belum berkeluarga, orang kaya</b>
+Jumlah Cetakan Data            : <b>3</b>
 
-1.  Buatlah sebuah folder yang akan menjadi local repository yang kamu gunakan,. Nama folder bebas.
-    > Catatan: dalam soal tutorial ini, nama folder yang digunakan adalah “TutorialDDP2”, kalian boleh menggantinya.
+Pencetakan 1 dari 3 untuk: <b>Arsip pemerintah provinsi Tamfir</b>
+DATA SIAP DICETAK UNTUK ARSIP PEMERINTAH PROVINSI TAMFIR
+--------------------
+Butterfield - RSE
+Lahir pada tanggal 22-01-2000
+Rasio Berat Per Volume     = 245 kg/m^3
+Catatan: Belum berkeluarga, orang kaya
 
-2.  Buka command prompt/shell.
+Pencetakan 2 dari 3 untuk: <b>Badan Kesehatan Lingkungan Nasional</b>
+DATA SIAP DICETAK UNTUK BADAN KESEHATAN LINGKUNGAN NASIONAL
+--------------------
+Butterfield - RSE
+Lahir pada tanggal 22-01-2000
+Rasio Berat Per Volume     = 245 kg/m^3
+Catatan: Belum berkeluarga, orang kaya
 
-3.  Ubah direktori sekarang menjadi direktori dari folder “TutorialDDP2”.
-    > Misal : D:\DDP2\TutorialDDP2
+Pencetakan 3 dari 3 untuk: <b>gubernur provinsi Tamfir</b>
+DATA SIAP DICETAK UNTUK GUBERNUR PROVINSI TAMFIR
+--------------------
+Butterfield - RSE
+Lahir pada tanggal 22-01-2000
+Rasio Berat Per Volume     = 245 kg/m^3
+Catatan: Belum berkeluarga, orang kaya
+</pre>
 
-4.  Jalankan perintah `git init` pada command prompt/shell.
+Berikut ini adalah contoh lain interaksi program yang mungkin terjadi  (yang dicetak tebal adalah masukan):
+<pre>PROGRAM PENCETAK DATA SENSUS
+--------------------
+Nama Kepala Keluarga           : <b>master Shifu</b>
+Alamat Rumah                   : <b>Ninja</b>
+Panjang Tubuh (cm)             : <b>36</b>
+Lebar Tubuh (cm)               : <b>71</b>
+Tinggi Tubuh (cm)              : <b>189</b>
+Berat Tubuh (kg)               : <b>68.5</b>
+Jumlah Anggota Keluarga        : <b>7</b>
+Tanggal Lahir                  : <b>12-03-1971</b>
+Catatan Tambahan               : <b></b>
+Jumlah Cetakan Data            : <b>2</b>
 
-    > ini akan menginisiasi Git pada direkori yang ditunjuk oleh _Command Prompt_, pastikan kalian tidak salah menginisiasi folder
+Pencetakan 1 dari 2 untuk: <b>komunitas lingkungan hidup Fasilkom</b>
+DATA SIAP DICETAK UNTUK KOMUNITAS LINGKUNGAN HIDUP FASILKOM
+--------------------
+master Shifu - Ninja
+Lahir pada tanggal 12-03-1971
+Rasio Berat Per Volume     = 141 kg/m^3
+Tidak ada catatan tambahan
 
-5.  Jalankan perintah `git status` untuk memastikan bahwa inisiasi repository Git sudah berhasil dilakukan.
+Pencetakan 2 dari 2 untuk: <b>Arsip pemerintah kabupaten Fasilkom</b>
+DATA SIAP DICETAK UNTUK ARSIP PEMERINTAH KABUPATEN FASILKOM
+--------------------
+master Shifu - Ninja
+Lahir pada tanggal 12-03-1971
+Rasio Berat Per Volume     = 141 kg/m^3
+Tidak ada catatan tambahan
+</pre>
 
-6.  Atur username dan email yang akan diasosiasikan dengan pekerjaanmu di repository Git dengan perintah berikut:
-           `git config --global user.name “<nama-lengkapmu”`  
-           `git config --global user.email “<masukkan-emailmu>”`
-    > ini untuk memberi informasi tentang pengguna repo, masukan email dan nama kalian.
-           
-7.  Setelah melakukan konfigurasi, silakan pindahkan file `Halo.java`  yang kalian buat pada tutorial sebelumnya ke dalam folder “TutorialDDP2”.
-              
-8.  Setelah itu, jalankan perintah `git status` pada _command prompt/shell_, maka nanti akan muncul daftar _untracked files_ dari folder tersebut. Oleh karena itu, jalankan perintah `git add <nama-file>` untuk setiap _untracked files_.
-                 
-9.  Setelah itu, jalankan perintah `git commit -m “<isi-dengan-pesanmu>”`. Hal tersebut berfungsi sebagai penanda terhadap perubahan yang terjadi di dalam files yang kamu buat sebelumnya. 
-                    
-10. Dengan begitu, kamu sudah berhasil mengimplementasikan Git di _local repository_. Untuk tahapan berikutnya, 
-    kamu akan membagikan hasil kerjamu kepada orang lain melalui GitLab, yang terkoneksi dengan local repository yang 
-    kamu miliki. Buka [GitLab](https://gitlab.com) melalui browser kalian.
-                        
-11. Buat sebuah project baru, kamu bisa atur nama project sesukamu, dan atur _Visibility Level_ menjadi **Private**, 
-    sehingga hasil pekerjaan kalian tidak bisa dimanfaatkan pihak yang tidak bertanggung jawab.
-                           
-12. Silakan tekan tombol copy yang berada di sebelah baris yang berisi link menuju repository kamu.
-                                
-13. Buka kembali _command prompt/shell kamu_, lalu ketikkan perintah:
-    
-    ```git
-    git remote add origin <CLONEURL>
-    ```
-    
-    <CLONEURL> diganti dengan link yang sudah kamu copy sebelumnya. Contoh:
-    
-    ```git
-    git remote add origin https://gitlab.com/dekdepe/ddp-2.git
-    ```
-    
-    > git remote add origin merupakan perintah untuk menambahkan address/link ke git kalian, dengan format
-    >
-    > `git remote add <nama link> <branch> <link>` 
-    > `origin` biasanya digunakan untuk link repo di gitlab kalian, sedangkan `upstream` biasanya digunakan untuk link
-    > _sumber_ seperti repo ini. selebihnya akan dijelaskan nanti yaa.
-                                    
-14. Jalankan perintah `git remote -v`, maka akan muncul alamat repository kalian di bagian `origin`.
-                                        
-15. Setelah itu, buka repository resmi dari perkuliahan DDP 2 di GitLab melalui link 
-    [ini](https://gitlab.com/DDP2-Ekstensi-CSUI/ddp-lab). Setelah itu, lakukan hal 
-    yang sama seperti pada langkah nomor 12.
-                                            
-16. Buka kembali _command prompt/shell_ kamu, lalu ketikkan perintah:
-    
-    ```git
-    git remote add upstream <CLONEURL>
-    ```
-    
-    <CLONEURL> diganti dengan link yang sudah kamu copy sebelumnya. Contoh:
-    
-    ```git
-    git remote add upstream https://gitlab.com/DDP2-Ekstensi-CSUI/ddp-lab
-    ```
-                                               
-17.  Jalankan perintah `git remote -v`, maka akan muncul alamat repository kalian di bagian origin dan alamat 
-     repository resmi DDP 2 di bagian upstream.
+### **Any templates?**
+Jadi... ternyata Dek Depe punya teman yang bersedia untuk mempermudah kamu dalam menyelesaikan pekerjaan ini, namun karena ia sibuk, ia hanya mampu membuat **template**nya saja. **Template** terdapat pada `/lab_2/src/main/java/SistemSensus.java`.
 
-19. Untuk meng-_"upload"_ hasil pekerjaan kalian, setelah kalian lakukan perintah `add` dan `commit` seperti petunjuk 
-    diatas. ketik perintah `git push origin master` untuk menyimpan file yang kalian telah `commit` sebelumnya ke repo 
-    dengan nama `origin` (yaitu repo kalian)
-    
-    > perintah `push` memiliki format `git push <nama link> <branch>`
+Bagaimana cara menggunakannya? Langsung modifikasi template tersebut, isi dengan kode-kode jawaban kalian :) Panduan lebih lanjutnya sudah ada di dalam kode templatenya ya!
 
->Perhatian
->
->Jika terdapat poin yang tidak dimengerti pada penjelasan Soal Tutorial Git, harap segera bertanya kepada asisten atau 
-teman kalian, agar kalian tidak tertinggal.
+## **Soal Bonus: "Rekomendasi Apartemen"**
+### **What's the story?**
+Berkat bantuanmu, Kak Pewe berhasil melaksanakan sensus terhadap slums di Provinsi Tamfir tepat waktu. Setelah dilakukan penataan lingkungan selama satu bulan, ternyata tidak semua orang bisa menempati daerah tersebut, sehingga ada yang perlu direlokasi. Mak Dis selaku kepala Dinas Perumahan Rakyat Provinsi Tamfir telah memberikan rekomendasi tiga apartemen yang akan dijadikan tempat relokasi, beserta ketentuan dalam menentukan tempat relokasi. Kak Pewe diminta untuk mendata ulang terhadap orang-orang yang memenuhi prasyarat untuk dapat direlokasi. Dan ia tentu meminta bantuan adiknya, Dek Depe, sekali lagi.
 
-#### Latihan :
+Oleh karena itu, Dek Depe juga meminta bantuanmu sekali lagi untuk melanjutkan program yang telah dibuat sebelumnya, lalu menambahkan fitur baru sesuai checklist berikut:
 
-1. Menurutmu, kenapa kita menggunakan Git pada DDP 2 kali ini?
-    
-2. Menurutmu, apa saja keuntungan yang diperoleh jika kita menggunakan Git sejak perkuliahan DDP 2?
-        
-3. Sebutkan 5 perintah Git!
+### **What you need to do**
+- [ ] **Validasi masukan**
 
-4. Jelaskan apa yang dilakukan kelima perintah Git yang sudah disebutkan di atas!
+	Validasi dilakukan setelah pengguna selesai memasukkan semua masukan yang dibutuhkan. Jika masukan tidak sesuai dengan ketentuan di bawah maka:
+	- [ ] Tampilkan pesan **langsung** saat user memasukkan input yang tidak valid (di luar batasan yang ditentukan):
+		<pre>WARNING: Keluarga ini tidak perlu direlokasi!</pre>
+	- [ ] Keluar dari program (hint: gunakan branching statement yang sesuai)
+	Berikut ini adalah ketentuan masukan yang harus divalidasi:
+		- [ ] 0 < **panjang tubuh** ≤ 250 cm, merupakan bilangan **bulat**.
+		- [ ] 0 < **lebar tubuh** ≤ 250 cm, merupakan bilangan **bulat**.
+		- [ ] 0 < **tinggi tubuh** ≤ 250 cm, merupakan bilangan **bulat**.
+		- [ ] 0 < **berat tubuh** ≤ 150 kg, merupakan bilangan **riil**.
+		- [ ] 0 < **jumlah anggota keluarga** ≤ 20, merupakan bilangan **bulat**.
 
----
+- [ ] ***Generate* nomor pengenal keluarga**
+	- [ ] Gunakan format: `[Huruf pertama nama kepala keluarga][Hasil kalkulasi]`.
+	- [ ] Untuk kalkulasi, gunakan rumus:
+		```
+		((Panjang * Tinggi * Lebar) + Jumlah ASCII tiap huruf nama) mod 10000.
+		```
 
-## Chapter 1 : Kucing Kesayangan
+		**Contoh Kasus:**
+		```java
+		nama = “are NG”
+		panjang = 71
+		lebar = 26
+		tinggi = 37
+		```
+		Maka **nomor keluarga** adalah: `a8795`.
 
-Amir merupakan mahasiswa Fasilkom UI yang baru belajar bahasa pemrograman Java. Setelah mempelajari Java, ia memiliki
-ide untuk membuat kelas yang menyimulasikan kucing-kucing yang ia miliki. Dalam kelas tersebut, rencananya setiap 
-`Kucing` akan memiliki `nama`, `ras`, dan `umur` dalam hari. Selain itu, setiap kucing dapat `berjalan`, `mengeong`, dan `tidur`.
+- [ ] **Hitung anggaran makanan per tahun**
+	- [ ] Gunakan rumus: `Rp 50000 * 365 * (jumlah anggota keluarga)`.
+	- [ ] Pastikan kamu menggunakan tipe data yang tepat **saat menghitung**.
+	- [ ] Tipe data akhir hasil perhitungan adalah **bilangan bulat** (perhatikan bahwa tipe data harus seefisien mungkin → tipe data terkecil yang pas dengan kebutuhan).
 
-Setelah selesai merancang spesifikasi kelas tersebut, ia berencana untuk segera membuatnya, namun ia baru ingat bahwa
-makanan untuk kucing-kucingnya telah habis dan ia harus segera membeli makanan untuk kucingnya sebelum kucing-kucing
-tersebut memberontak. Amir pun meminta bantuan Anda untuk menyelesaikan kelas yang ingin ia buat. Karena Anda merupakan
-teman yang baik hati, maka Anda pun bersedia menyelesaikan kelas tersebut.
+- [ ] **Hitung umur kepala keluarga**
+	- [ ] Ambil tahun lahir dari tanggal lahir.
+	- [ ] Gunakan rumus: **2018 - (tahun lahir)**.
+	- [ ] Tipe data akhir hasil perhitungan adalah **bilangan bulat** (perhatikan bahwa tipe data harus seefisien mungkin → tipe data terkecil yang pas dengan kebutuhan).
 
-Sebelum pergi, Amir meninggalkan ketentuan untuk method pada kelasnya agar Anda memiliki gambaran yang lebih jelas 
-mengenai kelas yang ingin ia buat
+- [ ] **Mengelompokkan keluarga ke apartemen**
+	- [ ] Berikut ini adalah daftar apartemen beserta kriterianya:
+		- > Nama: **PPMT**<br>
+			> Kabupaten: **Rotunda**<br>
+			> RANGE Anggaran Makanan/Tahun: **BEBAS**<br>
+			> RANGE Umur Kepala Keluarga: **0** tahun s.d. **18** tahun
+		- > Nama: **Teksas**<br>
+			> Kabupaten: **Sastra**<br>
+			> RANGE Anggaran Makanan/Tahun: Rp **0** s.d. Rp **100.000.000**<br>
+			> RANGE Umur Kepala Keluarga: **19** tahun s.d. **1018** tahun
+		- > Nama: **Mares**<br>
+			> Kabupaten: **Margonda**<br>
+			> RANGE Anggaran Makanan/Tahun: Rp **100.000.000** s.d. **TAK HINGGA**<br>
+			> RANGE Umur Kepala Keluarga: **19** tahun s.d. **1018** tahun
+- [ ] **Cetak rekomendasi sesuai dengan format yang ditentukan**
+	<pre>
+		REKOMENDASI APARTEMEN
+		--------------------
+		MENGETAHUI: Identitas keluarga: < Nama Kepala Keluarga > - < Nomor >
+		MENIMBANG:  Anggaran makanan tahunan: Rp < Anggaran >
+					Umur kepala keluarga: < Umur > tahun
+		MEMUTUSKAN: keluarga < Nama Kepala Keluarga > akan ditempatkan di:
+		< Nama Tempat >, kabupaten < Nama Kabupaten >
+	</pre>
 
-1. Method `mengeong()`
-   > mengembalikan sebuah String `"Meooooooonnnnnng"`
+> **Hint**
+> - Gunakan fungsi .split() untuk memisahkan tanggal, bulan, dan tahun lahir.
+> - Gunakan casting untuk memasukkan ASCII huruf dalam rumus.
 
-2. Method `berjalan(int jumlahLangkah)`
-   mengembalikan sebuah String
-   > "Kucingku, `[nama]` telah berjalan sejauh `[jumlahLangkah]` langkah"
+### **Contoh Input dan Output**
+Berikut ini adalah contoh interaksi program yang mungkin terjadi (yang dicetak tebal adalah masukan):
+<pre>PROGRAM PENCETAK DATA SENSUS
+--------------------
+Nama Kepala Keluarga           : <b>master Shifu</b>
+Alamat Rumah                   : <b>Ninja</b>
+Panjang Tubuh (cm)             : <b>36</b>
+Lebar Tubuh (cm)               : <b>71</b>
+Tinggi Tubuh (cm)              : <b>189</b>
+Berat Tubuh (kg)               : <b>68.5</b>
+Jumlah Anggota Keluarga        : <b>7</b>
+Tanggal Lahir                  : <b>12-03-1971</b>
+Catatan Tambahan               : <b></b>
+Jumlah Cetakan Data            : <b>2</b>
 
-3. Method `tidur()`
-   Menambah umur kucing sebanyak 1 hari.
+Pencetakan 1 dari 2 untuk: <b>komunitas lingkungan hidup Fasilkom</b>
+DATA SIAP DICETAK UNTUK KOMUNITAS LINGKUNGAN HIDUP FASILKOM
+--------------------
+master Shifu - Ninja
+Lahir pada tanggal 12-03-1971
+Rasio Berat Per Volume     = 141 kg/m^3
+Tidak ada catatan tambahan
 
-Catatan : Constructor class dibuat dengan urutan parameter `nama`, `ras`, `umur`
+Pencetakan 2 dari 2 untuk: <b>Arsip pemerintah kabupaten Fasilkom</b>
+DATA SIAP DICETAK UNTUK ARSIP PEMERINTAH KABUPATEN FASILKOM
+--------------------
+master Shifu - Ninja
+Lahir pada tanggal 12-03-1971
+Rasio Berat Per Volume     = 141 kg/m^3
+Tidak ada catatan tambahan
 
-Setelah kalian selesai membuatkan kelas tersebut, coba compile kelasnya dan buat fungsi main yang mengakses attribut
-pada kelas Anda untuk mengecek kebenaran kelas yang telah dibuat. Pastikan program kalian berjalan dengan baik, 
-output sesuai yang diharapkan tanpa ada error. Kalian juga bisa mengecek kebenaran code dengan menjalankan `gradle check` di cmd pada directory repo anda.
+REKOMENDASI APARTEMEN
+--------------------
+MENGETAHUI: Identitas keluarga: master Shifu - m4279
+MENIMBANG:  Anggaran makanan tahunan: Rp 127750000
+			Umur kepala keluarga: 47 tahun
+MEMUTUSKAN: keluarga master Shifu akan ditempatkan di:
+Mares, kabupaten Margonda
+</pre>
 
-Untuk submisi tugas, didalam folder repo kalian terdapat folder `lab_1\src\main\java`, lalu masukkan file `.java` 
-dari tugas diatas kedalam folder itu. Lalu add, commit, dan push semua file tersebut ke _online repo_ kalian.
-
-Pastikan file `.class` tidak ikut di push.
-
----
-
-### Cara Pengumpulan file Kucing.java
-
-**Sebelum membaca bagian ini, kalian sudah harus membaca tutorial bagian `Git`**
-
-Jika kalian sudah membaca tutorial bagian `Git` kalian pasti akan sadar terdapat perintah `git add <nama-file>`
-untuk menambahkan file baru dan perintah `git commit -m "<nama-pesan>` untuk menandai perubahan yang terjadi pada
-repository. Namun, sebelum kalian menambahkan file Kucing.java, kalian harus membuat repository kalian `up-to-date`
-dengan repository `DDP2-Ekstensi-CSUI`. Perhatikan langkah-langkah berikut:
-
-1. Buka command prompt/shell.
-
-2. Ubah directory sekarang menjadi directory dari folder repository Anda.
-   >Jalankan perintah `dir` pada windows atau `ls` pada mac untuk melihat file pada directory Anda sekarang  
-   >Jalankan perintah `cd <nama-folder>` untuk masuk ke folder yang ada di directory Anda sekarang  
-   >Jalankan perintah `cd ..` untuk keluar dari directory Anda sekarang, dan kembali satu level diatasnya,
-   >misal Anda berada pada directory `D:\DDP2\Lab-1` setelah melakukan perintah `cd ..` Anda akan berpindah
-   >directory `D:\DDP2`
-
-3. Jalankan perintah `git log` lihat apakah terdapat commit di local repository Anda.  
-   Kemudian, ketik 	`q` dan enter untuk keluar dari log.
-   
-4. Jalankah perintah `git pull upstream master` bila **tidak terdapat** commit di local repository Anda.  
-   Jalankan perintah `git pull upstream master --allow-unrelated-histories` bila **terdapat** commit di local repository Anda.
-   >Hal ini dilakukan untuk menyalin semua file yang terdapat pada repository `DDP2-Ekstensi-CSUI`
-   >agar repository kalian `up-to-date` dengan repository `DDP2-Ekstensi-CSUI`
-
-5. Buka online repository kalian di web browser, misal: `https://gitlab.com/<UsernameKalian>/<NamaRepoKalian>` ,
-   pastikan apakah terdapat atau tidak suatu file apapun di online repository kalian.
-   
-6. **Jika online repository kalian terdapat suatu file didalamnya, jalankan perintah nomor 6 ini**  
-   Jalankan perintah `git pull origin master --allow-unrelated-histories`
-   >Hal ini dilakukan untuk menggabungkan commit yang telah kalian push ke repository kalian dengan commit yang kalian salin
-   >dari repository `DDP2-Ekstensi-CSUI`
-   
-   Kemudian, jika terdapat informasi `Automatic merge failed` seperti pada gambar berikut :  
-   
-   ![alt text](https://i.imgur.com/YfKs1zW.jpg "Ilustrasi error")  
-   
-   berarti terdapat file dengan nama yang sama di local dan online repository anda namun memiliki
-   isi yang berbeda yang menyebabkan `Automatic merge failed`. Kalian harus menyelesaikan conflict
-   tersebut secara manual.  
-   
-   **Jika tidak terdapat informasi `Automatic merge failed`, Anda bisa langsung melanjutkan ke langkah nomor 7.**
-   
-   Untuk menyelesaikan masalah `Automatic merge failed`, pertama tama coba perhatikan gambar tersebut.
-   Di gambar tersebut terdapat keterangan `Merge conflict in README.md`. Hal tersebut berarti file
-   yang mengalami conflict adalah file `README.md`, selanjutnya perhatikan langkah berikut:  
-   - Buka folder tempat local repository Anda  
-   - Cari dan buka file yang mengalami conflict, dalam hal ini adalah file `README.md`  
-   - Cari tanda `<<<<<<< HEAD`, hapus satu `baris` tersebut  
-   - Cari tanda `=======` dan tanda `>>>>>>>`   
-	  Hapus `baris pada kedua tanda tersebut` dan `semua bagian` yang berada di antara kedua tanda tersebut.  
-	  Misal isi file `README.md` adalah sebagai berikut:  
-	  ```
-	  <<<<<<< HEAD
-	  Ini isi file dari local repository Anda
-	  =======
-	  Ini isi file dari online repository Anda
-	  >>>>>>> 976f7b2051688888a2f92d6fc4129d7b4016c807
-	  ```
-	  
-	  Setelah kalian hapus isi filenya akan menjadi:     
-	  ```
-	  Ini isi file dari local repository Anda
-	  ```
-	  >Hal ini berarti Anda mengabaikan isi file dari online repository Anda, dan menetapkan bahwa isi file
-	  >dari local repository Anda yang akan digunakan
-	  
-	- Jalankan perintah `git add <nama-file-yang-diubah>`  
-	  >Dalam hal ini nama filenya adalah README.md sehingga perintah menjadi `git add README.md`
-	  
-	- Jalankan perintah git commit -m "<nama-pesan>"
-	  >Dengan melakukan commit, kalian sudah menandai perubahan yang terjadi pada file `README.md`
-      >yang tadinya mengalami conflict, sekarang masalah conflict telah terselesaikan.	  
-
-7. Pindahkan file `Kucing.java` ke directory `lab_1\src\main\java` pada folder repository Anda
-
-8. Pindahkan directory cmd ke directory dimana `Kucing.java` berada
-
-9. Sekarang kalian bisa menambahkan file Kucing.java seperti yang kalian lakukan pada tutorial bagian `Git`
-   >Jalankan perintah `git add Kucing.java`
-
-10. Kemudian tandai perubahan yang terjadi seperti yang kalian lakukan pada tutorial bagian `Git`
-   >Jalankan perintah `git commit -m "<isi-pesan>"`
-   
-11. Upload hasil pekerjaan kalian seperti yang kalian lakukan pada tutorial bagian `Git`
-   >Jalankan perintah `git push origin master`
-   
-12. **Jika terdapat masalah tanyakan pada asdos Anda**
+Berikut ini adalah contoh jika masukan tidak memenuhi validasi (yang dicetak tebal adalah masukan):
+<pre>PROGRAM PENCETAK DATA SENSUS
+--------------------
+Nama Kepala Keluarga           : <b>Esta</b>
+Alamat Rumah                   : <b>Parbel</b>
+Panjang Tubuh (cm)             : <b>45</b>
+Lebar Tubuh (cm)               : <b>64</b>
+Tinggi Tubuh (cm)              : <b>288</b>
+WARNING: Keluarga ini tidak perlu direlokasi!
+</pre>
 
 ## Checklist
-
+Isi kurung siku komponen dengan x untuk menceklis komponen.
 ### Komponen Wajib | 100 Poin
+- [ ] **Meminta masukan dari user**
+- [ ] **Hitung rasio berat per volume**
+- [ ] **Cetak data sesuai dengan format yang ditentukan**
 
-1. Java
-    1. [ ] Memahami perbedaan struktur kode Java dan Python.
-    2. [ ] Mampu membuat dan menjalankan program Java menggunakan _text editor_ dan _Command Prompt_.
-    3. [ ] Memahami perbedaan class dan object
-    4. [ ] Membuat instance variable pada program Amir sesuai spesifikasi
-    5. [ ] Membuat method pada program Amir sesuai spesifikasi
-    
-2. Git
-    1. [ ] Membuat _Local dan Online Repository_
-    2. [ ] Set `origin` dan `upstream`
-    3. [ ] Melakukan perintah `add`, `commit`, dan `push`
-    
 ### Komponen Bonus | 10 Poin
-
-_Belum ada bonus yaa hehe :)_
-
----
-
-### **Woah, apa ini !?**
-
-Ketika kalian meng-push hasil kerja kalian, kalian akan sadar bahwa ada logo cross merah atau centang hijau di samping hasil kerja kalian.
-
-![alt text](https://i.imgur.com/ZNfetmP.png "Ilustrasi git 1")
-
-Kalian mungkin memperhatikan bahwa kita memakai sistem git semester ini. Salah satu guna dari menggunakan git adalah kita bisa menggunakan fitur Continuos Integration?
-
-Apa itu Continuous Integration? Continuos Integration adalah konsep di mana ketika kalian push, hasil push kalian langsung di build (compile) dan di test (uji langsung). Jika gagal, kalian akan diberitahu.
-
-Bagian Build baru akan dijelaskan di mata kuliah Advanced Programming. Kalian hanya perlu mengetahui bagian test.
-
-Sistem yang digunakan untuk mengetest di Java bernama JUnit. Kita bisa menggunakan framework JUnit untuk mengetes secara langsung (tanpa harus print di command line). Untuk sekarang, kalian tidak perlu tahu cara kerja JUnit.
-
-Kamu dapat memeriksa hasil kerja Junit di tab Commit. Tekan logo centang hijau atau cross merah untuk memeriksa detail lebih lanjut.
-
-![alt text](https://i.imgur.com/E23AOfl.png "Ilustrasi commit")
-
-Ketika kamu menekan logo tersebut, kamu akan memeriksa rangkuman dari tes tersebut yang memiliki dua lingkaran.
-
-Jika lingkaran pertama cross, maka program kamu gagal karena compile error.
-Jika lingkaran pertama centang hijau tetapi lingkaran kedua cross, maka program kamu tidak akurat.
-Jika kedua lingkaran centang, berati program kamu sudah baik.
-
-![alt text](https://i.imgur.com/1ElduFi.png "Ilustrasi status")
-
-Kamu dapat menekan tombol cross merah atau centang hijau untuk melihat hasil lebih lanjut. Sebagai contoh, jika kalain mendapat cross merah di lingkaran kedua, kamu dapat menemkan cross merah kedua untuk melihat test case mana program kalian tidak akurat.
+- [ ] **Validasi masukan**
+- [ ] ***Generate* nomor pengenal keluarga**
+- [ ] **Hitung anggaran makanan per tahun**
+- [ ] **Hitung umur kepala keluarga**
+- [ ] **Mengelompokkan keluarga ke apartemen**
+- [ ] **Cetak rekomendasi sesuai dengan format yang ditentukan**
