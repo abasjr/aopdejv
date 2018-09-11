@@ -53,7 +53,7 @@ public class KalkulatorTest {
 
 	@Test
 	@DisplayName("Test Hitung Pembagian")
-	void testHitung(Bagi) {
+	void testHitungBagi() {
 		hitung(9,"/",8);
 		assertEquals(1);
 	}
