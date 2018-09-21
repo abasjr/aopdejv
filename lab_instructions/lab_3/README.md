@@ -1,4 +1,4 @@
-# Lab 2 : Iteration
+# Lab 3 : Iteration
 Dasar-dasar Pemrograman 2 - CSGE601021 | Fakultas Ilmu Komputer, Universitas Indonesia, Semester Gasal 2018/2019
 
 **Dibuat oleh: AFAI**
