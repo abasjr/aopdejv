@@ -285,7 +285,7 @@ Isi Sebenarnya      : COBA TEBAK YA
 Sekarang Anda sudah dapat membuat program untuk menerjemahkan pesan rahasia yang diberikan oleh Amir. Namun, Anda
 merasa program yang Anda miliki kurang efisien karena hanya bisa menerima satu kali input setiap program dijalankan.
 Akhirnya, Anda memutuskan untuk memodifikasi program Anda agar dapat menerima input berulang-kali hingga menerima
-iput `EXIT`.
+input `EXIT`.
 
 ### Contoh Input dan Output Bonus
 
