@@ -40,13 +40,13 @@ public class PesanRahasiaTest {
 	@DisplayName("Test Construct Y Baris Pertama")
 	void testConstructYBarisPertama() {
 		assertEquals("JHHMNMV ZMXACUE RTFAVUZ FYKA",
-				pesanRahasia.constructY("JHHMNMV ZMXACUE RTFAVUZ FYKAK LIKAM KUSALZ HEYAAA"));
+				PesanRahasia.constructY("JHHMNMV ZMXACUE RTFAVUZ FYKAK LIKAM KUSALZ HEYAAA"));
 	}
 
 	@Test
 	@DisplayName("Test Isi Pesan Sebenarnya Baris Pertama")
 	void testTerjemahanBarisPertama() {
-		assertEquals("HMM MAU TAU YA", pesanRahasia.constructIsiPesanSebenarnya("JHHMNMV ZMXACUE RTFAVUZ FYKA"));
+		assertEquals("HMM MAU TAU YA", PesanRahasia.constructIsiPesanSebenarnya("JHHMNMV ZMXACUE RTFAVUZ FYKA"));
 	}
 
 	@Test
@@ -60,12 +60,12 @@ public class PesanRahasiaTest {
 	@DisplayName("Test Construct Y Baris Keempat")
 	void testConstructYBarisEmpat() {
 		assertEquals("FSGEHLJAKMKALTO OYIA",
-				pesanRahasia.constructY("FSGEHLJAKMKALTO OYIA FFD"));
+				PesanRahasia.constructY("FSGEHLJAKMKALTO OYIA FFD"));
 	}
 
 	@Test
 	@DisplayName("Test Isi Pesan Sebenarnya Baris Keempat")
 	void testTerjemahanBarisEmpat() {
-		assertEquals("SELAMAT YA", pesanRahasia.constructIsiPesanSebenarnya("FSGEHLJAKMKALTO OYIA"));
+		assertEquals("SELAMAT YA", PesanRahasia.constructIsiPesanSebenarnya("FSGEHLJAKMKALTO OYIA"));
 	}
 }
