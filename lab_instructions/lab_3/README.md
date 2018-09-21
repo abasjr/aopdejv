@@ -221,25 +221,29 @@ Berikut adalah cara untuk menerjemahkan suatu baris dari pesan tersebut:
 
 - Anggap setiap baris pada pesan tersebut adalah sebuah string yang dimulai dengan indeks 0
 - Ambil setiap karakter berindeks genap pada baris pesan tersebut, susunlah menjadi sebuah kalimat baru, misal kalimat `X`  
-  
-  Baris pada pesan : 
-  ```JAHSHCMFNDMAVE FZBMSXAAZCXUCEE FRGTTFZASVBUNZZ EFFYJKKALKI OLLIHKJAMMH DKAUDSFAVLRZV DHFERYTAFAVAR```
-  Kalimat X: 
-  ```JHHMNMV ZMXACUE RTFAVUZ FYKAK LIKAM KUSALZ HEYAAA```
+  **Contoh :**  
+  Baris pada pesan :   
+  ```JAHSHCMFNDMAVE FZBMSXAAZCXUCEE FRGTTFZASVBUNZZ EFFYJKKALKI OLLIHKJAMMH DKAUDSFAVLRZV DHFERYTAFAVAR```  
+  Kalimat X:  
+  ```JHHMNMV ZMXACUE RTFAVUZ FYKAK LIKAM KUSALZ HEYAAA```  
   
 - Kemudian lakukan pengecekan karakter pada kalimat `X`, abaikan isi kalimat `X` setelah kemunculan huruf `A` yang ketiga
   kalinya. Ambil bagian kalimat `X` yang `tidak diabaikan` dan buat menjadi kalimat baru, misal kalimat `Y`  
   
-  Kalimat X: 
-  ```JHHMNMV ZMXACUE RTFAVUZ FYKAK LIKAM KUSALZ HEYAAA```
-  Kalimat Y: 
-  ```JHHMNMV ZMXACUE RTFAVUZ FYKA```
+  **Contoh :**  
+  Kalimat X:  
+  ```JHHMNMV ZMXACUE RTFAVUZ FYKAK LIKAM KUSALZ HEYAAA```  
+  Kalimat Y:  
+  ```JHHMNMV ZMXACUE RTFAVUZ FYKA```  
   
 - Terakhir, ambil setiap karakter berindeks ganjil pada kalimat `Y`, susunlah menjadi kalimat baru, kalimat tersebut
   adalah isi dari baris pesan tersebut.
   
-  Isi sebenarnya pada baris pesan: 
-  ```HMM MAU TAU YA```
+  **Contoh :**  
+  Kalimat Y:    
+  ```JHHMNMV ZMXACUE RTFAVUZ FYKA```    
+  Isi sebenarnya pada baris pesan:   
+  ```HMM MAU TAU YA```  
     
 **Isi Pesan**:
 ```
