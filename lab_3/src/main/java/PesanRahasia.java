@@ -2,42 +2,30 @@ import java.util.Scanner;
 
 public class PesanRahasia {
 
+    /**
+     *
+     * @param iniPesan merupakan satu baris pesan rahasia
+     * @return kalimat X
+     */
     public static String constructX(String iniPesan){
-        String kalimatX = "";
-        for (int i=0; i<iniPesan.length(); i++){
-            if (i%2 == 0){
-                kalimatX += iniPesan.charAt(i);
-            }
-        }
-        System.out.println(kalimatX);
 
-        return kalimatX;
     }
 
+    /**
+     *
+     * @param kalimatX hasil dari constructX
+     * @return kalimat Y
+     */
     public static String constructY(String kalimatX) {
-        String kalimatY = "";
-        int counterA = 0;
-        int pointer = 0;
-        while (counterA < 3) {
-            if (kalimatX.charAt(pointer) == 'A') {
-                counterA++;
-            }
-            kalimatY += kalimatX.charAt(pointer);
-            pointer++;
-        }
-        System.out.println(kalimatY);
-        return kalimatY;
+
     }
 
+    /**
+     *
+     * @param kalimatY hasil dari construct Y
+     * @return hasil terjemahan pesan
+     */
     public static String constructIsiPesanSebenarnya(String kalimatY) {
-        String isiPesanSebenarnya="";
-        for (int i=0; i<kalimatY.length(); i++){
-            if (i%2 == 1){
-                isiPesanSebenarnya += kalimatY.charAt(i);
-            }
-        }
-
-        return isiPesanSebenarnya;
 
     }
 
