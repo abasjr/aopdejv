@@ -220,7 +220,7 @@ Algoritma yang tersedia hanya dapat digunakan untuk menerjemahkan baris per bari
 Berikut adalah cara untuk menerjemahkan suatu baris dari pesan tersebut:
 
 - Anggap setiap baris pada pesan tersebut adalah sebuah string yang dimulai dengan indeks 0
-- Ambil setiap karakter berindeks genap pada baris pesan tersebut, susunlah menjadi sebuah kalimat baru, misal kalimat `X`  
+- Ambil setiap karakter berindeks genap pada baris pesan tersebut, susunlah menjadi sebuah kalimat baru, yaitu kalimat `X`  
   **Contoh :**  
   Baris pada pesan :   
   ```JAHSHCMFNDMAVE FZBMSXAAZCXUCEE FRGTTFZASVBUNZZ EFFYJKKALKI OLLIHKJAMMH DKAUDSFAVLRZV DHFERYTAFAVAR```  
@@ -228,7 +228,7 @@ Berikut adalah cara untuk menerjemahkan suatu baris dari pesan tersebut:
   ```JHHMNMV ZMXACUE RTFAVUZ FYKAK LIKAM KUSALZ HEYAAA```  
   
 - Kemudian lakukan pengecekan karakter pada kalimat `X`, abaikan isi kalimat `X` setelah kemunculan huruf `A` yang ketiga
-  kalinya. Ambil bagian kalimat `X` yang `tidak diabaikan` dan buat menjadi kalimat baru, misal kalimat `Y`  
+  kalinya. Ambil bagian kalimat `X` yang `tidak diabaikan` dan buat menjadi kalimat baru, yaitu kalimat `Y`  
   
   **Contoh :**  
   Kalimat X:  
@@ -263,20 +263,22 @@ Sebelum kamu mengerjakan soal tutorial ini, ada baiknya kamu membaca penjelasan 
 
 ### **What you need to do**
 - [ ] Buka file lab_3/src/main/java/PesanRahasia.java (**Ada Template Yeaaay**)
-- [ ] Implementasikan fungsi `decode(String pesan)` agar bisa mengembalikan terjemahan pesan
+- [ ] Implementasikan fungsi `constructX(String iniPesan)` agar bisa mengembalikan kalimat X
+- [ ] Implementasikan fungsi `constructY(String kalimatX)` agar bisa mengembalikan kalimat Y
+- [ ] Implementasikan fungsi `constructIsiPesanSebenarnya(String kalimatY)` agar bisa mengembalikan isi sebenarnya dari pesan
 
 ### **Contoh Input dan Output**
 
 Berikut ini adalah contoh interaksi program (yang dicetak tebal adalah masukan):
 <pre>
 Masukkan Pesan      : <b>JAHSHCMFNDMAVE FZBMSXAAZCXUCEE FRGTTFZASVBUNZZ EFFYJKKALKI OLLIHKJAMMH DKAUDSFAVLRZV DHFERYTAFAVAR</b>
-Isi Sebenarnya      : <b>HMM MAU TAU YA</b>
+Isi Sebenarnya      : HMM MAU TAU YA
 </pre>
 
 Berikut ini adalah contoh lain interaksi program (yang dicetak tebal adalah masukan):
 <pre>
 Masukkan Pesan      : <b>BSCDNCOVMSBFDDAAFF GGETTHYEUYGBDRCASTAKFUV CIDYEOFAA FJDECNEGDDCEERDECNEGDDCEANSGB GKDREEFNGGA</b>
-Isi Sebenarnya      : <b>COBA TEBAK YA</b>
+Isi Sebenarnya      : COBA TEBAK YA
 </pre>
 
 ## BONUS
@@ -290,16 +292,18 @@ iput `EXIT`.
 Berikut ini adalah contoh interaksi program (yang dicetak tebal adalah masukan):
 <pre>
 Masukkan Pesan      : <b>JAHSHCMFNDMAVE FZBMSXAAZCXUCEE FRGTTFZASVBUNZZ EFFYJKKALKI OLLIHKJAMMH DKAUDSFAVLRZV DHFERYTAFAVAR</b>
-Isi Sebenarnya      : <b>HMM MAU TAU YA</b>
+Isi Sebenarnya      : HMM MAU TAU YA
 Masukkan Pesan      : <b>BSCDNCOVMSBFDDAAFF GGETTHYEUYGBDRCASTAKFUV CIDYEOFAA FJDECNEGDDCEERDECNEGDDCEANSGB GKDREEFNGGA</b>
-Isi Sebenarnya      : <b>COBA TEBAK YA</b>
+Isi Sebenarnya      : COBA TEBAK YA
 Masukkan Pesan      : <b>EXIT</b>
 Program Berhenti
 </pre>
 
 ## Checklist
 ### Komponen Wajib | 100 Poin
-- [ ] **Mengimplementasikan fungsi `decode(String pesan)` sesuai dengan ketentuan**
+- [ ] **Mengimplementasikan fungsi `constructX(String iniPesan)` sesuai dengan ketentuan**
+- [ ] **Mengimplementasikan fungsi `constructY(String kalimatX)` sesuai dengan ketentuan**
+- [ ] **Mengimplementasikan fungsi `constructIsiPesanSebenarnya(String kalimatY)` sesuai dengan ketentuan**
 
 ## **Komponen Bonus | 10 Poin**
 - [ ] **Memodifikasi program agar terus menerus meminta input hingga mendapatkan input `EXIT`**
