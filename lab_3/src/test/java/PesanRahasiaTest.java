@@ -46,7 +46,7 @@ public class PesanRahasiaTest {
 	@Test
 	@DisplayName("Test Isi Pesan Sebenarnya Baris Pertama")
 	void testTerjemahanBarisPertama() {
-		assertEquals("HMM MAU TAU YA", pesanRahasia.constructIsiPesanSebenarnya("JHHMNMV ZMXACUE RTFAVUZ FYKA");
+		assertEquals("HMM MAU TAU YA", pesanRahasia.constructIsiPesanSebenarnya("JHHMNMV ZMXACUE RTFAVUZ FYKA"));
 	}
 
 	@Test
@@ -66,6 +66,6 @@ public class PesanRahasiaTest {
 	@Test
 	@DisplayName("Test Isi Pesan Sebenarnya Baris Keempat")
 	void testTerjemahanBarisEmpat() {
-		assertEquals("SELAMAT YA", pesanRahasia.constructIsiPesanSebenarnya("FSGEHLJAKMKALTO OYIA");
+		assertEquals("SELAMAT YA", pesanRahasia.constructIsiPesanSebenarnya("FSGEHLJAKMKALTO OYIA"));
 	}
 }
