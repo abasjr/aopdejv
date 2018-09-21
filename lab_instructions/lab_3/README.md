@@ -5,13 +5,13 @@ Dasar-dasar Pemrograman 2 - CSGE601021 | Fakultas Ilmu Komputer, Universitas Ind
 
 * * *
 
-## **Tujuan Pembelajaran**
+## Tujuan Pembelajaran
 1. Memahami konsep **iteration** dalam Java.
 2. Memahami penggunaan **for loop** dalam Java.
 3. Memahami penggunaan **while loop** dalam Java.
 4. Memahami penggunaan **do loop** dalam Java
 
-### **Before You Start...**
+### Before You Start...
 **Jika Memiliki Akses ke Repository Lokal (Misal: Membawa Laptop Sendiri)**
 1. Lakukan `git pull upstream master` dengan menggunakan Command Prompt pada folder repository lokal Anda.
 2. Anda dapat mengimplementasikan source code java tutorial 3 pada folder `ddp-lab/lab_3/src/main/java`.
@@ -25,8 +25,8 @@ Dasar-dasar Pemrograman 2 - CSGE601021 | Fakultas Ilmu Komputer, Universitas Ind
 3. Lakukan `git remote add upstream <link-repository-DDP2>`
 4. Lakukan `git pull upstream master`
 
-## **Materi Tutorial**
-### **Iteration**
+## Materi Tutorial
+### Iteration
 Iteration (perulangan) adalah salah satu bentuk kontrol pemrograman yang umum digunakan. Iteration memungkinkan kita 
 untuk melakukan eksekusi perintah secara berulang selama kondisi tertentu terpenuhi. Dalam Java, terdapat tiga macam 
 perintah utama untuk melakukan perulangan, yaitu for loop, while loop, dan do loop.
@@ -261,13 +261,13 @@ Sebelum kamu mengerjakan soal tutorial ini, ada baiknya kamu membaca penjelasan 
 > - Kapan sebaiknya kita menggunakan while loop ?
 > - Loop berjalan selama ...
 
-### **What you need to do**
+### What you need to do
 - [ ] Buka file lab_3/src/main/java/PesanRahasia.java (**Ada Template Yeaaay**)
 - [ ] Implementasikan fungsi `constructX(String iniPesan)` agar bisa mengembalikan kalimat X
 - [ ] Implementasikan fungsi `constructY(String kalimatX)` agar bisa mengembalikan kalimat Y
 - [ ] Implementasikan fungsi `constructIsiPesanSebenarnya(String kalimatY)` agar bisa mengembalikan isi sebenarnya dari pesan
 
-### **Contoh Input dan Output**
+### Contoh Input dan Output
 
 Berikut ini adalah contoh interaksi program (yang dicetak tebal adalah masukan):
 <pre>
@@ -287,7 +287,7 @@ merasa program yang Anda miliki kurang efisien karena hanya bisa menerima satu k
 Akhirnya, Anda memutuskan untuk memodifikasi program Anda agar dapat menerima input berulang-kali hingga menerima
 iput `EXIT`.
 
-### **Contoh Input dan Output Bonus**
+### Contoh Input dan Output Bonus
 
 Berikut ini adalah contoh interaksi program (yang dicetak tebal adalah masukan):
 <pre>
@@ -301,9 +301,9 @@ Program Berhenti
 
 ## Checklist
 ### Komponen Wajib | 100 Poin
-- [ ] **Mengimplementasikan fungsi `constructX(String iniPesan)` sesuai dengan ketentuan**
-- [ ] **Mengimplementasikan fungsi `constructY(String kalimatX)` sesuai dengan ketentuan**
-- [ ] **Mengimplementasikan fungsi `constructIsiPesanSebenarnya(String kalimatY)` sesuai dengan ketentuan**
+- [ ] Mengimplementasikan fungsi `constructX(String iniPesan)` sesuai dengan ketentuan
+- [ ] Mengimplementasikan fungsi `constructY(String kalimatX)` sesuai dengan ketentuan
+- [ ] Mengimplementasikan fungsi `constructIsiPesanSebenarnya(String kalimatY)` sesuai dengan ketentuan
 
-## **Komponen Bonus | 10 Poin**
-- [ ] **Memodifikasi program agar terus menerus meminta input hingga mendapatkan input `EXIT`**
+## Komponen Bonus | 10 Poin
+- [ ] Memodifikasi program agar terus menerus meminta input hingga mendapatkan input `EXIT`
