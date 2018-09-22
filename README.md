@@ -26,4 +26,4 @@ konfigurasinya [disini](https://drive.google.com/file/d/1c1AA-9ju1S82-NYyV7EMyPN
 
 [Lab_1]: lab_instructions/lab_1/README.md
 [Lab_2]: lab_instructions/lab_2/README.md
-[Lab_2]: lab_instructions/lab_3/README.md
+[Lab_3]: lab_instructions/lab_3/README.md
