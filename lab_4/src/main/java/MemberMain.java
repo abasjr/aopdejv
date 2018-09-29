@@ -22,10 +22,6 @@ public class MemberMain {
         */
         
         System.out.println("--------------------");
-        System.out.println("Banyak member : " + Member.banyakMember);
-        System.out.println();
-        
-        System.out.println("--------------------");
         System.out.println(A);
         System.out.println("--------------------");
         System.out.println(B);
