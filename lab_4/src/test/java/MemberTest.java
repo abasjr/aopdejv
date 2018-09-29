@@ -81,14 +81,14 @@ public class MemberTest {
 	@DisplayName("Test Pak Inem tutup member")
 	void testTutup() {
 		member2.tutupMember();
-		assertEquals(true, member2.isTutupMember());
+		assertEquals(true, member2.isMemberTutup());
 	}
 
 	@Test
 	@DisplayName("Test Pak Ijo Ulang Tahun")
 	void testUlangTahun() {
 		member1.setUmur(60);
-		assertEquals(true, member1.isTutupMember());
+		assertEquals(true, member1.isMemberTutup());
 	}
 
 }

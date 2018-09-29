@@ -205,6 +205,7 @@ Nama file kamu **wajib** Member.java
 - [ ] nama
 - [ ] umur
 - [ ] saldo (sebuah bilangan bulat)
+- [ ] memberTutup (sebuah kondisi untuk status member)
 
 > Catatan : 
 > - Semua atribut yang dimiliki member harus disimpan secara aman dan hanya dapat diubah dan diakses sesuai kebutuhan.
