@@ -41,6 +41,7 @@ public class RakTest {
 	void testCekBarang() {
 		assertEquals(false, rak.cekBarang("SENDOK"));
 		assertEquals(true, rak.cekBarang("PIRING_KUCING"));
+		assertEquals(true, rak.cekBarang("MAKANAN_KUCING"));
 	}
 
 	@Test
