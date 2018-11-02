@@ -13,6 +13,9 @@ Repository ini akan berisi materi-materi Tutorial & Lab DDP 2.
     3. [`Lab 3 : Iteration`][Lab_3]
     4. [`Lab 4 : Pengenalan OOP`][Lab_4]
     5. [`Lab 5 : Array dan ArrayList`][Lab_5]
+
+2. Solusi Tugas Pemrograman
+    1. [`Tugas Pemrograman 2`][Tugas_2]
     
 _Tools_ yang akan digunakan dalam mata kuliah ini antara lain :
 
@@ -31,3 +34,4 @@ konfigurasinya [disini](https://drive.google.com/file/d/1c1AA-9ju1S82-NYyV7EMyPN
 [Lab_3]: lab_instructions/lab_3/README.md
 [Lab_4]: lab_instructions/lab_4/README.md
 [Lab_5]: lab_instructions/lab_5/README.md
+[Tugas_2]: assignment_solution_examples/solution_assignment_2
