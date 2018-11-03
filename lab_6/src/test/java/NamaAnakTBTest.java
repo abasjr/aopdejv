@@ -49,7 +49,7 @@ public class NamaAnakTBTest {
 
 	@Test
 	@DisplayName("Test palindrome 3")
-	void testDua() {
+	void testTiga() {
 		assertTrue(tb1.isPal("makan nakam"));
 		assertFalse(tb2.isPal("makan makan"));
 	}
