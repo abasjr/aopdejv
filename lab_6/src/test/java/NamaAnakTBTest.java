@@ -23,7 +23,8 @@ public class NamaAnakTBTest {
 	@BeforeEach
 	void init() {
 		// inisiasi objek manusia
-		
+		tb1 = new NamaAnakTB();
+		tb2 = new NamaAnakTB();
 
 		// make new ByteArrayOutputStream for output and error output
 		outContent = new ByteArrayOutputStream();
