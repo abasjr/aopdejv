@@ -1,6 +1,6 @@
 # Tutorial 4: Pengenalan OOP
 
-Dasar-dasar Pemrograman 2 - CSGE601021 | Fakultas Ilmu Komputer, Universitas Indonesia, Semester Genap 2017/2018
+Dasar-dasar Pemrograman 2 - CSGE601021 | Fakultas Ilmu Komputer, Universitas Indonesia, Semester Genap 2018/2019
 
 **Dibuat oleh: AR, dimodifikasi dari Tutorial DDP2 2017**
 
