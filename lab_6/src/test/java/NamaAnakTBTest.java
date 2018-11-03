@@ -50,8 +50,8 @@ public class NamaAnakTBTest {
 	@Test
 	@DisplayName("Test palindrome 3")
 	void testDua() {
-		assertTrue(tb1.isPal("Kasur Rusak"));
-		assertFalse(tb2.isPal("Makan Malam"));
+		assertTrue(tb1.isPal("makan nakam"));
+		assertFalse(tb2.isPal("makan makan"));
 	}
 
 }
