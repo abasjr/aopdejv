@@ -123,14 +123,29 @@ public class Board {
     }
 
     /**
+     * Fungsi untuk mencari kartu yang memiliki bagian depan sesuai dengan value.
+     * @param value string yang ingin dibandingkan dengan bagian depan kartu
+     * @return card jika ditemukan, null jika tidak
+     */
+    public Card findCard(String value){
+        for (int i = 0; i < row; i++){
+            for (int j = 0; j < column; j++){
+                if (cards[i][j].getFront().equals(value)) {
+                    return cards[i][j];
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
      * Fungsi untuk menandai kartu sudah pernah di klik.
-     * @param row baris tempat kartu berada
-     * @param column kolom tempat kartu berada
+     * @param card Card yang ingin ditandain
      * @return true jika tidak mengenai ranjau, false sebaliknya
      */
-    public boolean markCard(int row, int column){
-        cards[row][column].setClicked();
-        return !cards[row][column].isMine();
+    public boolean markCard(Card card){
+        card.setClicked();
+        return !card.isMine();
     }
 
     public static void main(String[] args) {
@@ -181,31 +196,22 @@ public class Board {
             System.out.print(board.currentBoardInfo());
             System.out.printf("Jumlah Ranjau: %s\n", numberOfMine);
             System.out.print("Silahkan pilih posisi sel: ");
-            String position = scanner.nextLine();
-            int splitPlace = (int)(Math.ceil(position.length()/2.0));
+            String sel = scanner.nextLine();
+            Card card = board.findCard(sel);
 
-            int row  = 0;
-            int column = 0;
-            try {
-                row = Integer.parseInt(position.substring(0, splitPlace));
-                column = Integer.parseInt(position.substring(splitPlace, position.length()));
-            } catch (NumberFormatException e) {
-                System.out.println("Input tidak sesuai");
+            if (card == null) {
+                System.out.println("Input tidak valid");
                 continue;
             }
 
-            try {
-                if (board.markCard(row - 1, column - 1)) {
-                    winCount++;
-                    if (winCount == fieldSize) {
-                        endOfGame = true;
-                        win = true;
-                    }
-                } else {
+            if (board.markCard(card)) {
+                winCount++;
+                if (winCount == fieldSize) {
                     endOfGame = true;
+                    win = true;
                 }
-            } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Input tidak sesuai");
+            } else {
+                endOfGame = true;
             }
         }
 
