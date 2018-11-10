@@ -21,6 +21,7 @@ public class CatSocietyTest {
 	private ByteArrayOutputStream outContent;
 	private ByteArrayOutputStream errContent;
 	private Kucing kucingBangsawan;
+	private Kucing kucingBangsawan2;
 	private Kucing kucingPrajurit;
 	private Kucing kucingRakyat;
 
@@ -29,6 +30,7 @@ public class CatSocietyTest {
 	void init() {
 		// inisiasi objek manusia
 		kucingBangsawan = new KucingBangsawan("Aya", 100, 30, "Empress");
+		kucingBangsawan2 = new KucingBangsawan("Aya", 0, 30, "Emperror");
 		kucingPrajurit = new KucingPrajurit("Rian", 120, 30);
 		kucingRakyat = new KucingRakyat("Salsa", 80, 20);
 
@@ -73,13 +75,13 @@ public class CatSocietyTest {
 		assertTrue(kucingBangsawan.status().contains("Aya"));
 		assertTrue(kucingBangsawan.status().contains("100"));
 		assertTrue(kucingBangsawan.status().contains("30"));
-		/*assertTrue(kucingBangsawan.status().contains("Empress"));
+		assertTrue(kucingBangsawan.status().contains("Empress"));
 		assertTrue(kucingPrajurit.status().contains("Rian"));
 		assertTrue(kucingPrajurit.status().contains("120"));
 		assertTrue(kucingPrajurit.status().contains("30"));
-		assertTrue(kucingPrajurit.status().contains("Salsa"));
-		assertTrue(kucingPrajurit.status().contains("80"));
-		assertTrue(kucingPrajurit.status().contains("20"));*/
+		assertTrue(kucingRakyat.status().contains("Salsa"));
+		assertTrue(kucingRakyat.status().contains("80"));
+		assertTrue(kucingRakyat.status().contains("20"));
 
 	}
 
@@ -111,6 +113,39 @@ public class CatSocietyTest {
 
 		kucing1.payTax();
 		assertEquals(40, kucing1.getHealth());
+
+	}
+
+	@Test
+	@DisplayName("Test interaksi setelah meninggal")
+	void testEnam() {
+
+		KucingBangsawan kucing3 = (KucingBangsawan)kucingBangsawan;
+		KucingBangsawan kucing4 = (KucingBangsawan)kucingBangsawan2;
+		KucingRakyat kucing1 = (KucingRakyat)(kucingRakyat);
+		KucingRakyat kucing2 = (KucingRakyat)(kucingPrajurit);
+
+		kucing4.sleep();
+		kucing4.execute(kucing1);
+		kucing4.execute(kucing2);
+		assertEquals(0, kucing4.getHealth());
+		assertEquals(80, kucing1.getHealth());
+		assertEquals(120, kucing2.getHealth());
+
+		kucing3.execute(kucing1);
+		kucing3.execute(kucing2);
+
+		kucingRakyat.sleep();
+		kucingRakyat.attack(kucingBangsawan);
+		kucingPrajurit.sleep();
+		kucingPrajurit.attack(kucingBangsawan);
+
+		kucing1.payTax();
+		kucing2.payTax();
+
+		assertEquals(0, kucing1.getHealth());
+		assertEquals(0, kucing2.getHealth());
+		assertEquals(100, kucingBangsawan.getHealth());
 
 	}
 }

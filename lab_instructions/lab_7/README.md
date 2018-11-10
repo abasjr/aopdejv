@@ -281,9 +281,69 @@ Ketika Kucing Prajurit melakukan `attack` ke kucing lainnya, maka health dari ku
 
 3. Implementasikan setter getter untuk setiap atribut
 
-2. Kucing yang sudah meninggal tidak dapat melakukan apapun, sehingga method selain method `status` yang dipanggil dari 
+2. Kucing yang sudah meninggal tidak dapat melakukan apapun, sehingga method selain method `status` dan setter getter yang dipanggil dari 
    kucing yang sudah meninggal tidak akan berdampak apapun. Method `status` tetap akan menampilkan status dari kucing
    yang sudah meninggal.
+
+### Contoh output command
+
+Jalankan CatSociety.java, output seharusnya adalah :
+```
+Nama : Aya
+Health : 100
+Power : 30
+Title : Empress
+
+Nama : Rian
+Health : 120
+Power : 30
+
+Nama : Salsa
+Health : 80
+Power : 20
+
+Nama : Aya
+Health : 20
+Power : 30
+Title : Empress
+
+Nama : Rian
+Health : 120
+Power : 30
+
+Nama : Salsa
+Health : 50
+Power : 20
+
+Nama : Aya
+Health : 40
+Power : 30
+Title : Empress
+
+Nama : Rian
+Health : 140
+Power : 30
+
+Nama : Salsa
+Health : 70
+Power : 20
+
+Nama : Rian
+Health : 120
+Power : 30
+
+Nama : Salsa
+Health : 50
+Power : 20
+
+Nama : Rian
+Health : 0
+Power : 30
+
+Nama : Salsa
+Health : 0
+Power : 20
+```
 
 ### Hint
 
