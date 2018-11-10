@@ -398,15 +398,15 @@ Power : 20
 
 Buatlah sebuah method tambahan pada kelas Kucing
 
-- history()
+- history()  
   Method ini akan menampilkan seluruh energi kehidupan yang pernah direnggut oleh Kucing beserta nama kucing yang direnggut
   energi kehidupannya. Seekor kucing dikatakan merenggut energi kehidupan apabila tindakannya menyebabkan `health` 
   kucing lainnya berkurang. Method ini tetap bisa dipanggil meski kucing sudah mati.  
   Contoh :
   ```java
-  Kucing aya = new KucingRakyat("Aya", 100, 20);
-  Kucing salsa = new KucingBangsawan("Salsa", 80, 10, "Empress");
-  Kucing rian = new KucingPrajurit("Rian", 120, 30);
+  KucingRakyat aya = new KucingRakyat("Aya", 100, 20);
+  KucingBangsawan salsa = new KucingBangsawan("Salsa", 80, 10, "Empress");
+  KucingPrajurit rian = new KucingPrajurit("Rian", 120, 30);
   
   salsa.execute(aya);
   System.out.println(salsa.history());
