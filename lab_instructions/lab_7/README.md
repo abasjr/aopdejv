@@ -217,14 +217,14 @@ Setiap kucing memiliki attribut `String name`, `int health`, dan `int power`. Se
 sehingga jika `Kucing` mendapatkan serangan yang melebihi healthnya, healthnya tetap 0 tidak minus. Status dari setiap
 kucing dapat dilihat menggunakan `status`.
 
-- attack(Kucing kucingLain)
+- attack(Kucing kucingLain)  
   Ketika seekor kucing A melakukan `attack` ke kucingLain, health dari kucingLain akan berkurang sebanyak power
   kucing A
   
-- sleep()
+- sleep()  
   Ketika seekor kucing melakukan `sleep`, health nya akan bertambah 20
   
-- status()
+- status()  
   Mengembalikan String status dari kucing dengan format  
   ```
   Nama : [name]
@@ -238,11 +238,11 @@ kucing dapat dilihat menggunakan `status`.
 Kucing Bangsawan adalah seekor kucing yang terlahir di keluarga kerajaan. Kucing Bangsawan memiliki attribut tambahan 
 `String title`. Kucing Bangsawan juga memiliki sebuah hak istimewa untuk mengeksekusi Kucing Rakyat dengan `execute`.
 
-- execute(KucingRakyat kucing)
+- execute(KucingRakyat kucing)  
   Ketika seekor kucing bangsawan melakukan `execute` ke seekor kucing rakyat, kucing rakyat tersebut akan langsung 
   meninggal.
   
-- status()
+- status()  
   Pada status dari kucing bangsawan terdapat tambahan title.
   
   ```
@@ -257,7 +257,7 @@ Kucing Bangsawan adalah seekor kucing yang terlahir di keluarga kerajaan. Kucing
 Kucing Rakyat adalah rakyat biasa di Cat Society. Seekor kucing rakyat memiliki kesempatan khusus untuk berkontribusi
 kepada Cat Society berupa membayar pajak dengan `payTax`.
 
-- payTax()
+- payTax()  
   Cat Society dibangun dengan menggunakan energi kehidupan, sehingga ketika seekor kucing rakyat membayar pajak, pajak
   yang dibayarkan bukanlah uang melainkan `health` dari kucing tersebut. Ketika seekor kucing membayar pajak, maka
   `health` nya berkurang sebanyak 20.
