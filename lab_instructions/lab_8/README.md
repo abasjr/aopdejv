@@ -473,7 +473,9 @@ Kemudian Amir berdiskusi dengan anda, bagaimana jika hirarki tersebut dituliskan
 
 ![Spesifikasi](https://i.imgur.com/2RLXLcL.png)
 
-### Notes : Urutan parameter pada Constructor sesuai gambar di atas
+### Notes :
+> - Urutan parameter pada Constructor sesuai gambar di atas
+> - Khusus Constructor OrangTua, parameter terakhir berupa 1 buah object Anak yang nantinya dimasukkan ke dalam array list anak pada attribut orang tua
 
 
 ## **Soal Bonus : **
