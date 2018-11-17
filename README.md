@@ -15,6 +15,7 @@ Repository ini akan berisi materi-materi Tutorial & Lab DDP 2.
     5. [`Lab 5 : Array dan ArrayList`][Lab_5]
     6. [`Lab 6 : Rekursif`][Lab_6]
     7. [`Lab 7 : Inheritance`][Lab_7]
+    8. [`Lab 8 : Polimorphism`][Lab_8]
 
 2. Solusi Tugas Pemrograman
     1. [`Tugas Pemrograman 2`][Tugas_2]
@@ -38,4 +39,5 @@ konfigurasinya [disini](https://drive.google.com/file/d/1c1AA-9ju1S82-NYyV7EMyPN
 [Lab_5]: lab_instructions/lab_5/README.md
 [Lab_6]: lab_instructions/lab_6/README.md
 [Lab_7]: lab_instructions/lab_7/README.md
+[Lab_8]: lab_instructions/lab_8/README.md
 [Tugas_2]: assignment_solution_examples/solution_assignment_2

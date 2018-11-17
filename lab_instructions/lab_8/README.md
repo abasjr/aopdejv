@@ -462,7 +462,7 @@ ini hanya memberikan nilai pada variabel x dan y dengan sisi-sisinya sehingga **
 dengan nilai y**.
 
 
-## **Soal Tutorial: ""**
+## **Soal Tutorial: "Hirarki Kehidupan"**
 
 ### **What's the story?**
 
