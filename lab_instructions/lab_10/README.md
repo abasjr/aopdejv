@@ -1,350 +1,366 @@
-# **Tutorial 9: Packaging & Java API**
+# **Tutorial 10: Exception dan GUI (Soal Tutorial)**
 
-Dasar-dasar Pemrograman 2 - CSGE601021 | Fakultas Ilmu Komputer, Universitas Indonesia, Semester Genap 2018/2019
+Dasar-dasar Pemrograman 2 - CSGE601021 | Fakultas Ilmu Komputer, Universitas Indonesia, Semester Genap 2017/2018
 
-**Dibuat oleh: AFAI, dimodifikasi dari Tutorial DDP2 2017**
+**Dibuat oleh DZ | TYB**
 
 * * *
-Selama ini, pengerjaan tutorial anda lakukan dengan mengimplementasikan sendiri sebagian besar program yang diperlukan. Mungkin anda tidak banyak memanfaatkan kode yang telah disediakan oleh bahasa pemrograman yang anda gunakan (Java), hanya sebagian kecil (Scanner untuk Input, System.out untuk output). Pada tutorial ini, anda tidak hanya diperbolehkan, namun juga sangat disarankan, untuk meng-explore  dan menggunakan library yang dimiliki oleh Java.
+Pada tutorial kali ini, kita akan mempelajari cara melakukan *input* dan *output* menggunakan *file* serta bagaimana kita bisa melakukan serta mendefinisikan sendiri *exception* yang berguna untuk menghindari hal-hal yang tidak diinginkan. Selain itu kita juga akan belajar untuk membangun GUI kita sendiri untuk memudahkan *user* dalam menggunakan aplikasi yang kita buat.
 
 ## **Tujuan Pembelajaran**
-1. Memahami konsep Packaging
-2. Dapat memahami & menggunakan dokumentasi Java API
-3. Dapat menggunakan library yang telah disediakan Java
-4. Dapat membuat komentar dokumentasi (Javadoc) yang cukup baik
+1. Memahami dan dapat menggunakan *Files*
+2. Memahami konsep, penggunaan, dan jenis-jenis *Exception* dan *Error*
+3. Memahami penggunaan perintah *Try, Catch, Finally*
+4. Memahami konsep *Defensive Programming*
+5. Memahami penggunaan Javax Swing Package untuk membangun GUI
 
 ### **Before You Start...**
-
-### Before You Start...
-**Jika Memiliki Akses ke Repository Lokal (Misal: Membawa Laptop Sendiri)**
 1. Lakukan `git pull upstream master` dengan menggunakan Command Prompt pada folder repository lokal Anda.
-
-**Jika Tidak Memiliki Akses ke Repository Lokal (Misal: Menggunakan Komputer Lab)**
-1. Lakukan `git clone <link-repository-Anda>` dengan menggunakan Command Prompt untuk menginisiasi repository lokal berdasarkan
-   repository online Anda.  
-2. Arahkan Command Prompt ke folder repository lokal yang baru saja diinisiasi.
-3. Lakukan `git remote add upstream <link-repository-DDP2>`
-4. Lakukan `git pull upstream master`
+2. Kerjakan soal tersebut kemudian letakkan file jawaban anda di folder `lab_10/src/main/java`. Kami sudah menyediakan folder kosong untuk kamu.
+3. Setelah selesai mengimplementasikan kode tersebut, lakukan add, commit, dan push code kalian tersebut.
 
 ## **Materi Tutorial**
 
-Materi tutorial untuk lab kali ini tidak sebanyak materi-materi lab yang membahas Object-Oriented Programming (Lab 5, 6, 7, 8). 
+Catch IntroductionNotFoundException! Materi pada tutorial kali ini berisi mengenai *Files, Exception* dan *Error*, konsep *Defensive Programming* dan GUI dengan *Swing*.
 
-### **Packaging**
+### **Files**
 
-Pada beberapa tutorial sebelumnya, anda tentunya telah menggunakan deklarasi package pada class-class yang anda buat. Contohnya deklarasi berikut:
+#### Input
+
+Terdapat beberapa cara untuk melakukan, namun cara termudahnya adalah dengan menggunakan class `File` yang kemudian dimasukkan ke dalam Scanner.
 ```java
-package something;
+public static void main(String[] args) {
 
-public class A{
-	// ...
+        try {
+            System.out.print("Enter the file name with extension : ");
+
+            Scanner input = new Scanner(System.in);
+
+            File file = new File(input.nextLine());
+
+            input = new Scanner(file);
+
+            while (input.hasNextLine()) {
+                String line = input.nextLine();
+                System.out.println(line);
+            }
+            input.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+```
+Cara lain dapat menggunakan FileReader yang bisa kalian cari sendiri.
+
+#### Output
+
+Cara untuk melakukan *output* ke suatu *file* juga dapat dilakukan dengan banyak cara. Untuk yang mudah, dapat menggunakan `FileWriter`. Pembuatan objek FileWriter dapat dilakukan dengan memasukkan objek File sebagai parameter atau dengan sebuah String *path* menuju *file output* sebagai parameter.
+```java
+public static void main(String args[])throws IOException {
+    File file = new File("contoh.txt");
+    file.createNewFile();
+    
+    FileWriter writer = new FileWriter(file); 
+    
+    writer.write("Ini adalah sebuah\nC O N T O H"); 
+    writer.flush();
+    writer.close();
+}
+```
+Objek FileWriter **WAJIB** dilakukan `flush` atau `close` untuk menyimpan nilai yang tersimpan dalam *buffer* ke dalam *file* sebenarnya.
+
+Referensi:
+- https://stackoverflow.com/questions/13185727/reading-a-txt-file-using-scanner-class-in-java
+- https://www.tutorialspoint.com/java/java_filewriter_class.htm
+
+### **Throwing Exceptions**
+
+#### Throw
+*Keyword* ***throw*** dalam Java digunakan untuk melemparkan *exception* secara eksplisit pada *method* atau suatu blok kode. *Keyword* ***throw*** biasanya digunakan untuk melemparkan *exception* buatan sendiri (*custom exception*). Berikut ini adalah cara menggunakan ***throw***:
+```java
+throw <instance>
+
+// Contoh:
+throw new ArithmeticException("Pembagian dengan nol");
+```
+Pada contoh di atas, blok kode yang mengandung *throw* tersebut akan menghasilkan sebuah *exception* bernama ArithmeticException. *Exception* tersebut kemudian bisa di-*handle* oleh yang menggunakan *method* yang mengandung potongan program tersebut dengan melakukan *try-catch* yang akan dijelaskan pada submateri [Try, Catch, Finally](#catching-exceptions).
+
+*Instance class* yang bisa dilemparkan oleh ***throw*** haruslah merupakan *subclass* dari *class* Throwable. Biasanya, *class exception* buatan sendiri dibuat dengan meng-*extend class* Exception atau RuntimeException karena kedua *class* tersebut sudah merupakan *subclass* dari Throwable. 
+
+Untuk membuat *class exception* sendiri lebih lanjut dijelaskan pada submateri [Mendesain Exception](#exception-design).
+
+#### Throws
+***Throws*** merupakan salah satu cara untuk meng-*handle* kemunculan *exception* selain menggunakan *try-catch*. Dengan menggunakan ***throws***, *exception* yang muncul pada suatu blok kode dalam suatu *method* akan dilemparkan lagi menuju kode yang memanggil *method* tersebut. Dengan demikian, biarkan yang menggunakan *method* tersebut yang melakukan *handle* lebih lanjut dari *exception* yang telah muncul.
+
+Berikut contoh cara penggunaan ***throws***:
+```java
+public int divide(int a, int b) throws ArithmeticException {
+       int result = a / b; // Akan terjadi exception ketika b bernilai 0.
+       return result;
+}
+```
+Pada contoh di atas, *exception* akan dilemparkan dari hasil pembagian ketika peubah b bernilai 0. Kemudian kita melakukan *handle* dengan cara melemparkan lagi *exception* tersebut keluar *method* kepada kode yang melakukan pemanggilan *method* `divide` (saat ini kita tidak perlu memikirkan dulu bagaimana nanti *exception* tersebut di-*handle* oleh kode yang memanggil *method* `divide` tersebut). Dengan demikian, seakan-akan *method* `divide` lah yang menghasilkan *exception* tersebut.
+```java
+public static void main(String[] args) {
+       // Akan terjadi exception seakan-akan dihasilkan oleh method divide
+       int x = divide(5, 0);
+}
+```
+Akan tetapi, perlu dicatat bahwa ***throws*** biasanya lebih sering digunakan untuk *checked exception*, seperti IOException, dibandingkan pada *unchecked exception* dikarenakan rasanya penggunaanya tidak bermakna.
+
+Referensi: https://www.geeksforgeeks.org/throw-throws-java/
+
+![Throwable class inheritance](https://u.catgirl.host/bn9z3.png)
+
+### **Checked and Unchecked Exceptions**
+
+#### Checked Exceptions
+
+***Checked Exceptions*** merupakan *exception* yang diperiksa saat waktu kompilasi. Jika suatu potongan kode dapat melemparkan *checked exception*, maka pada blok kode program tersebut harus melakukan *handle exception* tersebut bisa dengan *try-catch* maupun *throws*. Apabila *exception* tersebut tidak di-*handle*, maka akan terjadi *compile error* saat melakukan kompilasi.
+
+#### Unchecked Exceptions
+
+***Unhecked Exceptions*** merupakan *exception* yang tidak diperiksa saat waktu kompilasi. Dengan demikian, *compiler* tidak akan memaksa kita untuk meng-*handle exception* yang sewaktu-waktu dapat muncul tersebut. Penanganannya kembali ke si *programmer* apakah ia ingin menanganinya atau tidak.
+
+Pada Java, *class exception* yang termasuk ke dalam *unchecked exceptions* adalah *class* Error dan RuntimeException beserta *subclass*-nya, selain itu, semua yang di bawah *class* Throwable, merupakan *checked exceptions*.
+
+![Checked and unchecked exceptions](https://u.catgirl.host/2olda.png)
+
+Referensi:
+- https://www.geeksforgeeks.org/checked-vs-unchecked-exceptions-in-java/
+- https://stackoverflow.com/questions/29763315/java-checked-and-unchecked-exceptions
+
+
+### <a name="catching-exceptions"></a>**Try, Catch, Finally**
+
+*Catching* merupakan salah satu cara yang dapat dilakukan untuk menangani *exception* yang muncul. Untuk melakukan *catching exceptions*, kita akan mengenal dengan yang namanya **blok _Try_** dan **blok _Catch_**. Pada blok *try* berisi potongan program yang dapat memunculkan *exception*. Sedangkan pada blok *catch*, berisi perintah-perintah yang dilakukan ketika menangani *exception* yang muncul pada blok *try*. *Catch* dapat ditulis berkali-kali dengan menangkap berbagai jenis *exception* yang berbeda-beda.
+```java
+class Example1 {
+   public static void main(String args[]) {
+      int num1, num2;
+      try {
+         // Kita memprediksi akan terjadi exception pada blok ini
+         // dengan begitu kita memasukkannya ke dalam blok try.
+         num1 = 0;
+         num2 = 62 / num1;
+         System.out.println(num2);
+         System.out.println("Hey I'm at the end of try block");
+      }
+      catch (ArithmeticException e) { 
+         // Blok ini hanya akan terjadi ketika Arithmetic Exception muncul
+         System.out.println("You should not divide a number by zero");
+      }
+      catch (Exception e) {
+         // Blok ini menangkap Exception umum, akan dieksekusi ketika
+         // ada exception yang belum ter-handle oleh catch sebelum-sebelumnya
+         System.out.println("Exception occurred");
+      }
+      System.out.println("I'm out of try-catch block in Java.");
+   }
+}
+```
+Selain blok *try* dan *catch*, terdapat satu blok lagi yang disebut dengan ***finally***. Blok *finally* akan selalu tereksekusi ketika keluar dari blok *try*. Hal ini memastikan bahwa perintah-perintah yang berada di dalam blok *finally* akan selalu tereksekusi meskipun nanti ternyata muncul *exception* yang tidak terduga. Kegunaan *finally* lebih dari hanya *handling exception*. *Finally* bisa memungkinkan *programmer* menghindari kode *cleanup* terlewati karena *return*, *continue*, atau *break*. Meletakkan kode *cleanup* di dalam blok *finally* merupakan praktik yang bagus meskipun tidak akan muncul *exception*.
+
+```java
+try {
+    int n = Integer.parseInt(scanner.nextLine());
+}
+catch (NumberFormatException e) {
+    System.out.println("Tried to parse non integer.");
+}
+finally {
+    // Kode di dalam sini akan selalu tereksekusi
+    System.out.println("Finally, it's here!");
 }
 ```
 
- Namun, apa sih package itu? Untuk apa kita perlu package?
+Referensi:
+- https://beginnersbook.com/2013/04/try-catch-in-java/
+- https://docs.oracle.com/javase/tutorial/essential/exceptions/finally.html
 
- 
-#### **Definisi**
-(Dikutip dan diterjemahkan dari [tutorial Java pada Oracle](https://docs.oracle.com/javase/tutorial/java/package/packages.html)):
-	"Suatu _package_ adalah pengelompokan sejumlah _type_ (Class/Interface/dll) yang berkaitan, menyediakan proteksi akses dan manajemen _name space_"
+### <a name="exception-design"></a>**Mendesain Exception**
 
-Kita dapatkan dari sini bahwa suatu package kita gunakan untuk mengelompokkan sejumlah Class/Interface/sebagainya yang saling berkaitan. Tentunya dapat dilihat bahwa ini akan bermanfaat bila kita membuat suatu program yang memerlukan banyak sekali class, sehingga kita perlu tahu class-class mana saja yang berkaitan.
+Pada materi sebelumnya, telah diketahui bagaimana *throwing exception* beserta *checked* dan *unchecked exception*. Untuk membuat *exception class* kita sendiri (*custom exception class*), cukup membuat *class* pada umumnya namun dengan meng-*extends Exception class* atau *subclass*-nya. *Unchecked custom exception class* dibuat dengan meng-*extends* *RuntimeException* dan *subclass*-nya sedangkan *checked* meng-*extends Exception* dan *subclass*-nya yang bukan *RuntimeException*.
 
-Disebutkan juga bahwa penggunaan package "_menyediakan proteksi akses_". Apa maksudnya?
-Kita coba ingat-ingat lagi materi yang telah diberikan pada Lab 4, mengenai **access specifier**. Singkat saja, ada 4 access specifier di Java. Ketentuannya mengenai access specifier yaitu:
-
-| **Access modifier** | **Class** | **Package**  | **Subclass** | **Global** |
-| --- | :---: | :---: | :---: | :---: |
-| private | ✅ | ❎ | ❎ | ❎ |
-| default | ✅ | ✅ | ❎ | ❎ |      
-| protected | ✅ | ✅ | ✅ | ❎ |  
-| public | ✅ | ✅ | ✅ | ✅ |
-✅ : Bisa diakses
-
-❎ : Tidak bisa diakses
-
-Contoh baca: sesuatu (variable/method/etc) dengan access specifier _default_ hanya dapat diakses dari class itu sendiri atau dari package yang sama, namun tidak dapat diakses dari subclassnya (bila tidak dari package yang sama), ataupun dari global (class lain yang bukan dari package yang sama)
-
-Dengan memanfaatkan packaging, sesuatu yang access specifiernya kita jadikan default hanya dapat diakses dari class itu sendiri atau dari package yang sama. Kita bisa manfaatkan ini untuk kasus-kasus di mana suatu informasi (variable misalnya) hanya boleh diakses dan diubah oleh class-class pada package yang sama. (Ingat: default didapatkan dengan tidak menuliskan access specifier pada deklarasi variable/method/etc-nya. _keyword_ Java *default* digunakan bukan sebagai access specifier)
-
-Selain itu, disebutkan juga bahwa package "menyediakan manajemen _name space_". Apa yang dimaksud dari pernyataan ini? Sebenarnya cukup sederhana. 
-*Nama suatu tipe (class/interface/dll) tidak akan _conflict_ dengan nama yang sama pada package lain*. Contohnya adalah apabila kita mendeklarasikan suatu class Human pada package lab7 dan kita deklarasikan Human pada package lab8. Hal ini tidak masalah karena kedua class tersebut berada pada package yang berbeda.
-
-#### **Deklarasi & Penamaan**
-Untuk mendeklarasikan suatu class berada pada suatu package, digunakan statement berikut:
+Berikut contoh pembuatan *checked exception class*:
 ```java
-package <namaPackage>;
+class UnfitAnimalException extends Exception {
+   public UnfitAnimalException(String message) {
+       super(message);
+   }
+}
+//throw new UnfitAnimalException("The parrot can’t perform attraction")
 ```
-Deklarasi ini harus diletakkan pada awal suatu source code (sebelum import statement ataupun header class)
-
-Penamaan package, secara sintaks, sama seperti penamaan pada umumnya dalam Java - **bebas** (selama tidak diawali angka dan bukan merupakan _reserved keyword_ (public,int,default,dll)). Walaupun begitu, tentunya ada _best practice_ untuk penamaan. Konvensi penamaan yang kita gunakan adalah [Google Java Style](https://google.github.io/styleguide/javaguide.html), dimana disebutkan bahwa nama package ditulis dengan huruf kecil semua, dengan beberapa kata disambung (contoh: org.example.javacoding).
-
-#### **Menggunakan Type dari Package Lain**
-Misalkan kita memiliki suatu class **Mahasiswa** diletakkan pada package **universitas**. Kita ingin menggunakan class tersebut pada suatu class yang kita buat di package lain. Ada 2 cara untuk menggunakan class tersebut (di [sini](https://docs.oracle.com/javase/tutorial/java/package/usepkgs.html) disebutkan bahwa ada 3 cara, namun kami menganggap cara ke-2 dan 3 sebagai cara yang serupa):
-1. Menggunakan nama lengkap class tersebut setiap kali digunakan
-Nama lengkap yang dimaksud di sini adalah nama class tersebut lengkap dengan packagenya, sehingga class Mahasiswa tersebut kita sebut sebagai universitas.Mahasiswa. Contoh penggunaannya adalah:
+Berikut contoh pembuatan *unchecked exception class*:
+```java
+class VisitorExceededException extends RuntimeException {
+   public VisitorExceededException(String message) {
+       super(message);
+   }
+}
+//throw new VisitorExceededException("Attraction can’t exceed 1000 visitors")
 ```
-universitas.Mahasiswa mhs = new universitas.Mahasiswa(...);
-...
-public static universitas.Mahasiswa getMahasiswa() {
-	...
+
+### **Defensive Programming**
+
+*Defensive programming is a form of defensive design intended to ensure the continuing function of a piece of software in spite of unforeseeable usage of said software. The idea can be viewed as reducing or eliminating the prospect of Murphy’s Law having effect. Defensive programming techniques are used especially when a piece of software could be misused mischievously or inadvertently to catastrophic effect. (...yes Wikipedia).*
+
+Inti dari *Defensive Programming* adalah prinsip yang menyatakan bahwa sebuah program pasti akan menjumpai *error* sehingga sebisa mungkin harus diberikan tindakan preventif untuk segala kemungkinan yang dapat terjadi.
+```java
+public void printName(Person person) {
+    print(person.getIdentity().getName());
+}
+//Dengan defensive programming
+public void printName(Person person) {
+   if (person == null) {
+       print("The person cannot be found");
+   } else if(person.getIdentity() == null) {
+       print("This person doesn’t have integrity");
+   } else {
+       print(person.getIdentity().getName());
+   }
 }
 ```
-Cara ini bisa digunakan, namun repot tentunya bila kita perlu mengetik nama package secara keseluruhan hingga nama classnya. Bagaimana jika classnya terletak dalam sub-package yang cukup dalam? Bagaimana jika memerlukan banyak class dari package tersebut? (contoh: java.util.function.Function, java.io.BufferedReader, dll)
-Ini membawa kita pada cara ke-2:
-2. Menggunakan _import statement_
-Bila kita ingin menggunakan suatu class dari package lain, kita dapat _meng-import_ class tersebut agar dapat kita gunakan tanpa menyebutkan nama package dari class tersebut. Contohnya pada class mahasiswa tadi, kita dapat menggunakan:
-```
-import universitas.Mahasiswa;
-```
-Kemudian kita dapat menggunakan class Mahasiswa tersebut:
-```
-Mahasiswa mhs = new Mahasiswa();
-```
-(Access specifier masih berlaku di sini. Kita tetap tidak bisa mengakses variable/method/dll yang dideklarasikan _default_)
-Bila kita memerlukan banyak class dari package yang sama, kita lakukan import pada statement terpisah:
-```java
-import universitas.Mahasiswa;
-import universitas.Staff;
-import universitas.Dosen;
-...
-```
-Alternatifnya, kita dapat menggunakan karakter _wildcard_ untuk mengimport semua class/interface/dll pada package tersebut:
-```java
-import universitas.*;
-```
-(cara import ini tidak melibatkan sub-package yang terdapat dalam package yang diimport. Sub-package tersebut perlu diimport pada statement terpisah)
 
-**Catatan**: Class/Interface yang terdapat pada package java.lang tidak perlu diimport dan dapat langsung digunakan. Contoh class yang terdapat pada package ini adalah Math, System, dan String.
+### **Javax Swing Package**
 
-#### **Menyusun File**
-File yang berada dalam suatu package diletakkan dalam folder/direktori yang namanya sesuai dengan nama package tersebut. Agar lebih jelas, contohnya kita memiliki class:
-```java
-Mahasiswa (package universitas)
-Dosen (package universitas)
-MataKuliah (package universitas.kuliah)
-MataKuliahMinat (package universitas.kuliah)
-Masjid (package universitas.fasilitas)
-Asrama (package universitas.fasilitas)
-```
-Maka susunan filenya adalah:
-```
-./
-...universitas/
-.....Mahasiswa.java
-.....Dosen.java
-.....kuliah/
-.......MataKuliah.java
-.......MataKuliahMinat.java
-.....fasilitas/
-.......Masjid.java
-.......Asrama.java
-```
+*Package* javax.swing berisi kumpulan *class* yang berfungsi untuk pembuatan *Graphical User Interface* atau GUI di Java. *Abstract Windowing Toolkit* atau AWT yang berada pada java.awt juga berisi kumpulan class untuk membangun GUI; digunakan sebelum adanya implementasi Swing. *Swing* dibangun di atas AWT memberikan penambahan fitur dan fleksibilitas dalam pembuatan GUI. Prinsip dasar penggunaan *Swing* adalah penambahan *Component* di dalam *Component*. Sebagai contoh adalah penempatan JButton di dalam JFrame yang keduanya merupakan *Component*.
 
-Tutorial selengkapnya dapat dibaca di [The Java(tm) Tutorials - Packages](https://docs.oracle.com/javase/tutorial/java/package/index.html)
+![Example of Layouts](https://u.catgirl.host/g7fua.png)
 
-### **Java API**
+LayoutManagers digunakan untuk mengatur tata letak Component sesuai dengan tata letak tertentu. Terdapat BorderLayout (kiri), GridLayout (tengah), FlowLayout (kanan), serta LayoutManager lainnya.
 
-Sebentar, sebentar.... API? Apa itu? Kebakaran? _Java kebakaran?_ **Java mbakar?**
+**Latihan!** Buatlah implementasi BorderLayout, GridLayout, dan FlowLayout menggunakan *Swing*! 
 
-#### **Apa itu API? (Penjelasan Singkat)**
-
-Tenang, tenang! Bukan kebakaran atau api! API yang kita maksud di sini itu singkatan dari **Application Programming Interface**. Untuk dapat lebih mengerti apa itu API, kita umpamakan saja menu pada restoran, atau layanan-layanan pada hotel, adalah API dari suatu aplikasi. Kita dapat melihat apa saja yang bisa kita pesan atau minta, kemudian restoran/hotel tersebut akan memberikan layanan yang kita minta. Kita tidak perlu tahu apa yang terjadi di balik sana (misalnya bagaimana menyiapkan makanannya, bagaimana memilih orang untuk mengurus _room service_). Kita menyebutkan apa yang kita mau (dan membayar) dan kita terima layanan tersebut. Itu saja. (Penjelasan didapatkan dari [How-To Geek: What is an API?](https://www.howtogeek.com/343877/what-is-an-api/), dengan sedikit tambahan. Mungkin bukan analogi yang baik ataupun tepat, namun diharapkan dapat lebih memberikan gambaran).
-
-#### **Pengenalan API di Java**
-
-Seperti halnya yang telah disebutkan, Java juga memiliki API yang dapat kita manfaatkan agar dapat mempermudah pekerjaan kita. Sebagai contoh, bila kita ingin melakukan operasi matematika: pemangkatan, kita dapat menggunakan **Math.pow()** yang dimiliki Java. Bila kita ingin menulis ke file atau membaca dari file, Java memiliki package **java.io** yang di dalamnya terdapat class-class yang dapat melakukan hal tersebut. Kita ingin mengurutkan sebuah Array atau ArrayList? Java juga punya! Pertanyaannya, **bagaimana kita mempelajarinya, memahaminya, dan tentunya, menggunakannya?**
-
-#### **Dokumentasi API Java**
-
-Oracle menyediakan [dokumentasi Java API](https://docs.oracle.com/javase/8/docs/api/) yang di dalamnya menjelaskan berbagai macam package, class, dan sebagainya yang dimiliki Java. Contoh pada link sebelumnya adalah dokumentasi untuk Java 8 API. Dokumentasi untuk versi Java lainnya (Java 7 atau Java 9 misalnya) juga ada dan dapat dicari.
-
-#### **Contoh: String dalam Java**
-
-Sebagai contoh, kita dapat melihat dokumentasi untuk class [java.lang.String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html).
-![String](img/api-string.jpg "String API Documentation")
-Pada halaman tersebut, kita dapat melihat berbagai macam informasi terkait class tersebut (macam-macam Constructor yang dapat digunakan, method-method yang tersedia, dll). Kita dapat melihat penjelasan terkait tiap method, return typenya, dan sebagainya. 
-Kita ambil contoh pada method [charAt()](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#charAt-int-).
-![charAt](img/api-string-charat-int.jpg "String API Documentation - charAt(int)")
-Dijelaskan apa yang dilakukan oleh method tersebut ("_Returns the char value at the specified index. An index ranges from 0 to length() - 1. The first char value of the sequence is at index 0, the next at index 1, and so on, as for array indexing. If the char value specified by the index is a surrogate, the surrogate value is returned._"). Selain itu dijelaskan pula parameter yang digunakan ("_index - the index of the char value._") serta return valuenya ("_the char value at the specified index of this string. The first char value is at index 0._"). Di awal tiap penjelasan, diberikan header dari method yang dijelaskan ("public char charAt(int index)") sehingga jelas access specifiernya (kita tahu siapa yang bisa mengakses), static atau non-static (jelas apakah perlu object atau tidak agar dapat digunakan), return typenya, nama methodnya (jelas...), serta tipe dan urutan parameternya. Terakhir, terdapat penjelasan mengenai _Exception_ (yang akan anda segera pelajari) terkait method tersebut.
-
-#### **Dokumentasi Kode: Komentar Javadoc**
-
-Kita sudah melihat contoh dokumentasi API milik Java. Kita lihat bahwa dokumentasi tersebut sangat berkaitan dengan bagaimana kode umumnya didefinisikan (ada header dari method, ada nama argumen-argumen dari parameter, ada return type dan value, dan sebagainya). Nah, mungkin saja ada yang bertanya, apa dokumentasi tersebut dibuat manual pada halaman web, terpisah dari kode? Apa header dari method, parameter, dan sebagainya yang ada pada dokumentasi dicocokkan secara manual dengan kode yang ada?
-
-Jawabannya **tidak**! Dokumentasi tersebut sebenarnya **secara otomatis dibuat berdasarkan komentar tertentu yang ada pada source code**. Komentar yang bagaimana? Kita sebut komentar yang dijadikan dokumentasi tersebut adalah **komentar Javadoc**. Bagaimana menuliskan komentar tersebut pada kode?
-
-Ada 3 macam komentar pada Java. Komentar jenis pertama dapat kita sebut _line comment_, diawali dengan "//". Dari awal komentar tersebut hingga akhir baris dianggap sebagai komentar.
-```java
-// this is a line comment
-```
-Komentar jenis kedua dapat kita sebut _block comment_, komentar yang diawali "/* " dan diakhiri "*/". Dari pembuka hingga penutup, semuanya dianggap komentar, walaupun terpisah pada beberapa baris.
-```java
-/* this
-   is
-   a
-   block
-   comment
-   
-   not sparta
-*/
-```
-Komentar jenis ketiga yaitu _Javadoc comment_, diawali dengan "/**" dan diakhiri dengan "*/". Seperti block comment, dimulai dari pembuka hingga penutup semuanya dianggap komentar walaupun terpisah pada beberapa baris
-```java
-/** this
-    is
-	a
-	Javadoc
-	comment
-*/
-```
-Sekarang kita tahu 3 cara menuliskan comment pada java. Agar dokumentasi seperti yang tadi kita lihat dapat terbentuk, dimana kita harus meletakkan Javadoc comment, dan apa saja yang ditulis?
-
-Sebuah Javadoc comment dituliskan tepat sebelum header dari **class/interface, instance/class variable, constructor, dan method**. Suatu Javadoc comment umumnya terdiri dari 2 bagian: **deskripsi** dan **_block tag_**. Komentar Javadoc ditulis seperti menulis HTML (sehingga terdapat tag seperti `<code>`, dll). Berikut contoh komentar Javadoc pada method charAt(int) milik String (diambil dari [GrepCode: java.lang.String](http://grepcode.com/file_/repository.grepcode.com/java/root/jdk/openjdk/6-b14/java/lang/String.java/?v=source)):
-![doc_charAt](img/javadoc-string-charat-int.jpg "Code - String charAt(int)")
-Terlihat bahwa komentar tersebut menjelaskan apa yang dilakukan oleh charAt(int), dan apa yang terdapat pada komentar tersebut sesuai dengan apa yang ada pada dokumentasi. Selain itu, terdapat juga baris-baris yang menyatakan "`param ....`", "`return ....`". Baris baris tersebut diawali dengan tag (`param`, `return`, ....) dan dilanjutkan dengan penjelasan. Untuk tag `param`, perlu diikuti dengan nama argumen (pada kasus charAt, nama argumennya adalah _index_), kemudian diikuti penjelasan. Pada `return`, langsung diikuti oleh penjelasan.
-
-Penjelasan lebih lengkap terkait penulisan dan penggunaan komentar Javadoc dapat dilihat pada [Oracle - How to Write Doc Comments for the Javadoc Tool](http://www.oracle.com/technetwork/articles/java/index-137868.html).
-
-## **Soal Tutorial: Cat Society V2.0**
+# **Soal Tutorial: Secret Mission**
 
 ### **What's the story?**
 
-Amir yang sedang tidak ada kerjaan, diundang oleh temannya Caca untuk menjadi pemateri di sebuah tutorial DDP2 mengenai package dan API pada java.
-Namun, ternyata mahasiswa yang mengikuti tutorial tersebut belum mempelajari mengenai package dan API di java. Kemudian, Amir teringat bahwa
-program yang telah ia buat sebelumnya, 'CatSociety' sudah pernah dipublikasikan dan terkenal di kalangan para mahasiswa DDP2.
-Amir pun memutuskan untuk menggunakan kembali program tersebut untuk membuat soal tutorial yang lebih mudah dimengerti.
+Pada suatu hari Dek Depe diundang seseorang bernama si Z untuk datang ke suatu acara. Dek Depe yang ikut datang ke acara si Z melihat sebuah kotak aneh di acara tersebut. Ketika membuka kotak tersebut ternyata terdapat pesan rahasia bertuliskan suatu *string* yang terlihat *random* sehingga tidak mengerti maksudnya apa. Dek Depe menyimpan pesan tersebut dan dibawa ke rumah.
 
-Ternyata, program tersebut sudah menggunakan prinsip packaging, file-file java yang memiliki karakteristik yang sama, sebagai
-character dalam program `CatSociety` dikumpulkan menjadi satu, menjadi package `character`. Pada soal tutorial yang dibuat oleh Amir,
-Amir meminta mahasiswa membuat sebuah package baru, `characterv2` yang berisi modifikasi dari character-character di package `character`.
-Amir ingin kalian mengubah character-character tersebut, agar setiap data dan operasi yang melibatkan angka, dapat digunakan untuk
-angka integer > 10000000000000000000000000000000000000000000000000000000000000000000000000000.
+Saat di rumah, Dek Depe mencoba menginvestigasi apa maksud dari tulisan tersebut. Setelah dicari ternyata pesan itu dibuat oleh seseorang bernama LEN. Ternyata LEN dan Z adalah intelijen. Mereka berdua saling berkirim pesan dengan penggunaan enkripsi.
 
-Berikut daftar perubahan mengenai operasi angka:
-1. Semua tipe data int, harus diubah agar dapat melakukan operasi untuk angka integer > 10000000000000000000000000000000000000000000000000000000000000000000000000000
-2. Sleep pada Kucing.java, menambahkan health sebanyak 200000000000000000000000000000000000
-3. PayTax pada KucingRakyat.java, mengurangi health sebanyak 200000000000000000000000000000000000
+ Enkripsi adalah proses mengamankan suatu informasi dengan membuat informasi tersebut tidak dapat dibaca tanpa bantuan pengetahuan khusus. Enkripsi yang digunakan oleh LEN dan Z ternyata menggunakan algoritma enkripsi yang tidak pernah di-*publish* di mana-mana. Enkripsi ini menggunakan suatu algoritma yang bernama Xoxo Encryption yang dikembangkan bertahun-tahun oleh dua orang *computer scientist* yang memiliki *codename* DZ dan TYB.
 
-Tambahan:
-1. Semua constructor menerima parameter data angka integer dalam bentuk string, parsing ke bentuk tipe data yang baru
-dapat dilakukan setelahnya.
-Contoh:
-```java
-public Kucing(String name, String health, String power){
-        //do something
-    }
-```
+ Xoxo Encryption adalah suatu algoritma enkripsi yang menggunakan dua *key*. Key yang pertama disebut dengan Kiss Key yang digunakan untuk melakukan enkripsi. Key yang satu lagi disebut Hug Key yang digunakan untuk melakukan dekripsi. Kedua *key* ini saling berpasangan sehingga pesan yang dienkripsi menggunakan Kiss Key hanya bisa didekripsi dengan Hug Key pasangan dari Kiss Key tersebut. Selain itu juga terdapat suatu *seed* yang juga merupakan sepasang dengan Hug Key untuk melakukan dekripsi.
 
->Hint : Gunakan java API, kalian dapat melihat dokumentasi API pada javadoc dan cari API yang kalian butuhkan
+ Dek Depe berhasil menemukan kode Xoxo Encryption tersebut, namun kode tersebut hanya berisi cara melakukan enkripsinya saja. Dek Depe akhirnya meminta Anda untuk melakukan riset cara mendekripsi pesan tersebut menggunakan Xoxo Encryption.
 
-Mempertimbangkan mungkin ada mahasiswa yang belum tahu secara detail mengenai CatSociety V1.0, Amir telah mempersiapkan kode yang
-dapat digunakan oleh mahasiswa di [`contoh kode cat society`][Code]
+### **Spesifikasi**
 
-Setelah kalian mengganti tipe data, kalian dapat melihat bahwa operasi biasa seperti +,-,*,/,<,<=,>,>=,== tidak dapat digunakan
-pada tipe data tersebut, kalian dapat melihat dokumentasi API tersebut untuk mengetahui bagaimana cara melakukan
-operasi-operasi tersebut. 
+Anda diberikan *template* program untuk melakukan enkripsi dan dekripsi pesan menggunakan Xoxo Encryption. Berikut adalah *checklist* yang perlu Anda lakukan:
+- Membuat *method* untuk mendekripsi pesan
+- Membuat dan melemparkan *exceptions*
+- Membuat GUI dan simpan hasil pada *file*
+- Menangani *exceptions* dengan GUI
 
-#### Contoh Output
+#### Dekripsi Pesan
 
-Jalankan [`CatSocietyv2.java`][catSocietyV2]
+Terdapat file `xoxo/crypto/XoxoDecryption.java`. Anda diminta untuk mengisi *method* `decrypt`. Setelah Anda melakukan riset, ternyata Anda menemukan algoritma untuk melakukan dekripsi. Dekripsi dilakukan dengan cara berikut:
 
-Output seharusnya adalah :
-```
-Nama : Aya
-Health : 10000000000000000000000000000000000000000000000000000000000000000000000000000
-Power : 30000000000000000000000000000000
-Title : Empress
+1. Lakukan *looping* sebanyak panjang pesan,
+2. Untuk setiap karakter pada Hug Key di index `i % hugKeyString.length()` lakukan xor dengan `seed`,
+3. Lakukan operasi pengurangan hasil yang didapat pada langkah 2 dengan karakter `'a'`,
+4. Untuk setiap karakter pada pesan di index ke-`i` lakukan xor dengan nilai yang didapat pada langkah 3,
+5. Gabungan dari setiap hasil karakter dalam bentuk `char` pada langkah 4 merupakan hasil dekripsi, kembalikan hasil gabungan tersebut sebagai `String`.
 
-Nama : Rian
-Health : 120000000000000000000000000000000000000000000000000000000000000000000000000000
-Power : 30000000000000000000000000000000
+**NOTE:** Gunakan operator `^` untuk melakukan operasi xor.
 
-Nama : Salsa
-Health : 80000000000000000000000000000000000000000000000000000000000000000000000000000
-Power : 20000000000000000000000000000000
+#### Throwing Exceptions
 
-Nama : Aya
-Health : 9999999999999999999999999999999999999999999920000000000000000000000000000000
-Power : 30000000000000000000000000000000
-Title : Empress
+Anda diminta untuk melengkapi semua *class* yang pada `xoxo/exceptions/`. Setelah semua *class* Anda implementasi, lakukan pelemparan *exceptions* tersebut pada *class* `XoxoEncryption` dan `XoxoDecryption` dengan *requirements* sebagai berikut:
 
-Nama : Rian
-Health : 120000000000000000000000000000000000000000000000000000000000000000000000000000
-Power : 30000000000000000000000000000000
+- Ukuran *message* maksimal 10 Kbit
+- Panjang *key* maksimal 28 karakter
+- String Kiss Key hanya boleh mengandung huruf `A-Z`, `a-z`, dan karakter `@`
+- Seed merupakan angka di antara 0-36 (*inclusive*)
 
-Nama : Salsa
-Health : 79999999999999999999999999999999999999999999970000000000000000000000000000000
-Power : 20000000000000000000000000000000
+Apabila terjadi hal-hal di luar *requirements* tersebut, maka lemparkan *exception* yang sesuai.
 
-Nama : Aya
-Health : 10000000000000000000000000000000000000000199920000000000000000000000000000000
-Power : 30000000000000000000000000000000
-Title : Empress
+#### Membuat GUI
 
-Nama : Rian
-Health : 120000000000000000000000000000000000000000200000000000000000000000000000000000
-Power : 30000000000000000000000000000000
+Untuk memudahkan *user*, Anda diminta membuat GUI. Pembuatan GUI dilakukan pada `xoxo/XoxoView.java`. Untuk implementasi logika dilakukan pada `xoxo/XoxoController.java`.
 
-Nama : Salsa
-Health : 80000000000000000000000000000000000000000199970000000000000000000000000000000
-Power : 20000000000000000000000000000000
+Berikut adalah beberapa komponen yang wajib ada dalam GUI Anda:
+- 3 JTextField untuk *input* pesan, key, dan seed
+- 2 JButton untuk melakukan enkripsi dan dekripsi
+- 1 JTextArea untuk menuliskan log
 
-Nama : Rian
-Health : 120000000000000000000000000000000000000000000000000000000000000000000000000000
-Power : 30000000000000000000000000000000
+Dalam *class* XoxoView, sudah diberikan beberapa *method* yang membantu Anda untuk bertukar data (seperti pesan atau key) antara logika dengan GUI.
 
-Nama : Salsa
-Health : 79999999999999999999999999999999999999999999970000000000000000000000000000000
-Power : 20000000000000000000000000000000
+| Method | Kegunaan |
+|-|-|
+|getMessageText|Mengambil *input* pesan dari GUI|
+|getKeyText|Mengambil *input* key dari GUI|
+|getSeedText|Mengambil *input* seed dari GUI|
+|appendLog|Menambahkan suatu teks ke dalam log di GUI|
+|setEncryptButton|Menerima sebuah ActionListener yang berisi logika untuk melakukan enkripsi agar bisa dilakukan pada tombol di GUI|
+|setDecryptButton|Menerima sebuah ActionListener yang berisi logika untuk melakukan dekripsi agar bisa dilakukan pada tombol di GUI|
 
-Nama : Rian
-Health : 0
-Power : 30000000000000000000000000000000
+Anda dapat menggunakan *method-method* tersebut dalam *class* `XoxoController` melalui *instance* XoxoView.
 
-Nama : Salsa
-Health : 0
-Power : 20000000000000000000000000000000
-```
+Simpan hasil enkripsi atau dekripsi Anda ke dalam sebuah file dengan ekstensi `.enc` untuk hasil enkripsi dan `.txt` untuk hasil dekripsi.
+
+#### Menangani *exceptions* dengan GUI
+
+Sebelumnya Anda telah membuat dan melempar *exceptions*. Sekarang dengan memanfaatkan GUI, tangani *exceptions* tersebut dengan memunculkan *alert dialog* dengan memanfaatkan komponen `JOptionPane`.
+
+### Contoh Hasil Enkripsi dan Dekripsi
+
+#### Enkripsi
+
+Jenis key: **Kiss Key**
+
+|Pesan|Key|Seed|Enkripsi|
+|-----|---|----|--------|
+|Love|live|DEFAULT_SEED|Ggca|
+|Saya di Fasilkom|ddp|DEFAULT_SEED|Pbvb#kj#Ibpfoh`n|
+|Besok_Jam_3|kencan|32|Ha~mkR@e`]3|
+|FN P90|pchan|28|IL'P4?|
+|DDP memang mudah|bohong|50|EJW.`cloii-ktjff|
+
+#### Dekripsi
+
+Jenis key: **Hug Key**
+
+|Pesan Terenkripsi|Key|Seed|Pesan Asli|
+|-----|---|----|--------|
+|&#124;ioswf!vwk\`|e{pg|DEFAULT_SEED|jangan baca|
+|fmfpo3s\`c1tvael1vrzeqxe|awq\`wf|DEFAULT_SEED|tidak ada pesan rahasia|
+|ﾏﾋﾞﾜﾅￍﾉﾇￍﾞﾏﾟﾊﾁ|mlmwlm|35|besok di margo|
+|gi-verjl-g\`p#bbk|x}r{yn|28|di pacil ada bom|
+|ﾹﾅﾁﾛￆﾌﾇﾈﾙﾝￆﾄﾖﾔ|RDLNF@|1|Kamu lulus ddp|
 
 
-### Bonus
+**NOTE:** Algoritma ini masih belum sempurna, apabila Anda melakukan *test case* sendiri dengan melakukan enkripsi kemudian mendekripsikannya kembali, mungkin ada beberapa informasi yang hilang atau rusak. Sementara ini yang penting Anda bisa mengimplementasikannya.
 
-Karena sudah merupakan hal yang umum di masyarakat untuk membanding-bandingkan, Amir ingin Kucing yang dibuatnya
-juga bisa dibandingkan, untuk itu, pada soal tutorialnya Amir meminta mahasiswa agar class `Kucing.java` mengiplements
-sebuah interface API dari java yang bernama [`Comparable`][comparable], dan mengimplementasikan method `compareTo` dari interface
-tersebut. 
+## Bonus
 
-Ketentuan perbandingan adalah sebagai berikut:
-1. Bandingkan health dari kucing
-2. Kucing A dianggap lebih dari kucing B apabila health A > health B
-3. Kucing A dianggap kurang dari kucing B apabila health A < health B
-4. Jika health sama, bandingkan power dari kucing
-5. Jika health sama, Kucing A dianggap lebih dari kucing B apabila power A > power B
-6. Jika health sama, Kucing A dianggap kurang dari kucing B apabila power A < power B
-7. Jika health dan power sama, maka kedua kucing dianggap sama
+Sewaktu riset mencari cara mendekripsi menggunakan Xoxo Encryption, Anda menemukan suatu repositori di GitLab yang berisi *file-file* dengan ekstensi .enc. Ketika Anda buka menggunakan Notepad, Anda melihat *file-file* tersebut berisi pesan-pesan yang telah terenkripsi. Melihat ternyata pemilik repositori tersebut adalah LEN, Anda tahu bahwa *file* tersebut terenkripsi menggunakan Xoxo Encryption.
 
->Kenapa mengimplements Comparable ?
->Ada banyak kegunaan yang kita dapatkan dengan mengimplements Comparable, banyak API di java yang menggunakan
->compareTo dari Comparable sebagai cara membandingkan 2 buah object, sehingga jika kita ingin menggunakan
->API tersebut, kita harus mengimplements Comparable, sebagai contoh:  
->Collections.sort dan Collections.binarySearch  
->Arrays.sort dan Arrays.binarySearch  
+Dengan begitu, Anda mencoba untuk mengembangkan lagi program Anda agar bisa menginput menggunakan *file* saja karena rasanya malas untuk *copy-paste* semua isi *file*.
+
+### Spesifikasi ###
+
+Buatlah agar GUI dapat menerima *input file* dengan memanfaatkan komponen `JFileChooser`.
 
 ## Checklist
-
 Isi kurung siku komponen dengan x untuk menceklis komponen.
-
 ### Komponen Wajib | 100 Poin
+- [ ] **Implementasi seluruh hal yang diminta pada soal**
+- [ ] **Implementasi keluaran dengan FileWriter**
+- [ ] **Implementasi method dekripsi sesuai yang diminta**
+- [ ] **Membuat dan memakai *Exception* pada program dengan baik**
+- [ ] **Implementasi GUI untuk keseluruhan program**
+- [ ] **Handle _exception_ dan tampilkan pada GUI menggunakan JOptionPane**
 
-- [ ] **Membuat  setiap data dan operasi yang melibatkan angka, dapat digunakan untuk 
-angka > 10000000000000000000000000000000000000000000000000000000000000000000000000000**
+### Komponen Bonus | 10 Poin
+- [ ] **Implementasi masukan menggunakan File dan komponen GUI JFileChooser** (5)
+- [ ] **Implementasi konsep *defensive programming* yang matang** (2)
+- [ ] **Implementasi estetika GUI yang baik dan enak dipandang mata** (3)
+
 
 -----
-### Komponen Bonus | 10 Poin
-
-- [ ] **Mengimplementasikan compareTo**
-
 ### **Woah, apa ini !?**
 
 Ketika kalian meng-push hasil kerja kalian, kalian akan sadar bahwa ada logo cross merah atau centang hijau di samping hasil kerja kalian.
@@ -372,7 +388,3 @@ Jika kedua lingkaran centang, berati program kamu sudah baik.
 ![alt text](https://i.imgur.com/1ElduFi.png "Ilustrasi status")
 
 Kamu dapat menekan tombol cross merah atau centang hijau untuk melihat hasil lebih lanjut. Sebagai contoh, jika kalain mendapat cross merah di lingkaran kedua, kamu dapat menemkan cross merah kedua untuk melihat test case mana program kalian tidak akurat.
-
-[Code]: lab_solution_examples/solution_lab_7
-[comparable]: https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html
-[catSocietyV2]: lab_9/src/main/java
