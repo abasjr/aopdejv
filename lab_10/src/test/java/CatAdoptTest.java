@@ -10,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * This code is redeveloped from Ichlasul Affan's code
  */
 
-@DisplayName("Makhluk Hidup Test")
-public class MakhlukHidupTest {
+@DisplayName("Cat Adopt Test")
+public class CatAdoptTest {
 	// Membuat variabel baru untuk output dan error output
 	private ByteArrayOutputStream outContent;
 	private ByteArrayOutputStream errContent;
