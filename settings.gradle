@@ -1,3 +1,3 @@
 rootProject.name = 'ddp-lab'
-include ':'
+include ':lab_10'
 

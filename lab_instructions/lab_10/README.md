@@ -1,10 +1,11 @@
-# **Tutorial 10: Exception dan GUI (Soal Tutorial)**
+# **Tutorial 10: Exception Handling (Soal Tutorial)**
 
-Dasar-dasar Pemrograman 2 - CSGE601021 | Fakultas Ilmu Komputer, Universitas Indonesia, Semester Genap 2017/2018
+Dasar-dasar Pemrograman 2 - CSGE601021 | Fakultas Ilmu Komputer, Universitas Indonesia, Semester Genap 2018/2019
 
-**Dibuat oleh DZ | TYB**
+**Dibuat oleh: AR, dimodifikasi dari Tutorial DDP2 2017**
 
 * * *
+
 Pada tutorial kali ini, kita akan mempelajari cara melakukan *input* dan *output* menggunakan *file* serta bagaimana kita bisa melakukan serta mendefinisikan sendiri *exception* yang berguna untuk menghindari hal-hal yang tidak diinginkan. Selain itu kita juga akan belajar untuk membangun GUI kita sendiri untuk memudahkan *user* dalam menggunakan aplikasi yang kita buat.
 
 ## **Tujuan Pembelajaran**
@@ -222,169 +223,96 @@ public void printName(Person person) {
 }
 ```
 
-### **Javax Swing Package**
 
-*Package* javax.swing berisi kumpulan *class* yang berfungsi untuk pembuatan *Graphical User Interface* atau GUI di Java. *Abstract Windowing Toolkit* atau AWT yang berada pada java.awt juga berisi kumpulan class untuk membangun GUI; digunakan sebelum adanya implementasi Swing. *Swing* dibangun di atas AWT memberikan penambahan fitur dan fleksibilitas dalam pembuatan GUI. Prinsip dasar penggunaan *Swing* adalah penambahan *Component* di dalam *Component*. Sebagai contoh adalah penempatan JButton di dalam JFrame yang keduanya merupakan *Component*.
 
-![Example of Layouts](https://u.catgirl.host/g7fua.png)
-
-LayoutManagers digunakan untuk mengatur tata letak Component sesuai dengan tata letak tertentu. Terdapat BorderLayout (kiri), GridLayout (tengah), FlowLayout (kanan), serta LayoutManager lainnya.
-
-**Latihan!** Buatlah implementasi BorderLayout, GridLayout, dan FlowLayout menggunakan *Swing*! 
-
-# **Soal Tutorial: Secret Mission**
+# **Soal Tutorial: Cat Adopt**
 
 ### **What's the story?**
+Tidak terasa 2 bulan telah berlalu, kini kucing Amir sudah sangat banyak. Amir semakin sulit untuk merawat kucing-kucing tersebut. Amir memiliki ide untuk membuka toko adopsi kucing. Amir meminta bantuan anda untuk membuat program yang dapat mencatat detail adopsi setiap harinya. Data adopsi diperoleh dari sebuah file .txt yang nama filenya diinput manual oleh user. Amir memiliki 5 jenis kucing yang dapat diadopsi, yaitu Savannah, Bengal, Peterbald, Sphynx, dan Scottish.
 
-Pada suatu hari Dek Depe diundang seseorang bernama si Z untuk datang ke suatu acara. Dek Depe yang ikut datang ke acara si Z melihat sebuah kotak aneh di acara tersebut. Ketika membuka kotak tersebut ternyata terdapat pesan rahasia bertuliskan suatu *string* yang terlihat *random* sehingga tidak mengerti maksudnya apa. Dek Depe menyimpan pesan tersebut dan dibawa ke rumah.
+Setiap jenis kucing memiliki biaya perawatan berbeda-beda (juta) :
+- Savannah (700)
+- Bengal (300)
+- Peterbald (70)
+- Sphynx(50)
+- Scottish (40)
 
-Saat di rumah, Dek Depe mencoba menginvestigasi apa maksud dari tulisan tersebut. Setelah dicari ternyata pesan itu dibuat oleh seseorang bernama LEN. Ternyata LEN dan Z adalah intelijen. Mereka berdua saling berkirim pesan dengan penggunaan enkripsi.
+Amir menyediakan 2 tipe pembayaran yaitu Angsur dan Tunai. Harga diatas berlaku untuk Tunai, sedangkan untuk Angsur dikenakan biaya admin 1 juta.
 
- Enkripsi adalah proses mengamankan suatu informasi dengan membuat informasi tersebut tidak dapat dibaca tanpa bantuan pengetahuan khusus. Enkripsi yang digunakan oleh LEN dan Z ternyata menggunakan algoritma enkripsi yang tidak pernah di-*publish* di mana-mana. Enkripsi ini menggunakan suatu algoritma yang bernama Xoxo Encryption yang dikembangkan bertahun-tahun oleh dua orang *computer scientist* yang memiliki *codename* DZ dan TYB.
 
- Xoxo Encryption adalah suatu algoritma enkripsi yang menggunakan dua *key*. Key yang pertama disebut dengan Kiss Key yang digunakan untuk melakukan enkripsi. Key yang satu lagi disebut Hug Key yang digunakan untuk melakukan dekripsi. Kedua *key* ini saling berpasangan sehingga pesan yang dienkripsi menggunakan Kiss Key hanya bisa didekripsi dengan Hug Key pasangan dari Kiss Key tersebut. Selain itu juga terdapat suatu *seed* yang juga merupakan sepasang dengan Hug Key untuk melakukan dekripsi.
+### **Format Masukan**
 
- Dek Depe berhasil menemukan kode Xoxo Encryption tersebut, namun kode tersebut hanya berisi cara melakukan enkripsinya saja. Dek Depe akhirnya meminta Anda untuk melakukan riset cara mendekripsi pesan tersebut menggunakan Xoxo Encryption.
+Masukan dibaca dari sebuah file .txt yang berisi data adopsi pada suatu tanggal. Baris pertama file input berisi tanggal adopsi dengan format dd/mm/yyyy. Tanggal dianggap valid selama mengikuti format tersebut, sehingga 30/02/2018 merupakan tanggal yang valid. Baris selanjutnya berisi jenis kucing, tipe pembayaran (A untuk Angsur dan T untuk Tunai), serta biaya perawatan yang harus dibayar pelanggan sebelum ditambah biaya admin (tidak perlu menuliskan keterangan juta, cukup 300 atau 40). Sehingga formatnya adalah :
 
-### **Spesifikasi**
+> **[jenis kucing][spasi][A/T][biaya perawatan]**
 
-Anda diberikan *template* program untuk melakukan enkripsi dan dekripsi pesan menggunakan Xoxo Encryption. Berikut adalah *checklist* yang perlu Anda lakukan:
-- Membuat *method* untuk mendekripsi pesan
-- Membuat dan melemparkan *exceptions*
-- Membuat GUI dan simpan hasil pada *file*
-- Menangani *exceptions* dengan GUI
+### **Contoh Masukan**
+<pre>
 
-#### Dekripsi Pesan
+11/11/2018
+Savannah A700
+Bengal T300
+Bengal A300
+Peterbald T70
 
-Terdapat file `xoxo/crypto/XoxoDecryption.java`. Anda diminta untuk mengisi *method* `decrypt`. Setelah Anda melakukan riset, ternyata Anda menemukan algoritma untuk melakukan dekripsi. Dekripsi dilakukan dengan cara berikut:
+</pre>
 
-1. Lakukan *looping* sebanyak panjang pesan,
-2. Untuk setiap karakter pada Hug Key di index `i % hugKeyString.length()` lakukan xor dengan `seed`,
-3. Lakukan operasi pengurangan hasil yang didapat pada langkah 2 dengan karakter `'a'`,
-4. Untuk setiap karakter pada pesan di index ke-`i` lakukan xor dengan nilai yang didapat pada langkah 3,
-5. Gabungan dari setiap hasil karakter dalam bentuk `char` pada langkah 4 merupakan hasil dekripsi, kembalikan hasil gabungan tersebut sebagai `String`.
 
-**NOTE:** Gunakan operator `^` untuk melakukan operasi xor.
+### ***Format Keluaran*
+
+Cukup tampilkan di layar tanggal adopsi, total biaya perawatan pada tanggal tersebut, dan rinciannya untuk setiap jenis kucing.
+
+### **Contoh Keluaran**
+<pre>
+
+Savannah :
+11/11/2018 Total Biaya Perawatan = Rp 701,000,000 (701)
+
+Bengal :
+11/11/2018 Total Biaya Perawatan = Rp 601,000,000 (300 + 301)
+
+Peterbald :
+11/11/2018 Total Biaya Perawatan = Rp 70,000,000 (70)
+
+</pre>
+
 
 #### Throwing Exceptions
 
-Anda diminta untuk melengkapi semua *class* yang pada `xoxo/exceptions/`. Setelah semua *class* Anda implementasi, lakukan pelemparan *exceptions* tersebut pada *class* `XoxoEncryption` dan `XoxoDecryption` dengan *requirements* sebagai berikut:
+Dalam tutorial ini terdapat beberapa eksepsi yang perlu diperhatikan dan ditangani, yaitu :
 
-- Ukuran *message* maksimal 10 Kbit
-- Panjang *key* maksimal 28 karakter
-- String Kiss Key hanya boleh mengandung huruf `A-Z`, `a-z`, dan karakter `@`
-- Seed merupakan angka di antara 0-36 (*inclusive*)
+> 1. **FileNotFoundException**, bila file input tidak ada maka program akan memberikan pesan pada layar sbb: “File tidak ditemukan”.
+> 2. **NumberFormatException** , dapat terjadi pada penulisan tanggal (mis: 14 menjadi 1A atau 10 menjadi iO). Untuk kesalahan pada tanggal maka program akan memberi pesan pada layar sbb: “Terdapat kesalahan penulisan tanggal” dan program akan berhenti. Perlu dicek juga pada penulisan biaya perawatan (mis: A50 menjadi VS0), maka program akan memberi pesan pada layar sbb : “Terdapat kesalahan penulisan nominal” dan program akan berhenti.
+> 3. **IOException**, program akan memberi pesan “Ada error”.
 
-Apabila terjadi hal-hal di luar *requirements* tersebut, maka lemparkan *exception* yang sesuai.
-
-#### Membuat GUI
-
-Untuk memudahkan *user*, Anda diminta membuat GUI. Pembuatan GUI dilakukan pada `xoxo/XoxoView.java`. Untuk implementasi logika dilakukan pada `xoxo/XoxoController.java`.
-
-Berikut adalah beberapa komponen yang wajib ada dalam GUI Anda:
-- 3 JTextField untuk *input* pesan, key, dan seed
-- 2 JButton untuk melakukan enkripsi dan dekripsi
-- 1 JTextArea untuk menuliskan log
-
-Dalam *class* XoxoView, sudah diberikan beberapa *method* yang membantu Anda untuk bertukar data (seperti pesan atau key) antara logika dengan GUI.
-
-| Method | Kegunaan |
-|-|-|
-|getMessageText|Mengambil *input* pesan dari GUI|
-|getKeyText|Mengambil *input* key dari GUI|
-|getSeedText|Mengambil *input* seed dari GUI|
-|appendLog|Menambahkan suatu teks ke dalam log di GUI|
-|setEncryptButton|Menerima sebuah ActionListener yang berisi logika untuk melakukan enkripsi agar bisa dilakukan pada tombol di GUI|
-|setDecryptButton|Menerima sebuah ActionListener yang berisi logika untuk melakukan dekripsi agar bisa dilakukan pada tombol di GUI|
-
-Anda dapat menggunakan *method-method* tersebut dalam *class* `XoxoController` melalui *instance* XoxoView.
-
-Simpan hasil enkripsi atau dekripsi Anda ke dalam sebuah file dengan ekstensi `.enc` untuk hasil enkripsi dan `.txt` untuk hasil dekripsi.
-
-#### Menangani *exceptions* dengan GUI
-
-Sebelumnya Anda telah membuat dan melempar *exceptions*. Sekarang dengan memanfaatkan GUI, tangani *exceptions* tersebut dengan memunculkan *alert dialog* dengan memanfaatkan komponen `JOptionPane`.
-
-### Contoh Hasil Enkripsi dan Dekripsi
-
-#### Enkripsi
-
-Jenis key: **Kiss Key**
-
-|Pesan|Key|Seed|Enkripsi|
-|-----|---|----|--------|
-|Love|live|DEFAULT_SEED|Ggca|
-|Saya di Fasilkom|ddp|DEFAULT_SEED|Pbvb#kj#Ibpfoh`n|
-|Besok_Jam_3|kencan|32|Ha~mkR@e`]3|
-|FN P90|pchan|28|IL'P4?|
-|DDP memang mudah|bohong|50|EJW.`cloii-ktjff|
-
-#### Dekripsi
-
-Jenis key: **Hug Key**
-
-|Pesan Terenkripsi|Key|Seed|Pesan Asli|
-|-----|---|----|--------|
-|&#124;ioswf!vwk\`|e{pg|DEFAULT_SEED|jangan baca|
-|fmfpo3s\`c1tvael1vrzeqxe|awq\`wf|DEFAULT_SEED|tidak ada pesan rahasia|
-|ﾏﾋﾞﾜﾅￍﾉﾇￍﾞﾏﾟﾊﾁ|mlmwlm|35|besok di margo|
-|gi-verjl-g\`p#bbk|x}r{yn|28|di pacil ada bom|
-|ﾹﾅﾁﾛￆﾌﾇﾈﾙﾝￆﾄﾖﾔ|RDLNF@|1|Kamu lulus ddp|
-
-
-**NOTE:** Algoritma ini masih belum sempurna, apabila Anda melakukan *test case* sendiri dengan melakukan enkripsi kemudian mendekripsikannya kembali, mungkin ada beberapa informasi yang hilang atau rusak. Sementara ini yang penting Anda bisa mengimplementasikannya.
 
 ## Bonus
+Keluaran dibuat ke file-file untuk setiap tanggal dengan format [jenis kucing].txt kemudian tampilkan tanggal adopsi, total biaya perawatan pada tanggal tersebut, dan rinciannya untuk setiap jenis kucing.
 
-Sewaktu riset mencari cara mendekripsi menggunakan Xoxo Encryption, Anda menemukan suatu repositori di GitLab yang berisi *file-file* dengan ekstensi .enc. Ketika Anda buka menggunakan Notepad, Anda melihat *file-file* tersebut berisi pesan-pesan yang telah terenkripsi. Melihat ternyata pemilik repositori tersebut adalah LEN, Anda tahu bahwa *file* tersebut terenkripsi menggunakan Xoxo Encryption.
+### **Contoh Keluaran**
 
-Dengan begitu, Anda mencoba untuk mengembangkan lagi program Anda agar bisa menginput menggunakan *file* saja karena rasanya malas untuk *copy-paste* semua isi *file*.
+Savannah.txt
+>11/11/2018 Total Biaya Perawatan = Rp 701,000,000 (701)
 
-### Spesifikasi ###
+.
 
-Buatlah agar GUI dapat menerima *input file* dengan memanfaatkan komponen `JFileChooser`.
+Bengal.txt
+>11/11/2018 Total Biaya Perawatan = Rp 601,000,000 (300 + 301)
+
+.
+
+Peterbald.txt
+>11/11/2018 Total Biaya Perawatan = Rp 70,000,000 (70)
+
 
 ## Checklist
 Isi kurung siku komponen dengan x untuk menceklis komponen.
 ### Komponen Wajib | 100 Poin
 - [ ] **Implementasi seluruh hal yang diminta pada soal**
-- [ ] **Implementasi keluaran dengan FileWriter**
-- [ ] **Implementasi method dekripsi sesuai yang diminta**
-- [ ] **Membuat dan memakai *Exception* pada program dengan baik**
-- [ ] **Implementasi GUI untuk keseluruhan program**
-- [ ] **Handle _exception_ dan tampilkan pada GUI menggunakan JOptionPane**
+- [ ] **Terima input dari file**
+- [ ] **Bedakan Angsur dan Tunai**
+- [ ] **Buat perhitungan Total Biaya Perawatan dengan tepat**
+- [ ] **Handle _exception_**
 
 ### Komponen Bonus | 10 Poin
-- [ ] **Implementasi masukan menggunakan File dan komponen GUI JFileChooser** (5)
-- [ ] **Implementasi konsep *defensive programming* yang matang** (2)
-- [ ] **Implementasi estetika GUI yang baik dan enak dipandang mata** (3)
-
-
------
-### **Woah, apa ini !?**
-
-Ketika kalian meng-push hasil kerja kalian, kalian akan sadar bahwa ada logo cross merah atau centang hijau di samping hasil kerja kalian.
-
-![alt text](https://i.imgur.com/ZNfetmP.png "Ilustrasi git 1")
-
-Kalian mungkin memperhatikan bahwa kita mulai memakai sistem git sejak semester 2, mengikuti kakak angkatan kalian yang baru mulai memakai sistem git sejak semester 3. Salah satu guna dari menggunakan git adalah kita bisa menggunakan fitur Continuous Integration?
-
-Apa itu Continuous Integration? Continuous Integration adalah konsep di mana ketika kalian push, hasil push kalian langsung di build (compile) dan di test (uji langsung). Jika gagal, kalian akan diberitahu.
-
-Bagian Build baru akan dijelaskan di mata kuliah Advanced Programming. Kalian hanya perlu mengetahui bagian test.
-
-Sistem yang digunakan untuk mengetest di Java bernama JUnit. Kita bisa menggunakan framework JUnit untuk mengetes secara langsung (tanpa harus print di command line). Untuk sekarang, kalian tidak perlu tahu cara kerja JUnit.
-
-Kamu dapat memeriksa hasil kerja Junit di tab Commit. Tekan logo centang hijau atau cross merah untuk memeriksa detail lebih lanjut.
-
-![alt text](https://i.imgur.com/E23AOfl.png "Ilustrasi commit")
-
-Ketika kamu menekan logo tersebut, kamu akan memeriksa rangkuman dari tes tersebut yang memiliki dua lingkaran.
-
-Jika lingkaran pertama cross, maka program kamu gagal karena compile error.
-Jika lingkaran pertama centang hijau tetapi lingkaran kedua cross, maka program kamu tidak akurat.
-Jika kedua lingkaran centang, berati program kamu sudah baik.
-
-![alt text](https://i.imgur.com/1ElduFi.png "Ilustrasi status")
-
-Kamu dapat menekan tombol cross merah atau centang hijau untuk melihat hasil lebih lanjut. Sebagai contoh, jika kalain mendapat cross merah di lingkaran kedua, kamu dapat menemkan cross merah kedua untuk melihat test case mana program kalian tidak akurat.
+- [ ] **Implementasi keluaran dengan FileWriter**
