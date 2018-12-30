@@ -8,7 +8,7 @@ Dasar-dasar Pemrograman 2 - CSGE601021 | Fakultas Ilmu Komputer, Universitas Ind
 Repository ini akan berisi materi-materi Tutorial & Lab DDP 2.
 
 1. Lab
-    1. [`Lab 1 : Pengenalan Java dan Git`][Lab_1] 
+    1. [`Lab 1 : Pengenalan Java dan Git`][Lab_1]
     2. [`Lab 2 : Expression, Operators, dan Decision`][Lab_2]
     3. [`Lab 3 : Iteration`][Lab_3]
     4. [`Lab 4 : Pengenalan OOP`][Lab_4]
@@ -21,7 +21,7 @@ Repository ini akan berisi materi-materi Tutorial & Lab DDP 2.
 
 2. Solusi Tugas Pemrograman
     1. [`Tugas Pemrograman 2`][Tugas_2]
-    
+
 _Tools_ yang akan digunakan dalam mata kuliah ini antara lain :
 
 - Java Development Kit (JDK) 8
