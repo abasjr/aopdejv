@@ -4,12 +4,14 @@ public class Member{
   private int umur;
   private int saldo;
   private boolean memberTutup;
+  // private int countMember;
 
   public Member(int nomorMember, String nama, int umur){
     this.nomorMember = nomorMember;
     this.nama = nama;
     this.umur = umur;
     this.saldo = 50000;
+    // this.countMember = 1;
   }
 
   // Overloading Contructor
@@ -18,6 +20,7 @@ public class Member{
     this.nama = nama;
     this.umur = umur;
     this.saldo = saldo;
+    // this.countMember =1;
   }
 
   public int getNomorMember(){
@@ -40,7 +43,7 @@ public class Member{
     this.umur += umur;
     if (umur > 49){
       System.out.println(getNama() + " terlalu tua untuk menjadi member");
-      System.out.println("Member atas nama " + nama + " telah resmi ditutup");
+      System.out.println("Member atas nama " + getNama() + " telah resmi ditutup");
       this.memberTutup = true;
     }
     else
@@ -51,19 +54,32 @@ public class Member{
     return this.umur;
   }
 
+  // public int getCountMember(){
+  //   return this.countMember;
+  // }
+
   public String toString(){
     String cetakBiodata = (isMemberTutup() == true) ?
       "Member atas nama "+getNama()+" telah ditutup\n":
+      // "Banyak member : " + updateCount() + " \n" + "-------------\n" +
       "Nomor Member  : "+getNomorMember()+"\nNama          : "+getNama()+"\nUmur          : "+getUmur()+ "\nSaldo         : "+getSaldo();
     return cetakBiodata;
   }
 
   public void kirimSaldo(Member penerima, int uang){
-    this.saldo -= uang;
-    penerima.saldo += uang;
-    System.out.println(nama + " telah berhasil mengirim saldo ke " + penerima.getNama()+ " sebesar " + uang);
-    System.out.println("Saldo " + getNama() + " saat ini " + getSaldo());
-    System.out.println("Saldo " + penerima.getNama() + " saat ini " + penerima.getSaldo());
+    if (getNama().equals(penerima.getNama()))
+      System.out.println("Pemberi tidak bisa mengirim ke diri sendiri");
+    else if (isMemberTutup() == true)
+      System.out.println("Member atas nama " + getNama() + " telah ditutup, tidak bisa transfer");
+    else if (penerima.isMemberTutup() == true)
+      System.out.println("Member atas nama " + getNama() + " telah ditutup, tidak bisa transfer");
+    else {
+      this.saldo -= uang;
+      penerima.saldo += uang;
+      System.out.println(nama + " telah berhasil mengirim saldo ke " + penerima.getNama()+ " sebesar " + uang);
+      System.out.println("Saldo " + getNama() + " saat ini " + getSaldo());
+      System.out.println("Saldo " + penerima.getNama() + " saat ini " + penerima.getSaldo());
+    }
   }
 
   public void topUpSaldo(int uang){
@@ -80,5 +96,11 @@ public class Member{
   public void tutupMember(){
     this.memberTutup = true;
     System.out.println("Member atas nama " + this.nama + " telah resmi ditutup");
+    // System.out.println("Banyak member sekarang : " + this.countMember);
+    // this.countMember -=1;
   }
+
+  // public int updateCount(){
+  //   return countMember+=1;
+  // }
 }
